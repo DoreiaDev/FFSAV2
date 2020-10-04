@@ -54,7 +54,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-3 rigthColumm">
                 <div>
-                    <a href=""><button>Ajouter une fonction</button></a>
+                    <a href="AddFunction.php"><button>Ajouter une fonction</button></a>
                 </div>
                 <div>
                     <a href="HomeLogin.php"><button>Retour</button></a>
