@@ -203,6 +203,7 @@ if (isset($_POST['connection'])) {
                 $_SESSION['loginMail'] = $verif->Email;
                 $_SESSION['Name'] = $verif->Name;
                 $_SESSION['Firstname'] = $verif->Firstname;
+                $_SESSION['access'] = $verif->PermissionToAccess;
                 $_SESSION['connect'] = 'OK';
                 $_SESSION['TemporyloginMail'] = '';
                 $_SESSION['TemporyName'] = '';
@@ -214,7 +215,7 @@ if (isset($_POST['connection'])) {
                     $CheckLicensesExist = new FunctionSummary();
                     $CheckLicensesExist->id0108asap_member = $IDUser;
                     $CheckOkLicenses = $CheckLicensesExist->DisplayPrimaryLicenses();
-                    $_SESSION['access'] = $CheckOkLicenses[0]->id_0108asap_function;
+//                    $_SESSION['access'] = $CheckOkLicenses[0]->id_0108asap_function;
                 }
                 if (in_array($_SESSION['access'], $Function)) {
                     header("Location: HomeLogin.php");

@@ -38,7 +38,6 @@ if (isset($_POST['BtnAddAsa'])) {
     }
     if (count($formError) == 0) {
         $CheckAddAsa = $AddAsa->AddAsa();
-        var_dump($CheckAddAsa);
         if ($CheckAddAsa == true) {
             header("Location: ListOfAsa.php");
         } else {

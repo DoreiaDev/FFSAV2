@@ -1,6 +1,6 @@
 <?php
 include_once '../Config.php';
-include_once '../Controller/AddFunctionCtrl.php';
+include_once '../Controller/ModifyFunctionCtrl.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
 if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
@@ -8,35 +8,37 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
-
+              
             </div>
             <div class="col-lg-6 ">
-                <h1>Ajout d'une nouvelle fonction (licence)</h1>
+                <h1>Modification de la licence(fonction) :<?= $DiplayTheLicense->TypeOfLicence?></h1>
             </div>
             <div class="col-lg-3">
-
+              
             </div>
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-
+                <?php
+               
+                ?>
             </div>
             <div class="col-lg-6 centralColumm">
-                <div>
+   <div>
                     <div>
                         <p class="text-danger"><?= isset($ErrorForm) ? $ErrorForm : '' ?></p>
                         <p class="text-danger"><?= isset($formError['Technical']) ? $formError['Technical'] : '' ?></p>
                     </div>
-                    <form name="FormAddFunction" id="FormAddFunction" method="POST" >
+                    <form name="FormModifyFunction" id="FormModifyFunction" method="POST" >
                        <div>
                             <label for="NameFunction">Nom de la Licence/fonction</label>
-                            <input type="text" name="NameFunction" value="<?= isset($_POST['NameFunction']) ? $_POST['NameFunction'] : '' ?>" id="NameFunction"/>
+                            <input type="text" name="NameFunction" value="<?= $DiplayTheLicense->TypeOfLicence?>" id="NameFunction"/>
                             <p class="text-danger" id="ErrorMailUserConnect"><?= isset($formError['NameFunction']) ? $formError['NameFunction'] : '' ?></p>
                         </div>
                         <div>
                             <label>Sélectionnez la ligue dans la liste suivante :*</label><br>
                             <select class="custom-select custom-select-sm" name="Access" id="Access">
-                                <option selected="">Choissez dans la liste suivante </option>
+                                <option selected="">Droit actuelle (a reselectioner);<?= $DiplayTheLicense->TypeOfAcces?>  </option>
                                 <?php
                                 foreach ($ListAccess as $DisplayPermissionOfAccess) {
                                     ?>
@@ -48,7 +50,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p class="text-danger"><?= isset($formError['League']) ? $formError['League'] : '' ?></p>
                         </div>
                         <div>
-                            <input type="submit" name="BtnAddLicence" id="BtnAddLicence" value="Ajouter une Licence/fonction" />
+                            <input type="submit" name="BtnModifyFunction" id="BtnModifyFunction" value="Modifier la Licence/fonction" />
                         </div> 
                     </form>            
                 </div>

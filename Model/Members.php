@@ -61,9 +61,13 @@ class membres {
     }
 
     public function ConnexionMembers() {
-        $query = 'SELECT `id` AS `CountMembers` , `id`, `Name`, `Firstname`, `Email`, `Password`,`AsaName`,`AsaCode`FROM `0108asap_membres`'
-                . 'WHERE `Email`= :Email '
-                . 'GROUP BY `id`, `Email`, `Name`, `Firstname`, `Password`,`AsaCode`,`AsaName`'
+        $query = 'SELECT `0108asap_membres`.`id` AS `CountMembers` , `0108asap_membres`.`id`, `Name`, `Firstname`, `Email`, `Password`, `AsaName`, `AsaCode`, '
+                . '`0108asap_functionsummary`.`id_0108asap_function`, `0108asap_functions`.`PermissionToAccess` '
+                . 'FROM `0108asap_membres` '
+                . 'INNER JOIN `0108asap_functionsummary` '
+                . 'ON `0108asap_functionsummary`.`id_0108asap_member`=`0108asap_membres`.`id` '
+                . 'INNER JOIN `0108asap_functions` '
+                . 'ON `0108asap_functions`.`id`= `0108asap_functionsummary`.`id_0108asap_function`WHERE `Email`= :Email'
                 . '';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':Email', $this->Email, PDO::PARAM_STR);

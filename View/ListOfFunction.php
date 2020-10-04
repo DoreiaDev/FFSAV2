@@ -41,8 +41,8 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <tr>              
                                 <th scope="row"><?= $ListFunction->TypeOfLicence ?></th>
                                 <td><?= $ListFunction->TypeOfAcces ?></td>
-                                <td><a href="">ICI</a></td>
-                                <td><a href="">ICI</a></td>
+                                <td><a href="ModifyFunction.php?IdFunction=<?= $ListFunction->id ?>">ICI</a></td>
+                                <td><a href="DeleteFunction.php?IdFunction=<?= $ListFunction->id ?>">ICI</a></td>
                             </tr>
                             <?php
                         }
