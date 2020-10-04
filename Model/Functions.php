@@ -23,7 +23,7 @@ class functions {
     }
 //Liste de toutes les function 
     public function ListOfFunction() {
-        $query = 'SELECT `id`, `TypeOfLicence`, `CompetitionManager` FROM `0108asap_functions` WHERE `id`';
+        $query = 'SELECT `0108asap_functions`.`id`, `0108asap_functions`.`TypeOfLicence`, `0108asap_functions`.`PermissionToAccess`, `0108asap_permissiontoaccess`.`TypeOfAcces` FROM `0108asap_functions` INNER JOIN `0108asap_permissiontoaccess` ON `0108asap_permissiontoaccess`.`id`=`0108asap_functions`.`PermissionToAccess` WHERE `0108asap_functions`.`id`';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
@@ -31,7 +31,7 @@ class functions {
 
 //    Ajout d'une fonction
     public function AddFunction() {
-        $query='INSERT INTO `0108asap_functions`( `TypeOfLicence`, `CompetitionManager`) VALUES (:TypeOfLicence, :CompetitionManager)';
+        $query='INSERT INTO `0108asap_functions`( `TypeOfLicence`, `PermissionToAccess`) VALUES (:TypeOfLicence, :CompetitionManager)';
          $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':TypeOfLicence', $this->TypeOfLicence, PDO::PARAM_STR);
         $queryResult->bindValue(':CompetitionManager', $this->CompetitionManager, PDO::PARAM_STR);

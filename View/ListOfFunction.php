@@ -29,7 +29,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     <thead>
                         <tr>
                             <th scope="col">Nom de la licence</th>
-                            <th scope="col">License de responsable</th>
+                            <th scope="col">Permission</th>
                             <th scope="col">Modifier</th>
                             <th scope="col">Supprimze</th>
                         </tr>
@@ -40,7 +40,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             ?>
                             <tr>              
                                 <th scope="row"><?= $ListFunction->TypeOfLicence ?></th>
-                                <td><?= $ListFunction->CompetitionManager ?></td>
+                                <td><?= $ListFunction->TypeOfAcces ?></td>
                                 <td><a href="">ICI</a></td>
                                 <td><a href="">ICI</a></td>
                             </tr>
