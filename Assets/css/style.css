@@ -1,0 +1,45 @@
+/*pages d'accueil*/
+body
+{
+    background-color: grey;
+    text-align: center;
+}
+.title
+{
+
+}
+a
+{
+    color: greenyellow;
+}
+
+/* pour repere des colonne
+
+*/.leftColumm
+{
+    text-align: center
+}
+.centralColumm
+{
+
+
+}
+.rigthColumm
+{
+
+}
+/*navbar*/
+nav
+{
+    background-color: grey;
+
+}
+.IconeMyCar, #IconeMyCar1, #Avertissement
+{
+    width:auto;
+    height: 400px;
+}
+/* .images_petit {
+width:100px;
+height:100px;
+} */
