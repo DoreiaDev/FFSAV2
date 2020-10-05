@@ -7,10 +7,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
     ?>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-1">
 
             </div>
-            <div class="col-lg-6 ">
+            <div class="col-lg-10 ">
                 <?php
                 if ($IdLeague != 0 && $IdTypeOfCompetiton != 0) {
                     ?>
@@ -33,19 +33,15 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <?php }
                 ?>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-1">
 
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 leftColumm">
-                <?php
-                ?>
-            </div>
-            <div class="col-lg-6 centralColumm">
+            <div class="col-lg-10 centralColumm">
 
             </div>
-            <div class="col-lg-3 rigthColumm">
+            <div class="col-lg-2 rigthColumm">
                 <div>
                     <a href="ListOfOpenCompetition.php"><button>Retour</button></a>
                 </div>

@@ -26,6 +26,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         ?>
                     <h3>Accès responsable</h3>
                         <a class="dropdown-item" href="ListOfAsa.php">Gestion des ASA/ASK</a>
+                        <a class="dropdown-item" href="ChoiceOfCompetition.php">Choisir le type de compétition à ouvrir</a>
                         <?php
                     }
                     ?>
