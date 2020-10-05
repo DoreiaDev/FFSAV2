@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
 
             </div>
             <div class="col-lg-6 ">
-                <h1>Surpimer l'ASA ou l'ASK : <?= $ListDisplayAsa->AsaName ?></h1>
+                <h1>Supprimer l'ASA ou l'ASK : <?= $ListDisplayAsa->AsaName ?></h1>
             </div>
             <div class="col-lg-3">
 

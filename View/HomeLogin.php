@@ -12,7 +12,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
             </div>
             <div class="col-lg-6 ">
-                <h1>Bonjour <?=  $_SESSION['Firstname'] ?> </h1>
+                <h1>Bonjour <?= $_SESSION['Firstname'] ?> </h1>
             </div>
             <div class="col-lg-3">
                 <img src="../assets/img/imgPresentation/logo.jpg" alt=""/>
@@ -20,10 +20,27 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-                <?php
-             
-                ?>
-
+                <div>
+                    <?php
+                    if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
+                        ?>
+                    <h3>Accès responsable</h3>
+                        <a class="dropdown-item" href="ListOfAsa.php">Gestion des ASA/ASK</a>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <div>
+                    <?php
+                    if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $PresidentOfAsa)) {
+                        ?>
+                    <h3>Accès président </h3>
+                        <a class="dropdown-item"  href="ListOfLeague.php">Gestion des Ligues </a>
+                        <a class="dropdown-item" href="ListOfFunction.php">Gestion des licences (fonction)</a>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
@@ -51,12 +68,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     }
                     ?>
                 </div>  
-               
-
+                <div>
+                    <p>Vous êtes sur le site d'inscription en ligne au compétition de la FFSA comme officiel </p>
+                </div>
             </div>
             <div class="col-lg-3 rigthColumm">
                 <?php
-               
                 ?>
             </div>
         </div>

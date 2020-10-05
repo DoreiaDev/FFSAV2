@@ -14,7 +14,7 @@
                         <img src="https://img.icons8.com/ios/50/000000/user-menu-male.png"/>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="MyProfiles.php">Mon profils</a>
+                        <a class="dropdown-item" href="MyProfiles.php">Mon profil</a>
                         <!--<a class="dropdown-item" href="AddLicense.php">License complémentaire</a>-->
                         <!--<a class="dropdown-item" href="#">Something else here</a>-->
                     </div>
@@ -29,7 +29,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="ListOfAsa.php">Gestion des ASA/ASK</a>
                             <a class="dropdown-item"  href="ListOfLeague.php">Gestion des Ligues </a>
-                            <a class="dropdown-item" href="ListOfFunction.php">Gestion des licences(fonction)</a>
+                            <a class="dropdown-item" href="ListOfFunction.php">Gestion des licences (fonction)</a>
 <!--                            <a class="dropdown-item" href="ListOfRegisteredCompetitors.php">Concurrent insrit</a>
                             <a class="dropdown-item" href="ListOfregistridedMembers.php">Liste des membres inscrits</a>-->
                         </div>

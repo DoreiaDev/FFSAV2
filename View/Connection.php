@@ -123,12 +123,10 @@ include_once '../Include/Navbar.php';
                             <option selected="">Choissez dans la liste suivante </option>
                             <?php
                             foreach ($listerFunctions as $FunctionList) {
-                                if ($FunctionList->id != 155 && $FunctionList->id != 14 && $FunctionList->id != 13 &&  $FunctionList->id != 11 && $FunctionList->id != 12) {
                                     ?>
                                     <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
                                     <?php
                                 }
-                            }
                             ?>
                         </select>
                         <p class="text-danger"><?= isset($formError['TypeOfLicence']) ? $formError['TypeOfLicence'] : '' ?></p>
