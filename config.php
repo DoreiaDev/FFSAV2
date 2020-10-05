@@ -6,7 +6,7 @@ include_once 'Model/League.php';
 include_once 'Model/Asa.php';
 include_once 'Model/Functions.php';
 include_once 'Model/Members.php';
-include_once 'Model/SportsEventsModel.php';
+include_once 'Model/SportsEvents.php';
 include_once 'Model/Competiton.php';
 include_once 'Model/TypeOfCompetition.php';
 include_once 'Model/Rally.php';

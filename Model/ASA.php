@@ -34,7 +34,6 @@ class ASA {
         $query = 'INSERT INTO `0108asap_asa`( `AsaName`, `NumberAsa`, `id_0108asap_League`) '
                 . 'VALUES '
                 . '(:AsaName, :NumberAsa, :id_0108asap_League) ';
-
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':AsaName', $this->AsaName, PDO::PARAM_STR);
         $queryResult->bindValue(':NumberAsa', $this->NumberAsa, PDO::PARAM_STR);
