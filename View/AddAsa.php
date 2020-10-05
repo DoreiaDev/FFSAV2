@@ -23,7 +23,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <h2>Pour ajouté une ASA/ASK Utilisez le formulaire suivant:</h2>
+                    <h2>Pour ajouté une ASA Utilisez le formulaire suivant:</h2>
                 </div>
                 <div>
                     <p class="text-danger"><?= isset($ErrorForm) ? $ErrorForm : '' ?></p>
@@ -32,12 +32,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 <div>
                     <form name="FormAddAsa" id="FormAddAsa" method="POST">
                         <div>
-                            <label for="NameAsa">Nom de l'ASA/ASK</label>
+                            <label for="NameAsa">Nom de l'ASA</label>
                             <input type="text" name="NameAsa" value="<?= isset($_POST['NameAsa']) ? $_POST['NameAsa'] : '' ?>" id="NameAsa"/>
                             <p class="text-danger" id="ErrorMailUserConnect"><?= isset($formError['NameAsa']) ? $formError['NameAsa'] : '' ?></p>
                         </div>  
                         <div>
-                            <label for="NumberAsa">Numéro de l'ASA/ASK</label>
+                            <label for="NumberAsa">Numéro de l'ASA</label>
                             <input type="text" name="NumberAsa" value="<?= isset($_POST['NumberAsa']) ? $_POST['NumberAsa'] : '' ?>" id="NameAsa"/>
                             <p class="text-danger" id="ErrorMailUserConnect"><?= isset($formError['NumberAsa']) ? $formError['NumberAsa'] : '' ?></p>
                         </div>

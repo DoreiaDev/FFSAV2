@@ -51,17 +51,9 @@ if (isset($_POST['Edditing'])) {
     } else {
         $ModfifyOfProfil['City'] = 'Vous n\'avez pas rempli votre ville';
     }
-    if (!empty($_POST['AsaCode'])) {
-        if (preg_match($regexTitle, $_POST['NameUser'])) {
-            $ModfifyOfProfil->AsaCode = htmlspecialchars($_POST['AsaCode']);
-        } else {
-            $formError['AsaCode']='Merci de mettre que des chiffres'; 
-        }
-    } else {
-        $formError['AsaCode'] = 'Vous n\'avez pas rempli votre numéro d\'ASA';
-    }
+  
     if (!empty($_POST['AsaName'])) {
-        $ModfifyOfProfil->AsaName = htmlspecialchars($_POST['AsaName']);
+        $ModfifyOfProfil->id_0108asap_asa = htmlspecialchars($_POST['AsaName']);
     } else {
         $formError['AsaName'] = 'Vous n\'avez pas remplie votre Nom de votre ASA';
     }
@@ -80,12 +72,20 @@ if (isset($_POST['Edditing'])) {
                 $_SESSION['Firstname'] = $_POST['FirstnameUser'];
                 
             header("Location:MyProfiles.php ");
-      }
-   
+       } else {
+          $formError['Technical'] = 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
+        }
+    } else {
+        $ErrorForm='Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
     }
 }
+var_dump($ModfifyOfProfil);
 $ProfilUser=new membres();
 $UserProfil=$ProfilUser->UserProfil();
 if(isset($_SESSION['idUser'])){
 $RegisteredId = $_SESSION['idUser'];
 }
+
+//liste de ASA
+$DiplayAsa= new ASA();
+$DiplayListOfAsa= $DiplayAsa->DisplayListOfAsa();

@@ -37,8 +37,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p>Votre adresse: <?= $UserProfils->Address ?></p>
                             <p>Votre code postal: <?= $UserProfils->ZipCode ?></p>
                             <p>Votre ville: <?= $UserProfils->City ?></p>
-                            <p>Le numéro de votre ASA ou ASK: <?= $UserProfils->AsaCode ?></p>
+                            <p>Le numéro de votre ASA ou ASK: <?= $UserProfils->NumberAsa ?></p>
                             <p>Le nom de votre ASA ou ASK: <?= $UserProfils->AsaName ?></p>
+                            <p>Ligue à la quelle appartien l'ASA Ou l'ASK: <?= $UserProfils->LeagueName ?></p>
                             <?php
                         }
                     }

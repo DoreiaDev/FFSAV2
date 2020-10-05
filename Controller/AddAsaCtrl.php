@@ -2,7 +2,7 @@
 
 $title = 'Ajouter Une Asa/ASK';
 $formError = array();
-$RegexTitle = '/^[A-Za-z \-àâéèêôùûçÀÂÉÈÔÙÛÇ]+$/';
+$RegexTitle = '/^[A-Za-z \d\-àâéèêôùûçÀÂÉÈÔÙÛÇ]+$/';
 $RegexId = '/^\d+$/';
 $AddAsa = new ASA();
 if (isset($_POST['BtnAddAsa'])) {

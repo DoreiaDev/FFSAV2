@@ -5,9 +5,6 @@ $title = 'connexions';
 $Member = new membres;
 $License = new FunctionSummary();
 $LastId = new membres();
-//liste de fonction 
-$FonctionList = new functions();
-$listerFunctions = $FonctionList->ListOfFunction();
 // liste des membre déja inscrit
 $MembersExist = new membres();
 $formError = array();
@@ -95,17 +92,9 @@ if (isset($_POST['validate'])) {
         $formError['PasswordUser'] = 'Merci de remplir les champs password';
     }
     $Member->Cle = $cle;
-    if (!empty($_POST['AsaCode'])) {
-        if (strlen($_POST['AsaCode']) == 4) {
-                $Member->AsaCode = htmlspecialchars($_POST['AsaCode']);
-            } else {
-                $formError['AsaCode'] = 'Vous devez Metre 4 chiffres ';
-            }
-    } else {
-        $formError['AsaCode'] = 'Vous n\'avez pas rempli votre numéro d\'ASA';
-    }
+    
     if (!empty($_POST['AsaName'])) {
-        $Member->AsaName = htmlspecialchars($_POST['AsaName']);
+        $Member->id_0108asap_asa  = htmlspecialchars($_POST['AsaName']);
     } else {
         $formError['AsaName'] = 'Vous n\'avez pas rempli votre Nom de votre ASA';
     }
@@ -162,6 +151,13 @@ if (isset($_POST['validate'])) {
         $formError['MeessageMemberExist'] = 'L\'adresse mail que vous avez choisie est déja Utlisé merci d\'utiliser une autre adresse mail ou de vous connectez!';
     }
 }
+
+//liste de fonction 
+$FonctionList = new functions();
+$listerFunctions = $FonctionList->ListOfFunction();
+//liste de ASA
+$DiplayAsa= new ASA();
+$DiplayListOfAsa= $DiplayAsa->DisplayListOfAsa();
 // partie connection ----------------------------------------------------------------------------------------------
 if (isset($_POST['connection'])) {
     $MembersExist = new membres();
@@ -210,7 +206,6 @@ if (isset($_POST['connection'])) {
                 $_SESSION['TemporyLicenceNumber'] = '';
                 $LicencePrimary->id_0108asap_member = $IDUser;
                 $ListOfLicense = $LicencePrimary->VerifLicense();
-                var_dump($IDUser);
                 if ($ListOfLicense == true) {
                     $CheckLicensesExist = new FunctionSummary();
                     $CheckLicensesExist->id0108asap_member = $IDUser;

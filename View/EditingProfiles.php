@@ -24,6 +24,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 ?>
             </div>
             <div class="col-lg-6 centralColumm">
+                 <div>
+                    <p class="text-danger"><?= isset($ErrorForm) ? $ErrorForm : '' ?></p>
+                    <p class="text-danger"><?= isset($formError['Technical']) ? $formError['Technical'] : '' ?></p>
+                </div>
                 <form method="post" id="Edditing">
                     <?php
                     foreach ($UserProfil as $UserProfils) {
@@ -60,18 +64,20 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 <input id="City" type="text" name="City" value="<?= $UserProfils->City ?> "/>
                                 <p class="text-danger"><?= isset($formError['City']) ? $formError['City'] : '' ?></p>
                             </div>
-
-                            <div>  
-                                <label for="AsaCode">Numéro de votre ASA ou ASK :</label> 
-                                <input id="AsaCode" type="text" name="AsaCode" value="<?= $UserProfils->AsaCode ?> "/>
-                                <p class="text-danger"><?= isset($formError['AsaCode']) ? $formError['AsaCode'] : '' ?></p>
-                            </div>
-                            <div>  
-                                <label for="AsaName">Nom de votre ASA ou ASK :</label> 
-                                <input id="AsaName" type="text" name="AsaName" value="<?= $UserProfils->AsaName ?>" />
-                                <p class="text-danger"><?= isset($formError['AsaName']) ? $formError['AsaName'] : '' ?></p>
-                            </div>
-
+                      <div>
+                        <label>Sélectionnez Votre ASA dans la liste suivante dans la liste suivante :*</label><br>
+                        <select class="custom-select custom-select-sm" name="AsaName" id="TypeOfLicence">
+                            <option selected="">Vous appartenez a l'ASA ou L'ASK: <?= $UserProfils->AsaName ?> </option>
+                            <?php
+                            foreach ($DiplayListOfAsa as $ListOfAsa) {
+                                    ?>
+                                    <option value="<?= $ListOfAsa->id ?>"> <?= $ListOfAsa->AsaName ?></option>
+                                    <?php
+                                }
+                            ?>
+                        </select>
+                        <p class="text-danger" id="ErrorAsaName"><?= isset($formError['AsaName']) ? $formError['AsaName'] : '' ?></p>
+                    </div>
                             <div> 
                                 <input id="inscription" type="submit" name="Edditing" value="je modifie" />
                             </div>

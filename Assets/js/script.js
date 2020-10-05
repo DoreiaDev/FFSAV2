@@ -135,22 +135,22 @@ $("#InscriptionUser").submit(function (e) {
         $('#ErrorPassword').text(messageRest);
         $('#ErrorConfirmPassword').text(messageRest);
     }
-    // champs Numéros d'ASA
-    if (AsaCode == '') {
-        envoi = false;
-        $('#ErrorAsaCode').text(AsaCodeError);
-    } else if (!RegexId.test(AsaCode)) {
-        envoi = false;
-        $('#ErrorAsaCode').text(AsaCodeError2);
-    }else if ($("#AsaCode").val().length > 4) {
-        envoi = false;
-        $('#ErrorAsaCode').text(AsaCodeError3);
-    }  else if ($("#AsaCode").val().length < 4) {
-        envoi = false;
-        $('#ErrorAsaCode').text(AsaCodeError3);
-    }  else {
-        $('#ErrorAsaCode').text(messageRest);
-    }
+//    // champs Numéros d'ASA
+//    if (AsaCode == '') {
+//        envoi = false;
+//        $('#ErrorAsaCode').text(AsaCodeError);
+//    } else if (!RegexId.test(AsaCode)) {
+//        envoi = false;
+//        $('#ErrorAsaCode').text(AsaCodeError2);
+//    }else if ($("#AsaCode").val().length > 4) {
+//        envoi = false;
+//        $('#ErrorAsaCode').text(AsaCodeError3);
+//    }  else if ($("#AsaCode").val().length < 4) {
+//        envoi = false;
+//        $('#ErrorAsaCode').text(AsaCodeError3);
+//    }  else {
+//        $('#ErrorAsaCode').text(messageRest);
+//    }
     //Chmpas du nom de l'ASA
     if (AsaName == '') {
         envoi = false;

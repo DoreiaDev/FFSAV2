@@ -24,7 +24,7 @@ include_once '../Include/Navbar.php';
             <div>
                 <p class="text-danger"><?= isset($formError['MeessageMemberExist']) ? $formError['MeessageMemberExist'] : '' ?></p>
             </div>
-            <div class="<?= $Connection?>" id="Connection">
+            <div class="<?= $Connection ?>" id="Connection">
                 <h2>Formulaire de connexion</h2>
                 <div>
                     <p class="text-danger"><?= isset($UserNotRegistred) ? $UserNotRegistred : '' ?></p>
@@ -64,32 +64,32 @@ include_once '../Include/Navbar.php';
                 <form method="post" id="InscriptionUser">
                     <div>  
                         <label for="NameUser"> Votre nom :</label> 
-                        <input id="NameUser" type="text" name="NameUser" value="<?= isset($_POST['NameUser']) ? $_POST['NameUser']: '' ?>" />
+                        <input id="NameUser" type="text" name="NameUser" value="<?= isset($_POST['NameUser']) ? $_POST['NameUser'] : '' ?>" />
                         <p class="text-danger" id="ErrorName"><?= isset($formError['NameUser']) ? $formError['NameUser'] : '' ?></p>
                     </div>
                     <div>  
                         <label for="FirstnameUser"> Votre prénom :</label> 
-                        <input id="FirstnameUser" type="text" name="FirstnameUser" value="<?= isset($_POST['FirstnameUser']) ? $_POST['FirstnameUser']: '' ?>"/>
+                        <input id="FirstnameUser" type="text" name="FirstnameUser" value="<?= isset($_POST['FirstnameUser']) ? $_POST['FirstnameUser'] : '' ?>"/>
                         <p class="text-danger" id="ErrorFirstname"><?= isset($formError['FirstnameUser']) ? $formError['FirstnameUser'] : '' ?></p>
                     </div>
                     <div>  
                         <label for="EmailUser"> Votre Email :</label> 
-                        <input id="EmailUser" type="email" name="EmailUser" value="<?= isset($_POST['EmailUser']) ? $_POST['EmailUser']: '' ?>"/>
+                        <input id="EmailUser" type="email" name="EmailUser" value="<?= isset($_POST['EmailUser']) ? $_POST['EmailUser'] : '' ?>"/>
                         <p class="text-danger" id="ErrorEmail"><?= isset($formError['EmailUser']) ? $formError['EmailUser'] : '' ?></p>
                     </div>
                     <div>  
                         <label for="AddressUser"> Votre adresse :</label> 
-                        <input id="AddressUser" type="text" name="AddressUser" value="<?= isset($_POST['AddressUser']) ? $_POST['AddressUser']: '' ?>" />
+                        <input id="AddressUser" type="text" name="AddressUser" value="<?= isset($_POST['AddressUser']) ? $_POST['AddressUser'] : '' ?>" />
                         <p class="text-danger" id="ErrorAddress"><?= isset($formError['AddressUser']) ? $formError['AddressUser'] : '' ?></p>
                     </div>
                     <div>  
                         <label for="ZipCodeUser"> Votre code postal :</label> 
-                        <input id="ZipCodeUser" type="text" name="ZipCodeUser"  value="<?= isset($_POST['ZipCodeUser']) ? $_POST['ZipCodeUser']: '' ?>" />
+                        <input id="ZipCodeUser" type="text" name="ZipCodeUser"  value="<?= isset($_POST['ZipCodeUser']) ? $_POST['ZipCodeUser'] : '' ?>" />
                         <p class="text-danger" id="ErrorZipCode"><?= isset($formError['ZipCodeUser']) ? $formError['ZipCodeUser'] : '' ?></p>
                     </div>
                     <div>  
                         <label for="City"> votre ville :</label> 
-                        <input id="City" type="text" name="City" value="<?= isset($_POST['City']) ? $_POST['City']: '' ?>" />
+                        <input id="City" type="text" name="City" value="<?= isset($_POST['City']) ? $_POST['City'] : '' ?>" />
                         <p class="text-danger" id="ErrorCity"><?= isset($formError['City']) ? $formError['City'] : '' ?></p>
                     </div>
                     <div>  
@@ -101,21 +101,25 @@ include_once '../Include/Navbar.php';
                         <label for="ConbfirmPasswordUSer"> Confirmer votre mot de passe :</label> 
                         <input id="ConbfirmPasswordUSer" type="password" name="ConbfirmPasswordUSer"  />
                         <p class="text-danger" id="ErrorConfirmPassword"><?= isset($formError['PasswordUser']) ? $formError['PasswordUser'] : '' ?></p>
-                    </div>
-                    <div>  
-                        <label for="AsaCode">Numéro de votre ASA ou ASK :</label> 
-                        <input id="AsaCode" type="text" name="AsaCode" value="<?= isset($_POST['AsaCode']) ? $_POST['AsaCode']: '' ?>" />
-                        <p class="text-danger" id="ErrorAsaCode"><?= isset($formError['AsaCode']) ? $formError['AsaCode'] : '' ?></p>
-                    </div>
-                    <div>  
-                        <label for="AsaName">Nom de votre ASA ou ASK :</label> 
-                        <input id="AsaName" type="text" name="AsaName" value="<?= isset($_POST['AsaName']) ? $_POST['AsaName']: '' ?>" />
-                        <p class="text-danger" id="ErrorAsaName"><?= isset($formError['AsaName']) ? $formError['AsaName'] : '' ?></p>
-                    </div>
+                    </div> 
                     <div>  
                         <label for="LicenceNumber"> Votre numéro de licence:</label> 
-                        <input id="LicenceNumber" type="text" name="LicenceNumber" value="<?= isset($_POST['LicenceNumber']) ? $_POST['LicenceNumber']: '' ?>" />
+                        <input id="LicenceNumber" type="text" name="LicenceNumber" value="<?= isset($_POST['LicenceNumber']) ? $_POST['LicenceNumber'] : '' ?>" />
                         <p class="text-danger" id="ErrorLicenceNumber"><?= isset($formError['LicenceNumber']) ? $formError['LicenceNumber'] : '' ?></p>
+                    </div>
+                    <div>
+                        <label>Sélectionnez Votre ASA dans la liste suivante dans la liste suivante :*</label><br>
+                        <select class="custom-select custom-select-sm" name="AsaName" id="TypeOfLicence">
+                            <option selected="">Choissez dans la liste suivante </option>
+                            <?php
+                            foreach ($DiplayListOfAsa as $ListOfAsa) {
+                                ?>
+                                <option value="<?= $ListOfAsa->id ?>"> <?= $ListOfAsa->AsaName ?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                        <p class="text-danger" id="ErrorAsaName"><?= isset($formError['AsaName']) ? $formError['AsaName'] : '' ?></p>
                     </div>
                     <div>
                         <label>Sélectionnez le type de licence dans la liste suivante :*</label><br>
@@ -123,10 +127,10 @@ include_once '../Include/Navbar.php';
                             <option selected="">Choissez dans la liste suivante </option>
                             <?php
                             foreach ($listerFunctions as $FunctionList) {
-                                    ?>
-                                    <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
-                                    <?php
-                                }
+                                ?>
+                                <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
+                                <?php
+                            }
                             ?>
                         </select>
                         <p class="text-danger"><?= isset($formError['TypeOfLicence']) ? $formError['TypeOfLicence'] : '' ?></p>
