@@ -43,10 +43,10 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="https://img.icons8.com/doodle/48/000000/finish-flag.png"/>
                     </a>
-<!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="ListOfOpenCompetitons.php">Liste des compétitions ouverte à l'inscritptions</a>
-                        <a class="dropdown-item" href="ParticipationAgreement.php">Compétitions où je suis inscris </a>
-                    </div>-->
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                       <a class="dropdown-item" href="ListOfOpenCompetition.php">Liste des compétitions </a>
+                        <!--<a class="dropdown-item" href="ParticipationAgreement.php">Compétitions où je suis inscris </a>-->
+                    </div>
                 </li>
                 <?php }
                 ?>

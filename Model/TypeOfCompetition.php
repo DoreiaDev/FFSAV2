@@ -38,13 +38,24 @@ class TypeOfCompetition {
         return $queryResult->execute();
     }
 
+//Liste de tout les type
     public function ListTypeOfCompetiton() {
-        $query = 'SELECT `id`, `TypeOfCompetiton` FROM `0108asap_typeofcompetition`';
+        $query = 'SELECT `id`, `TypeOfCompetiton` FROM `0108asap_typeofcompetition` WHERE `id` ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // liste en fonction de l'id du type de competition 
+    public function ListTypeOfCompetitionById() {
+        $query = 'SELECT `id`, `TypeOfCompetiton` FROM `0108asap_typeofcompetition` WHERE `id`=:id ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
+    }
+
+// modification des types de compétition
     public function ModifyTypeOfCompetition() {
         $query = 'UPDATE `0108asap_typeofcompetition` SET `TypeOfCompetiton`=:TypeOfCompetiton WHERE `id`=:id';
         $queryResult = $this->pdo->db->prepare($query);
@@ -56,6 +67,7 @@ class TypeOfCompetition {
         return $queryResult->execute();
     }
 
+//Suppression d'un type de compétition
     public function DeleteTypeOfCompetition() {
         $query = 'DELETE FROM `0108asap_typeofcompetition` WHERE `id`=:id';
         $queryResult = $this->pdo->db->prepare($query);

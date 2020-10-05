@@ -47,6 +47,6 @@ if (isset($_POST['BtnAddAsa'])) {
         $ErrorForm='Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
     }
 }
-
+// liste des ligue
 $DisplayListLeague = new League();
 $ListLeague = $DisplayListLeague->leagueList();

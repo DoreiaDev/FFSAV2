@@ -73,8 +73,16 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">
-                <?php
-                ?>
+                <div>
+                    <?php
+                    if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Function)) {
+                        ?>
+                    <h3>Partie Officiel</h3>
+                    <a class="dropdown-item" href="ListOfOpenCompetition.php">Liste des compétitions </a>
+                          <?php
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
