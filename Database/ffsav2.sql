@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : Dim 04 oct. 2020 à 10:21
+-- Généré le : lun. 05 oct. 2020 à 19:13
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -41,7 +41,33 @@ CREATE TABLE `0108asap_asa` (
 --
 
 INSERT INTO `0108asap_asa` (`id`, `AsaName`, `NumberAsa`, `id_0108asap_League`) VALUES
-(1, 'ASA Picardie', '0108', 1);
+(3, 'ASA PICARDIE', '0108', 1),
+(4, 'ASA Aisne', '0101', 1),
+(5, 'ASA ARTOIS LITTORAL II', '0102', 1),
+(6, 'ASA 60', '0105', 1),
+(7, 'ASA NORD DE LA FRANCE', '0106', 1),
+(8, 'ASA SAMBRE ET HELPE', '0109', 1),
+(10, 'ASA 02', '0111', 1),
+(11, 'ASA DU DETROIT', '0112', 1),
+(12, 'ASA CIRCUIT DE CROIX', '0114', 1),
+(13, 'ASA 59 HAUTMONT', '0116', 1),
+(14, 'ASA 55', '0302', 2),
+(15, 'ASA LORRAIN', '0304', 2),
+(16, 'ASA MIRECOURT', '0305', 2),
+(17, 'ASA DE LA MOSELLE', '0306', 2),
+(18, 'ASA MULHOUSE SUD ALSACE', '0307', 2),
+(19, 'ASA NANCY', '0308', 2),
+(20, 'ASA DES VALLEES', '0313', 2),
+(21, 'ASA VOSGIEN', '0314', 2),
+(22, 'ASA DES ARDENNES', '0315', 2),
+(23, 'ASA PLAINE DE L ILL', '0318', 2),
+(24, 'ASA CHAMBLEY', '0321', 2),
+(25, 'ASA ANNEAU DU RHIN', '0322', 2),
+(26, 'ASA ALSACE', '0323', 2),
+(27, 'ASA AUBOISE', '0324', 2),
+(28, 'ASA DE LA CHAMPAGNE', '0325', 2),
+(29, 'ASA DE LANGRES', '0326', 2),
+(30, 'ASA REGION DE CHAUMONT', '0328', 2);
 
 -- --------------------------------------------------------
 
@@ -86,7 +112,8 @@ CREATE TABLE `0108asap_functions` (
 --
 
 INSERT INTO `0108asap_functions` (`id`, `TypeOfLicence`, `PermissionToAccess`) VALUES
-(155, 'Administrateur site', 1);
+(155, 'Administrateur site', 259),
+(159, 'Aoomuki', 259);
 
 -- --------------------------------------------------------
 
@@ -107,7 +134,10 @@ CREATE TABLE `0108asap_functionsummary` (
 --
 
 INSERT INTO `0108asap_functionsummary` (`id`, `LicenceNumber`, `id_0108asap_member`, `id_0108asap_function`, `LicencePrimary`) VALUES
-(3, '249498', 2, 155, 1);
+(3, '249498', 1, 155, 1),
+(4, '020405', 3, 158, 1),
+(5, '235620', 4, 155, 1),
+(6, '249498', 5, 155, 1);
 
 -- --------------------------------------------------------
 
@@ -158,16 +188,18 @@ CREATE TABLE `0108asap_membres` (
   `Address` varchar(250) DEFAULT NULL,
   `ZipCode` varchar(5) DEFAULT NULL,
   `City` varchar(250) DEFAULT NULL,
-  `AsaCode` varchar(10) DEFAULT NULL,
-  `AsaName` varchar(150) DEFAULT NULL
+  `id_0108asap_asa` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `0108asap_membres`
 --
 
-INSERT INTO `0108asap_membres` (`id`, `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `AsaCode`, `AsaName`) VALUES
-(2, 'Jonard', 'Gaetan', 'gaetan.jonard@outlook.fr', 0x243279243130243442664a7659463332505945706153664147432f772e735138374d30476b536d43704b30525a6371535a6e623778757a6c63587436, '9ZUYzmjuY8dX6W@16015671829ZUYzmjuY8dX6W@', 'true', 'APT 31 26 parc des clairs Logis', '80290', 'Poix de Picardie', '0108', 'Picardie');
+INSERT INTO `0108asap_membres` (`id`, `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `id_0108asap_asa`) VALUES
+(1, 'Jonard', 'Gaetan', 'gaetan.jonard@outlook.fr', 0x2432792431302439623773696e343770454c35744642335454475050753538673873666c6e51344e6876537a6e73696a38424e47733170472f553479, 'rRPBOFCuh1J5UNPBGk7ce8bROSkBZIS7saKAGJlK1601907390LeBAmhVUuxAD0CtTBBXHw4KQAlLAi8HNkbgzQn3Sh4JRA6JdJx', 'true', 'APT 31 26 parc des clairs Logis', '80290', 'Poix de Picardie   ', 3),
+(3, 'Wilbert', 'Maurice', 'm.w@mw.fr', 0x243279243130245738746f3247754e414377767a4962686e6f4f6b7065773846624e46424b574457386d6e736c6342614d6933516f53544c31634d32, 'i#ydxVHrI#AVou71601828259i#ydxVHrI#AVou7', 'true', 'apt8 batiments Acacias rue E potelet', '02320', 'Prémontré', 4),
+(4, 'Langry', 'Wilfried', 'wlangry@aoomuki.com', 0x24327924313024476a3433336e304b704f636748345370776c5235572e46367a7947746b736553784b3230455a4445707070653833626e572f516f47, 'kYi4avxlv4RC9hC1601890054kYi4avxlv4RC9hC', 'true', '9 rue Jean Racine', '02270', 'Couvron et Aumencourt', 4),
+(5, 'test', 'ter', 'g.j@gj.fr', 0x243279243130245a4f72354d4b67585a6f56504d674d564965396d552e70314e566971524e724d424b45327259386d6f50376c745171324741713953, 'vUX@@kqijO2aJ011601898742vUX@@kqijO2aJ01', 'true', 'Ter', '02320', 'pp', 28);
 
 -- --------------------------------------------------------
 
@@ -185,9 +217,10 @@ CREATE TABLE `0108asap_permissiontoaccess` (
 --
 
 INSERT INTO `0108asap_permissiontoaccess` (`id`, `TypeOfAcces`) VALUES
-(1, 'WebMasteur'),
-(2, 'Official'),
-(3, 'Officials responsible');
+(55, 'Officiel'),
+(259, 'Developpeur'),
+(356, 'Responsable Officiel'),
+(405, 'Président d\'ASA');
 
 -- --------------------------------------------------------
 
@@ -197,8 +230,6 @@ INSERT INTO `0108asap_permissiontoaccess` (`id`, `TypeOfAcces`) VALUES
 
 CREATE TABLE `0108asap_raceoutsiderally` (
   `id` int(11) NOT NULL,
-  `CompetitionStarDay` date DEFAULT NULL,
-  `CompetitionEndDay` date DEFAULT NULL,
   `RequirementDate1` date DEFAULT NULL,
   `RequirementDate2` date DEFAULT NULL,
   `RequirementDate3` date DEFAULT NULL,
@@ -216,7 +247,6 @@ CREATE TABLE `0108asap_rally` (
   `NumberOfSteps` int(10) NOT NULL,
   `NumberOfEs` int(10) NOT NULL,
   `NumberOfCompetitonDays` int(10) NOT NULL,
-  `AsaOrganizer` varchar(255) NOT NULL,
   `DatePcNeed1` date DEFAULT NULL,
   `DatePcNeed2` date DEFAULT NULL,
   `DatePcNeed3` date DEFAULT NULL,
@@ -256,7 +286,12 @@ CREATE TABLE `0108asap_sportsevents` (
   `id` int(11) NOT NULL,
   `NameOfTheTest` varchar(255) NOT NULL,
   `Location_Circuit` varchar(255) DEFAULT NULL,
-  `Observation` longtext NOT NULL
+  `Observation` longtext NOT NULL,
+  `CompetitionStarDay` date NOT NULL,
+  `CompetitionEndDay` date NOT NULL,
+  `MinimumNumberOfOfficials` varchar(11) NOT NULL,
+  `CreationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_0108asap_asa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -269,6 +304,20 @@ CREATE TABLE `0108asap_typeofcompetition` (
   `id` int(11) NOT NULL,
   `TypeOfCompetiton` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Déchargement des données de la table `0108asap_typeofcompetition`
+--
+
+INSERT INTO `0108asap_typeofcompetition` (`id`, `TypeOfCompetiton`) VALUES
+(1, 'Rallye'),
+(2, 'Rallye tout térrain'),
+(3, 'Endurance tt '),
+(4, 'Rallye cross'),
+(5, 'GT4'),
+(6, 'Course de côte'),
+(7, 'Drift'),
+(8, 'Circuit');
 
 --
 -- Index pour les tables déchargées
@@ -320,7 +369,8 @@ ALTER TABLE `0108asap_league`
 -- Index pour la table `0108asap_membres`
 --
 ALTER TABLE `0108asap_membres`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `AsaName` (`id_0108asap_asa`);
 
 --
 -- Index pour la table `0108asap_permissiontoaccess`
@@ -355,7 +405,8 @@ ALTER TABLE `0108asap_registrationforofficials`
 -- Index pour la table `0108asap_sportsevents`
 --
 ALTER TABLE `0108asap_sportsevents`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_0108asap_asa` (`id_0108asap_asa`);
 
 --
 -- Index pour la table `0108asap_typeofcompetition`
@@ -371,7 +422,7 @@ ALTER TABLE `0108asap_typeofcompetition`
 -- AUTO_INCREMENT pour la table `0108asap_asa`
 --
 ALTER TABLE `0108asap_asa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_categorycompetition`
@@ -389,13 +440,13 @@ ALTER TABLE `0108asap_competiton`
 -- AUTO_INCREMENT pour la table `0108asap_functions`
 --
 ALTER TABLE `0108asap_functions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_functionsummary`
 --
 ALTER TABLE `0108asap_functionsummary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_league`
@@ -407,13 +458,13 @@ ALTER TABLE `0108asap_league`
 -- AUTO_INCREMENT pour la table `0108asap_membres`
 --
 ALTER TABLE `0108asap_membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_permissiontoaccess`
 --
 ALTER TABLE `0108asap_permissiontoaccess`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_raceoutsiderally`
@@ -443,7 +494,7 @@ ALTER TABLE `0108asap_sportsevents`
 -- AUTO_INCREMENT pour la table `0108asap_typeofcompetition`
 --
 ALTER TABLE `0108asap_typeofcompetition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Contraintes pour les tables déchargées
@@ -476,6 +527,12 @@ ALTER TABLE `0108asap_functionsummary`
   ADD CONSTRAINT `0108asap_functionsummary_ibfk_1` FOREIGN KEY (`id_0108asap_member`) REFERENCES `0108asap_membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Contraintes pour la table `0108asap_membres`
+--
+ALTER TABLE `0108asap_membres`
+  ADD CONSTRAINT `0108asap_membres_ibfk_1` FOREIGN KEY (`id_0108asap_asa`) REFERENCES `0108asap_asa` (`id`);
+
+--
 -- Contraintes pour la table `0108asap_raceoutsiderally`
 --
 ALTER TABLE `0108asap_raceoutsiderally`
@@ -494,6 +551,12 @@ ALTER TABLE `0108asap_registrationforofficials`
   ADD CONSTRAINT `0108asap_registrationforofficials_ibfk_1` FOREIGN KEY (`id_0108asap_competiton`) REFERENCES `0108asap_competiton` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `0108asap_registrationforofficials_ibfk_3` FOREIGN KEY (`id_0108asap_membres`) REFERENCES `0108asap_membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `0108asap_registrationforofficials_ibfk_4` FOREIGN KEY (`id_0108asap_functions`) REFERENCES `0108asap_functions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `0108asap_sportsevents`
+--
+ALTER TABLE `0108asap_sportsevents`
+  ADD CONSTRAINT `0108asap_sportsevents_ibfk_1` FOREIGN KEY (`id_0108asap_asa`) REFERENCES `0108asap_asa` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
