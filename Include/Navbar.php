@@ -30,8 +30,8 @@
                             <a class="dropdown-item" href="ListOfAsa.php">Gestion des ASA/ASK</a>
                             <a class="dropdown-item"  href="ListOfLeague.php">Gestion des Ligues </a>
                             <a class="dropdown-item" href="ListOfFunction.php">Gestion des licences (fonction)</a>
-<!--                            <a class="dropdown-item" href="ListOfRegisteredCompetitors.php">Concurrent insrit</a>
-                            <a class="dropdown-item" href="ListOfregistridedMembers.php">Liste des membres inscrits</a>-->
+                            <a class="dropdown-item" href="ChoiceOfCompetition.php">Ajout d'une compétition</a>
+                            <!--<a class="dropdown-item" href="AddingARally.php"></a>-->
                         </div>
                     </li>
                 <?php
