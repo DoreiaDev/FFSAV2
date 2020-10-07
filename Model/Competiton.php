@@ -30,9 +30,12 @@ class Competiton {
         // Sinon on affiche un message d'erreur
         //il les faut pour faire les transaction (3 prochaine methode)
     }
-
+//fonction pour obtenir le dernier id inserer dans la BD
+    public function LastInsertIdCompetition() {
+        return $this->pdo->db->lastInsertId();
+    }
     //AJout d'une competition
-    public function AddCompetitionManager() {
+    public function AddOutsideCompetition() {
         $query = 'INSERT INTO `0108asap_competiton`'
                 . '(  `id_0108asap_categorycompetition`,   `id_0108asap_sportsevents`, '
                 . '`id_0108asap_typeofcompetition`, `Open`, `Close`) '

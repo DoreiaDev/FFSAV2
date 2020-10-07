@@ -6,6 +6,7 @@ $RegexTitle = '/^[A-Za-z \d\-àâéèêôùûçÀÂÉÈÔÙÛÇ]+$/';
 $RegexId = '/^\d+$/';
 $AddCompetition = new Competiton();
 $AddSportEvent = new SportsEventsModel();
+$AddRaceOutsideRally = new RaceOutsideRally();
 if (isset($_POST['BtnAddtheCompetition'])) {
     if ($_POST['OpenOrClose'] != '0') {
         if ($_POST['OpenOrClose'] == 'Open') {
@@ -51,7 +52,7 @@ if (isset($_POST['BtnAddtheCompetition'])) {
                     . 'Merci de ne mettre que des caratéres alphabétiques';
         }
     } else {
-        $formError['LocationCircuit'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 10px;" class="images_petit" />'
+        $formError['LocationCircuit'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                 . 'Veuillez remplir le champs ville départ circuit';
     }
     if (!empty($_POST['Observation'])) {
@@ -66,15 +67,13 @@ if (isset($_POST['BtnAddtheCompetition'])) {
                 . 'Veuillez remplir le champs observation';
     }
     if (!empty($_POST['CompetitionStarDay'])) {
-            $AddSportEvent->CompetitionStarDay = htmlspecialchars($_POST['CompetitionStarDay']);
-        
+        $AddSportEvent->CompetitionStarDay = htmlspecialchars($_POST['CompetitionStarDay']);
     } else {
         $formError['CompetitionStarDay'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                 . 'Veuillez remplir le champs Date de début de la compétition';
     }
     if (!empty($_POST['CompetitionEndDay'])) {
-            $AddSportEvent->CompetitionEndDay = htmlspecialchars($_POST['CompetitionEndDay']);
-        
+        $AddSportEvent->CompetitionEndDay = htmlspecialchars($_POST['CompetitionEndDay']);
     } else {
         $formError['CompetitionEndDay'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                 . 'Veuillez remplir le champs Date de fin de la compétition';
@@ -90,7 +89,7 @@ if (isset($_POST['BtnAddtheCompetition'])) {
         $formError['MinimumNumberOfOfficials'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                 . 'Veuillez remplir le champs Minimun d\'officiel';
     }
-       if ($_POST['id_0108asap_asa'] != '0') {
+    if ($_POST['id_0108asap_asa'] != '0') {
         if (preg_match($RegexId, $_POST['id_0108asap_asa'])) {
             $AddSportEvent->id_0108asap_asa = htmlspecialchars($_POST['id_0108asap_asa']);
         }
@@ -98,15 +97,75 @@ if (isset($_POST['BtnAddtheCompetition'])) {
         $formError['id_0108asap_asa'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                 . ' Merci de sélectionner le type de compétition';
     }
-  if (!empty($_POST['CompetitionEndDay'])) {
-            $AddSportEvent->CompetitionEndDay = htmlspecialchars($_POST['CompetitionEndDay']);
+    if (!empty($_POST['RequirementDate1'])) {
+        $AddRaceOutsideRally->RequirementDate1 = htmlspecialchars($_POST['RequirementDate1']);
+    } else {
+        $formError['RequirementDate1'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                . 'Veuillez remplir le champs Date Des besoins officiel 1';
+    }
+    if (!empty($_POST['RequirementDate2'])) {
+        $AddRaceOutsideRally->RequirementDate2 = htmlspecialchars($_POST['RequirementDate2']);
+    }
+    if (!empty($_POST['RequirementDate3'])) {
+        $AddRaceOutsideRally->RequirementDate3 = htmlspecialchars($_POST['RequirementDate3']);
+    }
+    if (!empty($_POST['LodgingPossible1'])) {
+        $AddRaceOutsideRally->LodgingPossible1 = htmlspecialchars($_POST['LodgingPossible1']);
+    }
+    if (!empty($_POST['LodgingPossible2'])) {
+        $AddRaceOutsideRally->LodgingPossible2 = htmlspecialchars($_POST['LodgingPossible2']);
+    }
+    if (!empty($_POST['LodgingPossible3'])) {
+        $AddRaceOutsideRally->LodgingPossible3 = htmlspecialchars($_POST['LodgingPossible3']);
+    }
+    if (count($formError) == 0) {
+        $LastIdSportEvent = new SportsEventsModel();
+        $CheckLastIdSportEvent = $LastIdSportEvent->lastInsertIdSportEvents();
+        $CheckSportEvent = $AddSportEvent->AddSportEvents();
+        if ($CheckSportEvent == true) {
+            if ($CheckLastIdSportEvent != null) {
+                $AddCompetition->id_0108asap_sportsevents = $CheckSportEvent;
+                $CheckAddCompetition = $AddCompetition->AddOutsideCompetition();
+                $LastIDCompetition = new Competiton();
+                $CheckLastIdCompetition = $LastIDCompetition->LastInsertIdCompetition();
+                
+                echo 'sportevent ok';
+            } else {
+                $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                        . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckLastIdSportEvent';
+            }
+        } else {
+            $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                    . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckLastIdSportEvent';
+        }
+        
+        if ($CheckAddCompetition == true) {
+            if ($CheckLastIdCompetition != null) {
+            $AddRaceOutsideRally->IdCompetition=$CheckLastIdCompetition;
+            $CheckAddRaceOutsideRally= $AddRaceOutsideRally->AddRaceOutsideRally();
+            echo 'Check Competition ok ';
+            } else {
+                $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                        . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckAddCompetition';
+            }
+        } else {
+            $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                    . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckLastIdCompetition';
+        }
+        var_dump($AddRaceOutsideRally);
+        if($CheckAddRaceOutsideRally== true){
+             header("Location: ChoiceOfCompetition.php");
+        }else {
+            $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                    . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckAddRaceOutsideRally';
+        }
         
     } else {
-        $formError['CompetitionEndDay'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
-                . 'Veuillez remplir le champs Date de fin de la compétition';
+        $ErrorForm='<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                . 'Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
     }
+
 //    var_dump($AddCompetition);
-    var_dump($AddSportEvent);
 }
 //lisste des tyoe de compétitions
 $ListOfCompetitions = new TypeOfCompetition();
