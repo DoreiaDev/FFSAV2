@@ -14,10 +14,12 @@ if (isset($_POST['EditingLicence'])) {
         if (preg_match($regexId, $_POST['NewLicenseNumber'])) {
             $ModifyMyLicense->LicenceNumber = htmlspecialchars($_POST['NewLicenseNumber']);
         } else {
-            $formError['NewLicenseNumber']='veuillez mettre que des chiffres dans le champ mon numéro de licence';
+            $formError['NewLicenseNumber']='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'veuillez mettre que des chiffres dans le champ mon numéro de licence';
         }
     } else {
-         $formError['NewLicenseNumber']='Remplissez le numéro de licence';
+         $formError['NewLicenseNumber']='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                 . 'Remplissez le numéro de licence';
     }
       if (!empty($_POST['TypeOfLicence'])) {
             $ModifyMyLicense->id_0108asap_function = htmlspecialchars($_POST['TypeOfLicence']);

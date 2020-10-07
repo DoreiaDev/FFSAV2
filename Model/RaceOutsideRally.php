@@ -12,16 +12,18 @@
  * @author gaeta
  */
 class RaceOutsideRally {
+
     public $pdo;
-    public $id=0;
-    public $CompetitionStarDay='';
-    public $CompetitionEndDay='';
-    public $RequirementDate2='';
-    public  $RequirementDate1='';
-    public $RequirementDate3='';
-    public $IdCompetition=0;
-    
-        public function __construct() {
+    public $id = 0;
+    public $RequirementDate1 = '';
+    public $RequirementDate2 = '';
+    public $RequirementDate3 = '';
+    public $LodgingPossible1 = '';
+    public $LodgingPossible2 = '';
+    public $LodgingPossible3 = '';
+    public $IdCompetition = 0;
+
+    public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 
         //ordi formation
         $this->pdo = dataBase::getIntance();
@@ -30,40 +32,29 @@ class RaceOutsideRally {
         // Sinon on affiche un message d'erreur
         //il les faut pour faire les transaction (3 prochaine methode)
     }
-    
-   public function AddRaceOutsideRally(){
-       $query='INSERT INTO `0108asap_raceoutsiderally`( `CompetitionStarDay`, `CompetitionEndDay`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `IdCompetition`)'
-               . ''
-               . ' VALUES  (:CompetitionStarDay, :CompetitionEndDay, :RequirementDate1, :RequirementDate2, :RequirementDate3, :IdCompetition)';
+
+    public function AddRaceOutsideRally() {
+        $query = 'INSERT INTO `0108asap_raceoutsiderally`'
+                . '( `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `LodgingPossible1`, `LodgingPossible2`, `LodgingPossible3`, `IdCompetition`)'
+                . ' VALUES '
+                . '(:RequirementDate1, :RequirementDate2, :RequirementDate3, :LodgingPossible1, :LodgingPossible2, :LodgingPossible3, :IdCompetition)';
         $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':RequirementDate1', $this->RequirementDate1, PDO::PARAM_STR);
+        $queryResult->bindValue(':RequirementDate2', $this->RequirementDate2, PDO::PARAM_STR);
+        $queryResult->bindValue(':RequirementDate3', $this->RequirementDate3, PDO::PARAM_STR);
+        $queryResult->bindValue(':LodgingPossible1', $this->LodgingPossible2, PDO::PARAM_STR);
+        $queryResult->bindValue(':LodgingPossible2', $this->RequirementDate1, PDO::PARAM_STR);
+        $queryResult->bindValue(':LodgingPossible3', $this->LodgingPossible3, PDO::PARAM_STR);
         $queryResult->bindValue(':IdCompetition', $this->IdCompetition, PDO::PARAM_INT);
-        $queryResult->bindValue(':CompetitionStarDay', $this->CompetitionStarDay, PDO::PARAM_STR);
-        $queryResult->bindValue(':CompetitionEndDay', $this->CompetitionEndDay, PDO::PARAM_STR);
-        $queryResult->bindValue(':RequirementDate1', $this->RequirementDate1, PDO::PARAM_STR);
-        $queryResult->bindValue(':RequirementDate2', $this->RequirementDate2, PDO::PARAM_STR);
-        $queryResult->bindValue(':RequirementDate3', $this->RequirementDate3, PDO::PARAM_STR);
         return $queryResult->execute();
-   }
-   public function ListeRaceOutsideRally(){
-       $query='SELECT `id`, `CompetitionStarDay`, `CompetitionEndDay`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `IdCompetition` '
-               . 'FROM `0108asap_raceoutsiderally`';
-       
-        $queryResult = $this->pdo->db->prepare($query);
-        $queryResult->execute();
-        return $queryResult->fetchAll(PDO::FETCH_OBJ);
-   }
-   public function EdditRaceOutsideRally(){
-       $query='UPDATE `0108asap_raceoutsiderally` SET `CompetitionStarDay`=:CompetitionStarDay, `CompetitionEndDay`=:CompetitionEndDay, '
-               . '`RequirementDate1`=:RequirementDate1, `RequirementDate2`=:RequirementDate2, `RequirementDate3`=:RequirementDate3 '
-               . 'WHERE `id`=:id'
-               . '';
-        $queryResult = $this->pdo->db->prepare($query);
-        $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
-        $queryResult->bindValue(':CompetitionStarDay', $this->CompetitionStarDay, PDO::PARAM_STR);
-        $queryResult->bindValue(':CompetitionEndDay', $this->CompetitionEndDay, PDO::PARAM_STR);
-        $queryResult->bindValue(':RequirementDate1', $this->RequirementDate1, PDO::PARAM_STR);
-        $queryResult->bindValue(':RequirementDate2', $this->RequirementDate2, PDO::PARAM_STR);
-        $queryResult->bindValue(':RequirementDate3', $this->RequirementDate3, PDO::PARAM_STR);
-        return $queryResult->execute();
-   }
+    }
+
+    public function ListeRaceOutsideRally() {
+        
+    }
+
+    public function EdditRaceOutsideRally() {
+        
+    }
+
 }

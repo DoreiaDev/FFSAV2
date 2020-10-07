@@ -10,10 +10,12 @@ if(isset($_POST['ValidatedPasswordRecovery'])){
               $MembersExist->Email= htmlspecialchars($_POST['MailRegister']);
               $MailUser=htmlspecialchars($_POST['MailRegister']);
           } else {
-               $formError['MailRegister']='Merci de mettre un mail correct';
+               $formError['MailRegister']='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                       . 'Merci de mettre un mail correct';
           }
     } else {
-        $formError['MailRegister']='Vous n\'avez pas rempli votre mail';
+        $formError['MailRegister']='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre mail';
     }
     $CheckMemberExist=$MembersExist->MemberExist();
     if($CheckMemberExist!='0'){
@@ -62,10 +64,12 @@ if(isset($_POST['ValidatedPasswordRecovery'])){
                 $messagesucces = 'Un mail vient de vous être envoyé, vous avez juste à cliquer sur le lien , pour pouvoir accéder au formulaire pour enregistrer un nouveau mot de passe';
             } else {
                 echo 'Erreur mail';
-                $messageError = 'Une erreur technique est survenue, veuillez contacter l\'administrateur du site via la page de <a href="../view/contactus.php">contact</a>';
+                $messageError = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                        . 'Une erreur technique est survenue, veuillez contacter l\'administrateur du site via la page de <a href="../view/contactus.php">contact</a>';
             }
         }
     } else {
-    $messageNotExiste='Vous n\'êtes pas enregistré sur le site!';
+    $messageNotExiste='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+            . 'Vous n\'êtes pas enregistré sur le site!';
     }
 }

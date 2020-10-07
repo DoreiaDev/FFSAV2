@@ -21,30 +21,36 @@ if (isset($_POST['BtnModifyAsa'])) {
         if (preg_match($RegexTitle, $_POST['NameAsa'])) {
             $ModifyAsa->AsaName = htmlspecialchars($_POST['NameAsa']);
         } else {
-            $formError['NameAsa'] = 'Merci de ne mettre que des caratéres alphabétiques';
+            $formError['NameAsa'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Merci de ne mettre que des caratéres alphabétiques';
         }
     } else {
-        $formError['NameAsa'] = 'Veuillez remplir le champs Nom de l\'Asa/ASK';
+        $formError['NameAsa'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Veuillez remplir le champs Nom de l\'Asa/ASK';
     }
     if (!empty($_POST['NumberAsa'])) {
         if (preg_match($RegexId, $_POST['NumberAsa'])) {
             if (strlen($_POST['NumberAsa']) == 4) {
                 $ModifyAsa->NumberAsa = htmlspecialchars($_POST['NumberAsa']);
             } else {
-                $formError['NumberAsa'] = 'Vous devez mettre 4 chiffres';
+                $formError['NumberAsa'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                        . 'Vous devez mettre 4 chiffres';
             }
         } else {
-            $formError['NumberAsa'] = 'Merci de ne mettre que des chiffres';
+            $formError['NumberAsa'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Merci de ne mettre que des chiffres';
         }
     } else {
-        $formError['NumberAsa'] = 'Veuillez remplir le champs numéro d\'ASA/ASK';
+        $formError['NumberAsa'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Veuillez remplir le champs numéro d\'ASA/ASK';
     }
     if (!empty($_POST['League'])) {
         if (preg_match($RegexId, $_POST['League'])) {
             $ModifyAsa->id_0108asap_League = htmlspecialchars($_POST['League']);
         }
     } else {
-        $formError['League'] = 'Merci de sélectionner une ligue dans la liste suivante!';
+        $formError['League'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Merci de sélectionner une ligue dans la liste suivante!';
     }
     if (count($formError) == 0) {
         $CheckModifyAsa = $ModifyAsa->ModifyForAsa();
@@ -52,10 +58,12 @@ if (isset($_POST['BtnModifyAsa'])) {
         if ($CheckModifyAsa != true) {
             header("Location: ListOfAsa.php");
         } else {
-            $formError['Technical'] = 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
+            $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
         }
     } else {
-        $ErrorForm = 'Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
+        $ErrorForm = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
     }
 }
 // Affichage de l'asa a modifier

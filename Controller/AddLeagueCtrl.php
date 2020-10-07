@@ -11,10 +11,12 @@ if (isset($_POST['AddLeague'])) {
         if (preg_match($regexTitle, $_POST['NameLeague'])) {
             $AddLeague->LeagueName = htmlspecialchars($_POST['NameLeague']);
         } else {
-            $formError['NameLeague'] = 'Merci de ne mettre que des caratéres alphabétiques';
+            $formError['NameLeague'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Merci de ne mettre que des caratéres alphabétiques';
         }
     } else {
-        $formError['NameLeague'] = 'Veuillez remplir le champs Nom de ligue';
+        $formError['NameLeague'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Veuillez remplir le champs Nom de ligue';
     }
       var_dump($AddLeague);
     if (count($formError) == 0) {
@@ -23,9 +25,11 @@ if (isset($_POST['AddLeague'])) {
         if ($CheckAddLeague == true) {
             header("Location: ListOfLeague.php");
         } else {
-          $formError['Technical'] = 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
+          $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                  . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
         }
     } else {
-        $ErrorForm='Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
+        $ErrorForm='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
     }
 }

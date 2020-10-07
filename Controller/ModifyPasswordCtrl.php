@@ -11,23 +11,28 @@ if (isset($_POST['ValdidateNewPassword'])) {
             $MemberExist->Email = htmlspecialchars($_POST['EmailUser']);
             $NewPassword->Email = htmlspecialchars($_POST['EmailUser']);
         } else {
-            $formError['MailRegister'] = 'Merci de mettre un mail correct';
+            $formError['MailRegister'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Merci de mettre un mail correct';
         }
     } else {
-        $formError['MailRegister'] = 'Vous n\'avez pas rempli votre mail';
+        $formError['MailRegister'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre mail';
     }
     if (!empty($_POST['NewPassword'])) {
         if (!empty($_POST['ConfirmNewPassword'])) {
             if ($_POST['NewPassword'] == $_POST['ConfirmNewPassword']) {
                 $NewPassword->Password = password_hash($_POST['NewPassword'], PASSWORD_BCRYPT);
             } else {
-                $formError['password'] = 'les mots de passe ne sont pas identiques.';
+                $formError['password'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                        . 'les mots de passe ne sont pas identiques.';
             }
         } else {
-            $formError['ConfirmPassword'] = 'Merci de remplir le champs confirmation de votre mot de passe';
+            $formError['ConfirmPassword'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Merci de remplir le champs confirmation de votre mot de passe';
         }
     } else {
-        $formError['password'] = 'Merci de remplir le champs votre mot de passe';
+        $formError['password'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Merci de remplir le champs votre mot de passe';
     }
 
     function generateRandomString($length = 40) {
@@ -57,14 +62,17 @@ if (isset($_POST['ValdidateNewPassword'])) {
                 if ($CheckNewPassword== true) {
                     $MessageSucces='Votre mot de passe a été modifié avec succés vous pouvez vous connecter en cliquant sur le liens <a href="Connection.php">suivant</a>';
                 } else {
-                   $formError['Technical']='Une erreur technique est survenue merci de contacter l\'administraeur du site par mail dev.gaetan.jonard@outlook.fr';
+                   $formError['Technical']='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                           . 'Une erreur technique est survenue merci de contacter l\'administraeur du site par mail dev.gaetan.jonard@outlook.fr';
                 }
             } else {
-                 $formError['$UserNotRegistred']='Vous n\êtes pas enregistré sur le site';
+                 $formError['$UserNotRegistred']='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                         . 'Vous n\êtes pas enregistré sur le site';
             }
         } 
     } else {
-        $$UserNotRegistred='Le délais pour utilisé le lien est passé merci de refaire une demande en cliquant <a href="ForgottenPassword.php">ici</a>';
+        $$UserNotRegistred='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Le délais pour utilisé le lien est passé merci de refaire une demande en cliquant <a href="ForgottenPassword.php">ici</a>';
     }
 }
 

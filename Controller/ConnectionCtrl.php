@@ -35,15 +35,18 @@ if (isset($_POST['validate'])) {
             $Member->Name = htmlspecialchars($_POST['NameUser']);
             $TemporaryName = htmlspecialchars($_POST['NameUser']);
         } else {
-            $formError['NameUser'] = 'Veuillez mettre que des caractères alphabétiques!!!!!!!!!!';
+            $formError['NameUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Veuillez mettre que des caractères alphabétiques!!!!!!!!!!';
         }
     } else {
-        $formError['NameUser'] = 'Vous n\'avez pas rempli votre Nom';
+        $formError['NameUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre Nom';
     }
     if (!empty($_POST['FirstnameUser'])) {
         $Member->Firstname = htmlspecialchars($_POST['FirstnameUser']);
     } else {
-        $formError['FirstnameUser'] = 'Vous n\'avez pas rempli votre Prénom';
+        $formError['FirstnameUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre Prénom';
     }
     if (!empty($_POST['EmailUser'])) {
         if (filter_var($_POST['EmailUser'], FILTER_VALIDATE_EMAIL)) {
@@ -51,15 +54,18 @@ if (isset($_POST['validate'])) {
             $TemporaryEmail = htmlspecialchars($_POST['EmailUser']);
             $MembersExist->Email = htmlspecialchars($_POST['EmailUser']);
         } else {
-            $formError['EmailUser'] = 'Veuillez mettre un mail correcte';
+            $formError['EmailUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Veuillez mettre un mail correcte';
         }
     } else {
-        $formError['EmailUser'] = 'Veuillez remplir le mail';
+        $formError['EmailUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Veuillez remplir le mail';
     }
     if (!empty($_POST['AddressUser'])) {
         $Member->Address = htmlspecialchars($_POST['AddressUser']);
     } else {
-        $formError['AddressUser'] = 'Vous n\'avez pas rempli votre adresse';
+        $formError['AddressUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre adresse';
     }
    
     if (!empty($_POST['ZipCodeUser'])) {
@@ -68,25 +74,29 @@ if (isset($_POST['validate'])) {
                        $Member->ZipCode = htmlspecialchars($_POST['ZipCodeUser']);
                        
                   } else {
-                      $formError['ZipCodeUser'] ='Vous devez mettre 5 chiffres a';
+                      $formError['ZipCodeUser'] ='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                              . 'Vous devez mettre 5 chiffres a';
                   }
-             
         } else {
-            $formError['ZipCodeUser'] = 'Merci de mettre uniquement des chiffres ';
+            $formError['ZipCodeUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Merci de mettre uniquement des chiffres ';
         }
     } else {
-        $formError['ZipCodeUser'] = 'Vous n\'avez pas rempli votre code postal';
+        $formError['ZipCodeUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre code postal';
     }
     if (!empty($_POST['City'])) {
         $Member->City = htmlspecialchars($_POST['City']);
     } else {
-        $formError['City'] = 'Vous n\'avez pas rempli votre ville';
+        $formError['City'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre ville';
     }
     if (!empty($_POST['PasswordUser'])) {
         if ($_POST['PasswordUser'] == $_POST['ConbfirmPasswordUSer']) {
             $Member->Password = password_hash($_POST['PasswordUser'], PASSWORD_BCRYPT);
         } else {
-            $formError['PasswordUser'] = 'Attention, les mots de passe ne sont pas identiques.';
+            $formError['PasswordUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Attention, les mots de passe ne sont pas identiques.';
         }
     } else {
         $formError['PasswordUser'] = 'Merci de remplir les champs password';
@@ -96,13 +106,15 @@ if (isset($_POST['validate'])) {
     if (!empty($_POST['AsaName'])) {
         $Member->id_0108asap_asa  = htmlspecialchars($_POST['AsaName']);
     } else {
-        $formError['AsaName'] = 'Vous n\'avez pas rempli votre Nom de votre ASA';
+        $formError['AsaName'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre Nom de votre ASA';
     }
     $Member->Actif = 'true';
     if (!empty($_POST['TypeOfLicence'])) {
         $LicenseTemporary = htmlspecialchars($_POST['TypeOfLicence']);
     } else {
-        $formError['TypeOfLicence'] = 'Vous n\'avez pas séléctionné le type de licence!';
+        $formError['TypeOfLicence'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas séléctionné le type de licence!';
     }
     if (!empty($_POST['LicenceNumber'])) {
         if (preg_match($regexId, $_POST['LicenceNumber'])) {
@@ -110,13 +122,16 @@ if (isset($_POST['validate'])) {
                       $License->LicenceNumber = htmlspecialchars($_POST['LicenceNumber']);
                 
             } else {
-                    $formError['LicenceNumber'] ='VOus devez mettre 6 chiffres!';
+                    $formError['LicenceNumber'] ='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                            . 'VOus devez mettre 6 chiffres!';
             }
         } else {
-            $formError['LicenceNumber'] = 'Merci de mettre que des chiffres dans le champ Nuéro de licence';
+            $formError['LicenceNumber'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Merci de mettre que des chiffres dans le champ Nuéro de licence';
         }
     } else {
-        $formError['LicenceNumber'] = 'Merci de remplir le champ Numéro de licence';
+        $formError['LicenceNumber'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Merci de remplir le champ Numéro de licence';
     }
     $CheckMemberExist = $MembersExist->MemberExist();
     var_dump($CheckMemberExist);
@@ -140,15 +155,18 @@ if (isset($_POST['validate'])) {
                 $_POST['LoginLicenceNumber'] = $_POST['LicenceNumber'];
 //            header("Location: Connection.php");
             } else {
-                $formError['Technical'] = 'une erreur est survenue';
+                $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                        . 'une erreur est survenue';
             }
         } else {
             $Inscription='Connection';
             $Connection='Inscription';
-            $formError['MeessageMemberExist'] = 'vous avez des erreurs dans le formulaires';
+            $formError['MeessageMemberExist'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'vous avez des erreurs dans le formulaires';
         }
     } else {
-        $formError['MeessageMemberExist'] = 'L\'adresse mail que vous avez choisie est déja Utlisé merci d\'utiliser une autre adresse mail ou de vous connectez!';
+        $formError['MeessageMemberExist'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'L\'adresse mail que vous avez choisie est déja Utlisé merci d\'utiliser une autre adresse mail ou de vous connectez!';
     }
 }
 
@@ -171,16 +189,19 @@ if (isset($_POST['connection'])) {
             $MembersExist->Email = htmlspecialchars($_POST['LoginMailUser']);
             $VerifMembersExist->Email = htmlspecialchars($_POST['LoginMailUser']);
         } else {
-            $formError['LoginMailUser'] = 'Veuillez mettre un mail correcte';
+            $formError['LoginMailUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Veuillez mettre un mail correcte';
         }
     } else {
-        $formError['LoginMailUser'] = 'Veuillez remplir le mail';
+        $formError['LoginMailUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Veuillez remplir le mail';
     }
     if (!empty($_POST['LoginPasswordUser'])) {
 
         $LoginPassword = $_POST['LoginPasswordUser'];
     } else {
-        $formError['LoginPasswordUser'] = 'Merci de remplir le champ password';
+        $formError['LoginPasswordUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Merci de remplir le champ password';
     }
 
 
@@ -218,10 +239,12 @@ if (isset($_POST['connection'])) {
                   //  header("Location:../index.php");
                 }
             } else {
-                $formError['LoginPasswordUser'] = 'ERREUR DE MOT DE PASSE';
+                $formError['LoginPasswordUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                        . 'ERREUR DE MOT DE PASSE';
             }
         } else {
-            $UserNotRegistred = 'Vous n\'avez pas de compte';
+            $UserNotRegistred = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Vous n\'avez pas de compte';
         }
     }
 }    

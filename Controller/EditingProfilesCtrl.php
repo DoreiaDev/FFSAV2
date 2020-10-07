@@ -11,51 +11,61 @@ if (isset($_POST['Edditing'])) {
         if (preg_match($regexTitle, $_POST['NameUser'])) {
             $ModfifyOfProfil->Name = htmlspecialchars($_POST['NameUser']);
         } else {
-            $formError['NameUser'] = 'Veuiller mettre que des caractères alphabétiques!!!!!!!!!!';
+            $formError['NameUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Veuiller mettre que des caractères alphabétiques!!!!!!!!!!';
         }
     } else {
-        $formError['NameUser'] = 'Vous n\'avez pas rempli votre Nom';
+        $formError['NameUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre Nom';
     }
     if (!empty($_POST['FirstnameUser'])) {
         if (preg_match($regexTitle, $_POST['FirstnameUser'])) {
             $ModfifyOfProfil->Firstname = htmlspecialchars($_POST['FirstnameUser']);
         } else {
-            $formError['FirstnameUser'] = 'merci de mettre que des carracteres ALPHABETIQUE !!!!!!';
+            $formError['FirstnameUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'merci de mettre que des carracteres ALPHABETIQUE !!!!!!';
         }
     } else {
-        $formError['FirstnameUser'] = 'Vous n\'avez pas rempli votre prénom';
+        $formError['FirstnameUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre prénom';
     }
     if (!empty($_POST['EmailUser'])) {
         if (filter_var($_POST['EmailUser'], FILTER_VALIDATE_EMAIL)) {
             $ModfifyOfProfil->Email = htmlspecialchars($_POST['EmailUser']);
         } else {
-            $formError['EmailUser'] = 'Veuillez mettre un mail correcte';
+            $formError['EmailUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                    . 'Veuillez mettre un mail correcte';
         }
     } else {
-        $formError['EmailUser'] = 'Veuillez remplir le mail';
+        $formError['EmailUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Veuillez remplir le mail';
     }
     if (!empty($_POST['AddressUser'])) {
         $ModfifyOfProfil->Address = htmlspecialchars($_POST['AddressUser']);
     } else {
-        $formError['AddressUser'] = 'Vous n\'avez pas rempli votre adresse';
+        $formError['AddressUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre adresse';
     }
     if (!empty($_POST['ZipCodeUser'])) {
         if (preg_match($regexTitle, $_POST['NameUser'])) {
             $ModfifyOfProfil->ZipCode = htmlspecialchars($_POST['ZipCodeUser']);
         }
     } else {
-        $formError['ZipCodeUser'] = 'Vous n\'avez pas rempli votre code postal';
+        $formError['ZipCodeUser'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre code postal';
     }
     if (!empty($_POST['City'])) {
         $ModfifyOfProfil->City = htmlspecialchars($_POST['City']);
     } else {
-        $ModfifyOfProfil['City'] = 'Vous n\'avez pas rempli votre ville';
+        $ModfifyOfProfil['City'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas rempli votre ville';
     }
   
     if (!empty($_POST['AsaName'])) {
         $ModfifyOfProfil->id_0108asap_asa = htmlspecialchars($_POST['AsaName']);
     } else {
-        $formError['AsaName'] = 'Vous n\'avez pas remplie votre Nom de votre ASA';
+        $formError['AsaName'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Vous n\'avez pas remplie votre Nom de votre ASA';
     }
     if(isset($_SESSION['idUser'])){
         $ModfifyOfProfil->id= htmlspecialchars($_SESSION['idUser']);  
@@ -73,10 +83,12 @@ if (isset($_POST['Edditing'])) {
                 
             header("Location:MyProfiles.php ");
        } else {
-          $formError['Technical'] = 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
+          $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                  . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
         }
     } else {
-        $ErrorForm='Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
+        $ErrorForm='<img src="../Assets/img/Icone/WarningRond.png" style="width: 100px;" class="images_petit" />'
+                . 'Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
     }
 }
 var_dump($ModfifyOfProfil);
