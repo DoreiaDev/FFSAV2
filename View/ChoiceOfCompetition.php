@@ -41,9 +41,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                 ?>
             </div>
             <div class="col-lg-3 rigthColumm">
-                <?php
-                include_once '../Include/RightColum.php';
-                ?>
+                <div>
+                    <a href="HomeLogin.php"><button>Retour</button></a>
+                </div>
             </div>
         </div>
     </div>

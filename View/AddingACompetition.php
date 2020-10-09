@@ -4,7 +4,7 @@ include_once '../Controller/AddingACompetitionCtlr.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
 if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
-    $Danger='Alerte rouge';
+    $Danger = 'Alerte rouge';
     ?>
     <div class="container-fluid">
         <div class="row">
@@ -55,9 +55,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     }
                                 }
                                 ?>
-                                       
+
                             </select>
-                            <p class="text-danger"><?= isset($formError['TypeOfCompetiton']) ?  $formError['TypeOfCompetiton'] : '' ?></p>
+                            <p class="text-danger"><?= isset($formError['TypeOfCompetiton']) ? $formError['TypeOfCompetiton'] : '' ?></p>
                         </div>
                         <div>
                             <label>Sélection de la catégorie de la comptétion :*</label><br>
@@ -71,38 +71,44 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 }
                                 ?>
                             </select>
-                            <p class="text-danger"><?= isset($formError['CategoryCompetition']) ?   $formError['CategoryCompetition'] : '' ?></p>
+                            <p class="text-danger"><?= isset($formError['CategoryCompetition']) ? $formError['CategoryCompetition'] : '' ?></p>
                         </div>
-                        <div>
-                            <label for="NameOfTheTest">Nom de l'épreuve</label>
-                            <input type="text" name="NameOfTheTest" value="<?= isset($_POST['NameOfTheTest']) ? $_POST['NameOfTheTest'] : '' ?>" id="NameOfTheTest"/>
-                            <p class="text-danger" id="ErrorNameOfTheTest"><?= isset($formError['NameOfTheTest']) ? $formError['NameOfTheTest'] : '' ?></p>
-                        </div> 
-                        <div>
-                            <label for="LocationCircuit">Ville de départ/circuit</label>
-                            <input type="text" name="LocationCircuit" value="<?= isset($_POST['LocationCircuit']) ? $_POST['LocationCircuit'] : '' ?>" id="LocationCircuit"/>
-                            <p class="text-danger" id="ErrorLocationCircuit"><?= isset($formError['LocationCircuit']) ? $formError['LocationCircuit'] : '' ?></p>
-                        </div>
-                        <div>
-                            <label for="Observation">Obervation particulier pour la compétition</label>
-                            <input type="text" name="Observation" value="<?= isset($_POST['Observation']) ? $_POST['Observation'] : '' ?>" id=""/>
-                            <p class="text-danger" id="ErrorObservation"><?= isset($formError['Observation']) ? $formError['Observation'] : '' ?></p>
-                        </div>
-                        <div>
-                            <label for="CompetitionStarDay">Date de début de la compétion</label>
-                            <input type="date" name="CompetitionStarDay" value="<?= isset($_POST['CompetitionStarDay']) ? $_POST['CompetitionStarDay'] : '' ?>" id="CompetitionStarDay"/>
-                            <p class="text-danger" id="ErrorCompetitionStarDay"><?= isset($formError['CompetitionStarDay']) ? $formError['CompetitionStarDay'] : '' ?></p>
-                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div>
+                                    <label for="NameOfTheTest">Nom de l'épreuve</label>
+                                    <input type="text" name="NameOfTheTest" value="<?= isset($_POST['NameOfTheTest']) ? $_POST['NameOfTheTest'] : '' ?>" id="NameOfTheTest"/>
+                                    <p class="text-danger" id="ErrorNameOfTheTest"><?= isset($formError['NameOfTheTest']) ? $formError['NameOfTheTest'] : '' ?></p>
+                                </div> 
+                                <div>
+                                    <label for="LocationCircuit">Ville de départ/circuit</label>
+                                    <input type="text" name="LocationCircuit" value="<?= isset($_POST['LocationCircuit']) ? $_POST['LocationCircuit'] : '' ?>" id="LocationCircuit"/>
+                                    <p class="text-danger" id="ErrorLocationCircuit"><?= isset($formError['LocationCircuit']) ? $formError['LocationCircuit'] : '' ?></p>
+                                </div>
+                                <div>
+                                    <label for="Observation">Obervation particulier pour la compétition</label>
+                                    <input type="text" name="Observation" value="<?= isset($_POST['Observation']) ? $_POST['Observation'] : '' ?>" id=""/>
+                                    <p class="text-danger" id="ErrorObservation"><?= isset($formError['Observation']) ? $formError['Observation'] : '' ?></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label for="CompetitionStarDay">Date de début de la compétion</label>
+                                    <input type="date" name="CompetitionStarDay" value="<?= isset($_POST['CompetitionStarDay']) ? $_POST['CompetitionStarDay'] : '' ?>" id="CompetitionStarDay"/>
+                                    <p class="text-danger" id="ErrorCompetitionStarDay"><?= isset($formError['CompetitionStarDay']) ? $formError['CompetitionStarDay'] : '' ?></p>
+                                </div>
 
-                        <div>
-                            <label for="CompetitionEndDay">Date de fin de la compétition</label>
-                            <input type="date" name="CompetitionEndDay" value="<?= isset($_POST['CompetitionEndDay']) ? $_POST['CompetitionEndDay'] : '' ?>" id=""/>
-                            <p class="text-danger" id="ErrorCompetitionEndDay"><?= isset($formError['CompetitionEndDay']) ? $formError['CompetitionEndDay'] : '' ?></p>
-                        </div>
-                        <div>
-                            <label for="MinimumNumberOfOfficials">Besoin minimun d'officiel</label>
-                            <input type="MinimumNumberOfOfficials" name="MinimumNumberOfOfficials" value="<?= isset($_POST['MinimumNumberOfOfficials']) ? $_POST['MinimumNumberOfOfficials'] : '' ?>" id="MinimumNumberOfOfficials"/>
-                            <p class="text-danger" id="ErrorMinimumNumberOfOfficials"><?= isset($formError['MinimumNumberOfOfficials']) ? $formError['MinimumNumberOfOfficials'] : '' ?></p>
+                                <div>
+                                    <label for="CompetitionEndDay">Date de fin de la compétition</label>
+                                    <input type="date" name="CompetitionEndDay" value="<?= isset($_POST['CompetitionEndDay']) ? $_POST['CompetitionEndDay'] : '' ?>" id=""/>
+                                    <p class="text-danger" id="ErrorCompetitionEndDay"><?= isset($formError['CompetitionEndDay']) ? $formError['CompetitionEndDay'] : '' ?></p>
+                                </div>
+                                <div>
+                                    <label for="MinimumNumberOfOfficials">Besoin minimun d'officiel</label>
+                                    <input type="MinimumNumberOfOfficials" name="MinimumNumberOfOfficials" value="<?= isset($_POST['MinimumNumberOfOfficials']) ? $_POST['MinimumNumberOfOfficials'] : '' ?>" id="MinimumNumberOfOfficials"/>
+                                    <p class="text-danger" id="ErrorMinimumNumberOfOfficials"><?= isset($formError['MinimumNumberOfOfficials']) ? $formError['MinimumNumberOfOfficials'] : '' ?></p>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label>Sélectionnez  dans l'ASA Organisatrice dans liste suivante :*</label><br>
@@ -117,6 +123,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                             </select>
                             <p class="text-danger"><?= isset($formError['id_0108asap_asa']) ? $formError['id_0108asap_asa'] : '' ?></p>
+                        </div>
+                        <div>
+                            <p>Dates de besoin et d'hébergement possible</p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
