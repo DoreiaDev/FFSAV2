@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 05 oct. 2020 à 19:13
+-- Généré le : ven. 09 oct. 2020 à 09:52
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -79,6 +79,16 @@ CREATE TABLE `0108asap_categorycompetition` (
   `id` int(11) NOT NULL,
   `CategoryCompetition` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `0108asap_categorycompetition`
+--
+
+INSERT INTO `0108asap_categorycompetition` (`id`, `CategoryCompetition`) VALUES
+(1, 'Régionale'),
+(2, 'National'),
+(3, 'Européen'),
+(4, 'International');
 
 -- --------------------------------------------------------
 
@@ -233,6 +243,9 @@ CREATE TABLE `0108asap_raceoutsiderally` (
   `RequirementDate1` date DEFAULT NULL,
   `RequirementDate2` date DEFAULT NULL,
   `RequirementDate3` date DEFAULT NULL,
+  `LodgingPossible1` date DEFAULT NULL,
+  `LodgingPossible2` date DEFAULT NULL,
+  `LodgingPossible3` date DEFAULT NULL,
   `IdCompetition` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -247,12 +260,17 @@ CREATE TABLE `0108asap_rally` (
   `NumberOfSteps` int(10) NOT NULL,
   `NumberOfEs` int(10) NOT NULL,
   `NumberOfCompetitonDays` int(10) NOT NULL,
-  `DatePcNeed1` date DEFAULT NULL,
-  `DatePcNeed2` date DEFAULT NULL,
-  `DatePcNeed3` date DEFAULT NULL,
-  `DateNeedForTheCommissioner1` date DEFAULT NULL,
-  `DateNeedForTheCommissioner2` date DEFAULT NULL,
-  `DateNeedForTheCommissioner3` date DEFAULT NULL,
+  `ObservationAccommodation` varchar(255) DEFAULT NULL,
+  `RequirementDate1` date NOT NULL,
+  `RequirementDate2` date DEFAULT NULL,
+  `RequirementDate3` date DEFAULT NULL,
+  `RequirementDate4` date DEFAULT NULL,
+  `RequirementDate5` date DEFAULT NULL,
+  `LodgingPossible1` date DEFAULT NULL,
+  `LodgingPossible2` date DEFAULT NULL,
+  `LodgingPossible3` date DEFAULT NULL,
+  `LodgingPossible4` date DEFAULT NULL,
+  `LodgingPossible5` date DEFAULT NULL,
   `id_0108asap_competiton` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
@@ -317,7 +335,9 @@ INSERT INTO `0108asap_typeofcompetition` (`id`, `TypeOfCompetiton`) VALUES
 (5, 'GT4'),
 (6, 'Course de côte'),
 (7, 'Drift'),
-(8, 'Circuit');
+(8, 'Circuit'),
+(9, 'tedst'),
+(10, 'testttt');
 
 --
 -- Index pour les tables déchargées
@@ -428,7 +448,7 @@ ALTER TABLE `0108asap_asa`
 -- AUTO_INCREMENT pour la table `0108asap_categorycompetition`
 --
 ALTER TABLE `0108asap_categorycompetition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_competiton`
@@ -494,7 +514,7 @@ ALTER TABLE `0108asap_sportsevents`
 -- AUTO_INCREMENT pour la table `0108asap_typeofcompetition`
 --
 ALTER TABLE `0108asap_typeofcompetition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Contraintes pour les tables déchargées
