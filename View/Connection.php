@@ -40,9 +40,16 @@ include_once '../Include/Navbar.php';
                         <label for="LoginPasswordUser">votre mot de passe :</label> 
                         <input id="LoginPasswordUser" type="password" name="LoginPasswordUser" />
                         <p class="text-danger" id="ErrorPasswordUserConnecte"><?= isset($formError['LoginPasswordUser']) ? $formError['LoginPasswordUser'] : '' ?></p>
+                    </div> 
+                    <div>
+                        <label for="Captcha">Entrer le texte dans l'image</label>
+                        <input name="Captcha" type="text" id="captcha">
+                        <img src="Captcha.php" style="vertical-align: middle;"/>
+                        <p class="text-danger" id="ErrorCaptcha"><?= isset($formError['Captcha']) ? $formError['Captcha'] : '' ?></p>
                     </div>
                     <div> 
                         <input id="connection" type="submit" id="submit" name="connection" value="connexion" />
+
                     </div>
                 </form>
                 <div>
@@ -54,10 +61,10 @@ include_once '../Include/Navbar.php';
                     <br>
                 </div>
                 <div>
-                    <p>Je ne suis pas <button class="btnInscription" id="btnInscription" >inscrit</button></p>
-
+                    <p>Je ne suis pas<button class="btnInscription" id="btnInscription" >inscrit</button> </p>
                 </div>
             </div>
+            <button class="btnInscription" id="btnInscription" >inscrit</button>
             <div class="<?= $Inscription ?>" id="Inscription">
                 <h2>Formulaire d'inscription</h2>
                 <p class="text-danger"><?= isset($formError['$MeessageMemberExist']) ? $formError['$MeessageMemberExist'] : '' ?></p>
@@ -135,6 +142,12 @@ include_once '../Include/Navbar.php';
                         </select>
                         <p class="text-danger"><?= isset($formError['TypeOfLicence']) ? $formError['TypeOfLicence'] : '' ?></p>
                     </div>
+                    <div>
+                        <label for="Captcha">Entrer le texte dans l'image</label>
+                        <input name="Captcha" type="text" id="captcha">
+                        <img src="Captcha.php" style="vertical-align: middle;"/>
+                        <p class="text-danger" id="ErrorCaptcha"><?= isset($formError['Captcha']) ? $formError['Captcha'] : '' ?></p>
+                    </div>
                     <div> 
                         <input id="inscription" type="submit"  id="submit" name="validate" value="je m'inscrit" />
                     </div>
@@ -150,3 +163,4 @@ include_once '../Include/Navbar.php';
     <?php
     include_once '../Include/Footer.php';
     ?>
+    
