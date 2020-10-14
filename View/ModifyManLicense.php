@@ -41,7 +41,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     if ($_SESSION['access'] != in_array($_SESSION['access'],$Responsible)
 //                                            || $_SESSION['access'] != in_array($_SESSION['access'],$Responsible)
                                             ) {
-                                        if ($FunctionList->id != 155 && $FunctionList->id != 14 && $FunctionList->id != 13 && $FunctionList->id != 13 && $FunctionList->id != 11 && $FunctionList->id != 12) {
+                                        if ($FunctionList->PermissionToAccess != 259 ) {
                                             ?>
                                             <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>
                                             <?php
@@ -54,6 +54,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 }
                                 ?>
                             </select>
+                            <?php
+                             foreach ($listerFunctions as $FunctionList) {?>
+                            <input type="hidden" name="PermissionToAccess" value="<?= $FunctionList->PermissionToAccess ?>" />
+                              <?php 
+                             }
+                             ?>
                         </div>
                         <div>
                             <?php

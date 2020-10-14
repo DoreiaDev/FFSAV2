@@ -219,8 +219,6 @@ if (isset($_POST['connection'])) {
         $verif = $MembersExist->ConnexionMembers();
         $CheckVerifMemberExist = $VerifMembersExist->MemberExist();
         if (!empty($_POST["Captcha"])) {
-
-
             if ($_SESSION["code"] == $_POST["Captcha"]) {
 
                 if ($CheckVerifMemberExist == true) {

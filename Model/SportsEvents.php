@@ -23,6 +23,9 @@ class SportsEventsModel {
     public $CreationDate = '';
     public $MinimumNumberOfOfficials = '';
     public $id_0108asap_asa = 0;
+    public $IdTypeCompetition = 0;
+    public $IdLeague = 0;
+    public $IdSportEvent=0;
 
     public function __construct() {
 //fonction de connexion a ma base de donnÃ©er 
@@ -56,4 +59,119 @@ class SportsEventsModel {
         return $queryResult->execute();
     }
 
+    public function DiplayAllCompetitionAndLeague() {
+        $query = 'SELECT `0108asap_sportsevents`.`id` AS `IdSportEvents`, `0108asap_sportsevents`.`NameOfTheTest`, `0108asap_sportsevents`.`Location_Circuit`, '
+                . '`0108asap_sportsevents`.`Observation`, `0108asap_sportsevents`.`CompetitionStarDay`, `0108asap_sportsevents`.`CompetitionEndDay`, '
+                . '`0108asap_sportsevents`.`MinimumNumberOfOfficials`, `0108asap_sportsevents`.`CreationDate`, `0108asap_asa`.`id` AS `IdAsa`, '
+                . '`0108asap_asa`.`AsaName`, `0108asap_asa`.`NumberAsa`, `0108asap_league`.`LeagueName`, `0108asap_competiton`.`Open`, `0108asap_competiton`.`Close`, '
+                . '`0108asap_typeofcompetition`.`id` AS `IdTypeCompetition`,  `0108asap_typeofcompetition`.`TypeOfCompetiton`, '
+                . '`0108asap_categorycompetition`.`id` AS `IdCategoryCompetion`, `0108asap_categorycompetition`.`CategoryCompetition` '
+                . 'FROM `0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_asa` '
+                . 'ON `0108asap_asa`.`id`= `0108asap_sportsevents`.`id_0108asap_asa`  '
+                . 'INNER JOIN  `0108asap_league` '
+                . 'ON `0108asap_league`.`id` = `0108asap_asa`.`id_0108asap_League` '
+                . 'INNER JOIN `0108asap_competiton` '
+                . 'ON `0108asap_competiton`.`id_0108asap_sportsevents`=`0108asap_sportsevents`.`id` '
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
+                . 'INNER JOIN `0108asap_categorycompetition` '
+                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
+                . 'WHERE `0108asap_typeofcompetition`.`id`= :IdTypeCompetition && `0108asap_league`.`id`= :IdLeague'
+                . '';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':IdTypeCompetition', $this->IdTypeCompetition, PDO::PARAM_INT);
+        $queryResult->bindValue(':IdLeague', $this->IdLeague, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function DisplayAnyCompetitionAndLegueSelected() {
+        $query = 'SELECT `0108asap_sportsevents`.`id` AS `IdSportEvents`, `0108asap_sportsevents`.`NameOfTheTest`, `0108asap_sportsevents`.`Location_Circuit`, '
+                . '`0108asap_sportsevents`.`Observation`, `0108asap_sportsevents`.`CompetitionStarDay`, `0108asap_sportsevents`.`CompetitionEndDay`, '
+                . '`0108asap_sportsevents`.`MinimumNumberOfOfficials`, `0108asap_sportsevents`.`CreationDate`, `0108asap_asa`.`id` AS `IdAsa`, '
+                . '`0108asap_asa`.`AsaName`, `0108asap_asa`.`NumberAsa`, `0108asap_league`.`LeagueName`, `0108asap_competiton`.`Open`, `0108asap_competiton`.`Close`, '
+                . '`0108asap_typeofcompetition`.`id` AS `IdTypeCompetition`,  `0108asap_typeofcompetition`.`TypeOfCompetiton`, '
+                . '`0108asap_categorycompetition`.`id` AS `IdCategoryCompetion`, `0108asap_categorycompetition`.`CategoryCompetition` '
+                . 'FROM `0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_asa` '
+                . 'ON `0108asap_asa`.`id`= `0108asap_sportsevents`.`id_0108asap_asa`  '
+                . 'INNER JOIN  `0108asap_league` '
+                . 'ON `0108asap_league`.`id` = `0108asap_asa`.`id_0108asap_League` '
+                . 'INNER JOIN `0108asap_competiton` '
+                . 'ON `0108asap_competiton`.`id_0108asap_sportsevents`=`0108asap_sportsevents`.`id` '
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
+                . 'INNER JOIN `0108asap_categorycompetition` '
+                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
+                . 'WHERE `0108asap_league`.`id`= :IdLeague';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':IdLeague', $this->IdLeague, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function DisplayAnyLeagueAndCompetitionSelect() {
+        $query = 'SELECT `0108asap_sportsevents`.`id` AS `IdSportEvents`, `0108asap_sportsevents`.`NameOfTheTest`, `0108asap_sportsevents`.`Location_Circuit`, '
+                . '`0108asap_sportsevents`.`Observation`, `0108asap_sportsevents`.`CompetitionStarDay`, `0108asap_sportsevents`.`CompetitionEndDay`, '
+                . '`0108asap_sportsevents`.`MinimumNumberOfOfficials`, `0108asap_sportsevents`.`CreationDate`, `0108asap_asa`.`id` AS `IdAsa`, '
+                . '`0108asap_asa`.`AsaName`, `0108asap_asa`.`NumberAsa`, `0108asap_league`.`LeagueName`, `0108asap_competiton`.`Open`, `0108asap_competiton`.`Close`, '
+                . '`0108asap_typeofcompetition`.`id` AS `IdTypeCompetition`,  `0108asap_typeofcompetition`.`TypeOfCompetiton`, '
+                . '`0108asap_categorycompetition`.`id` AS `IdCategoryCompetion`, `0108asap_categorycompetition`.`CategoryCompetition` '
+                . 'FROM `0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_asa` '
+                . 'ON `0108asap_asa`.`id`= `0108asap_sportsevents`.`id_0108asap_asa`  '
+                . 'INNER JOIN  `0108asap_league` '
+                . 'ON `0108asap_league`.`id` = `0108asap_asa`.`id_0108asap_League` '
+                . 'INNER JOIN `0108asap_competiton` '
+                . 'ON `0108asap_competiton`.`id_0108asap_sportsevents`=`0108asap_sportsevents`.`id` '
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
+                . 'INNER JOIN `0108asap_categorycompetition` '
+                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
+                . 'WHERE `0108asap_typeofcompetition`.`id`= :IdTypeCompetition ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':IdTypeCompetition', $this->IdTypeCompetition, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+//affichage de toutes les compettion et toutes les ligues 
+    public function DisplayAllLeaguesAndCompetitions() {
+        $query = 'SELECT `0108asap_sportsevents`.`id` AS `IdSportEvents`, `0108asap_sportsevents`.`NameOfTheTest`, `0108asap_sportsevents`.`Location_Circuit`, '
+                . '`0108asap_sportsevents`.`Observation`, `0108asap_sportsevents`.`CompetitionStarDay`, `0108asap_sportsevents`.`CompetitionEndDay`, '
+                . '`0108asap_sportsevents`.`MinimumNumberOfOfficials`, `0108asap_sportsevents`.`CreationDate`, `0108asap_asa`.`id` AS `IdAsa`, '
+                . '`0108asap_asa`.`AsaName`, `0108asap_asa`.`NumberAsa`, `0108asap_league`.`LeagueName`, `0108asap_competiton`.`Open`, `0108asap_competiton`.`Close`,'
+                . ' `0108asap_typeofcompetition`.`id` AS `IdTypeCompetition`,  `0108asap_typeofcompetition`.`TypeOfCompetiton`, '
+                . '`0108asap_categorycompetition`.`id` AS `IdCategoryCompetion`, `0108asap_categorycompetition`.`CategoryCompetition` '
+                . 'FROM `0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_asa` '
+                . 'ON `0108asap_asa`.`id`= `0108asap_sportsevents`.`id_0108asap_asa`  '
+                . 'INNER JOIN  `0108asap_league` '
+                . 'ON `0108asap_league`.`id` = `0108asap_asa`.`id_0108asap_League` '
+                . 'INNER JOIN `0108asap_competiton` '
+                . 'ON `0108asap_competiton`.`id_0108asap_sportsevents`=`0108asap_sportsevents`.`id` '
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
+                . 'INNER JOIN `0108asap_categorycompetition` '
+                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition` ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+  //Définition du type de competition suivant L'idSportEvent
+    public function CompetitionTypeByIdSportEvent(){
+        $query='SELECT `0108asap_sportsevents`.`id` AS `IdSportEvent`, `0108asap_typeofcompetition`.`TypeOfCompetiton`, '
+                . '`0108asap_typeofcompetition`.`id` AS `IdTypeOfCompetition` '
+                . 'FROM `0108asap_sportsevents` '
+                . 'INNER JOIN `0108asap_competiton` '
+                . 'ON `0108asap_competiton`.`id_0108asap_sportsevents`= `0108asap_sportsevents`.`id` '
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id` =`0108asap_competiton`.`id_0108asap_typeofcompetition` '
+                . 'WHERE `0108asap_sportsevents`.`id=:IdSportEvent`';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':IdSportEvent', $this->IdSportEvent, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+    
 }

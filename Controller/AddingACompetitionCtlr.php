@@ -130,11 +130,12 @@ if (isset($_POST['BtnAddtheCompetition'])) {
     }
     if (count($formError) == 0) {
         $LastIdSportEvent = new SportsEventsModel();
-        $CheckLastIdSportEvent = $LastIdSportEvent->lastInsertIdSportEvents();
         $CheckSportEvent = $AddSportEvent->AddSportEvents();
+        $CheckLastIdSportEvent = $LastIdSportEvent->lastInsertIdSportEvents();
+        var_dump($CheckLastIdSportEvent);
         if ($CheckSportEvent == true) {
             if ($CheckLastIdSportEvent != null) {
-                $AddCompetition->id_0108asap_sportsevents = $CheckSportEvent;
+                $AddCompetition->id_0108asap_sportsevents = $CheckLastIdSportEvent;
                 $CheckAddCompetition = $AddCompetition->AddOutsideCompetition();
                 $LastIDCompetition = new Competiton();
                 $CheckLastIdCompetition = $LastIDCompetition->LastInsertIdCompetition();
@@ -162,7 +163,6 @@ if (isset($_POST['BtnAddtheCompetition'])) {
             $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                     . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckLastIdCompetition';
         }
-        var_dump($AddRaceOutsideRally);
         if($CheckAddRaceOutsideRally== true){
              header("Location: ChoiceOfCompetition.php");
         }else {

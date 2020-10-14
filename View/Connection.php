@@ -64,7 +64,6 @@ include_once '../Include/Navbar.php';
                     <p>Je ne suis pas<button class="btnInscription" id="btnInscription" >inscrit</button> </p>
                 </div>
             </div>
-            <button class="btnInscription" id="btnInscription" >inscrit</button>
             <div class="<?= $Inscription ?>" id="Inscription">
                 <h2>Formulaire d'inscription</h2>
                 <p class="text-danger"><?= isset($formError['$MeessageMemberExist']) ? $formError['$MeessageMemberExist'] : '' ?></p>

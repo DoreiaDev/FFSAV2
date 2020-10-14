@@ -196,11 +196,11 @@ if (isset($_POST['BtnAddingARally'])) {
     }
     if (count($formError) == 0) {
         $LastIdSportEvent = new SportsEventsModel();
-        $CheckLastIdSportEvent = $LastIdSportEvent->lastInsertIdSportEvents();
         $CheckSportEvent = $AddSportEvent->AddSportEvents();
+        $CheckLastIdSportEvent = $LastIdSportEvent->lastInsertIdSportEvents();
         if ($CheckSportEvent == true) {
             if ($CheckLastIdSportEvent != null) {
-                $AddCompetition->id_0108asap_sportsevents = $CheckSportEvent;
+                $AddCompetition->id_0108asap_sportsevents = $CheckLastIdSportEvent;
                 $CheckAddCompetition = $AddCompetition->AddOutsideCompetition();
                 $LastIDCompetition = new Competiton();
                 $CheckLastIdCompetition = $LastIDCompetition->LastInsertIdCompetition();

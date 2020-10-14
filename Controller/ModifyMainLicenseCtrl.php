@@ -28,7 +28,7 @@ if (isset($_POST['EditingLicence'])) {
      if (count($formError) == 0) {
          $CheckModifyLicense=$ModifyMyLicense->ModifyTheMainLicense();
          if($CheckModifyLicense==true){
-             $_SESSION['access']=htmlspecialchars($_POST['TypeOfLicence']);
+             $_SESSION['access']=htmlspecialchars($_POST['PermissionToAccess']);
              header("Location: MyProfiles.php");
          }
      }
