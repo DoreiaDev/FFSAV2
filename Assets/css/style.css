@@ -10,7 +10,7 @@ body
 }
 a
 {
-    color: greenyellow;
+    color: red;
 }
 
 /* pour repere des colonne
@@ -39,7 +39,13 @@ nav
     width:auto;
     height: 400px;
 }
-/* .images_petit {
-width:100px;
-height:100px;
-} */
+.DetailRally{
+    font-size:30px;
+    text-align: center;
+}
+h1{
+    font-size: 80 px;
+}
+.BtnRallyInscription{
+    text-align: center;
+}

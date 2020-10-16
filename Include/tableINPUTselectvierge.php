@@ -40,6 +40,13 @@
     </select>
     <p class="text-danger"><?= isset($formError['']) ? $formError[''] : '' ?></p>
 </div>
+<div>
+                            <label>Etes vous disponible pour participé au Rallye  :*</label><br>
+                            <select class="custom-select custom-select-sm" name="Availability" id="Availability">
+                                <option value="Oui "> Je suis disponible</option>
+                                <option value="NON"> Je suis indisponible</option> </select>
+                            <p class="text-danger"><?= isset($formError['Availability']) ? $formError['Availability'] : '' ?></p>
+                        </div>
 <!--------------------------------------------------------->
 <?php
 // controler avec message d'erreur vide ac regexText et icone

@@ -153,25 +153,13 @@ class SportsEventsModel {
                 . 'INNER JOIN `0108asap_typeofcompetition` '
                 . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
                 . 'INNER JOIN `0108asap_categorycompetition` '
-                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition` ';
+                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
+                . ' ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
-  //Définition du type de competition suivant L'idSportEvent
-    public function CompetitionTypeByIdSportEvent(){
-        $query='SELECT `0108asap_sportsevents`.`id` AS `IdSportEvent`, `0108asap_typeofcompetition`.`TypeOfCompetiton`, '
-                . '`0108asap_typeofcompetition`.`id` AS `IdTypeOfCompetition` '
-                . 'FROM `0108asap_sportsevents` '
-                . 'INNER JOIN `0108asap_competiton` '
-                . 'ON `0108asap_competiton`.`id_0108asap_sportsevents`= `0108asap_sportsevents`.`id` '
-                . 'INNER JOIN `0108asap_typeofcompetition` '
-                . 'ON `0108asap_typeofcompetition`.`id` =`0108asap_competiton`.`id_0108asap_typeofcompetition` '
-                . 'WHERE `0108asap_sportsevents`.`id=:IdSportEvent`';
-        $queryResult = $this->pdo->db->prepare($query);
-        $queryResult->bindValue(':IdSportEvent', $this->IdSportEvent, PDO::PARAM_INT);
-        $queryResult->execute();
-        return $queryResult->fetchAll(PDO::FETCH_OBJ);
-    }
+  
+    
     
 }

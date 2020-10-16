@@ -15,6 +15,7 @@ include_once 'Model/registrationforofficial.php';
 include_once 'Model/RegistrationForCompetitors.php';
 include_once 'Model/RaceOutsideRally.php';
 include_once 'Model/PermissionOfAccess.php';
+include_once 'Model/OfficialRegistrationCompetition.php';
 $Function=array( 55,259,356,405);
 $Responsible=array(259,356,405);
 $Admin=array(259);

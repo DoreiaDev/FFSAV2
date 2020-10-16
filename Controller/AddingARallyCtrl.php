@@ -177,22 +177,22 @@ if (isset($_POST['BtnAddingARally'])) {
     if (!empty($_POST['LodgingPossible2'])) {
         $AddRally->LodgingPossible2 = htmlspecialchars($_POST['LodgingPossible2']);
     } else {
-        $AddRally->LodgingPossible2 = '2020/01/02';
+        $AddRally->LodgingPossible2 = '2020/01/01';
     }
     if (!empty($_POST['LodgingPossible3'])) {
         $AddRally->LodgingPossible3 = htmlspecialchars($_POST['LodgingPossible3']);
     } else {
-        $AddRally->LodgingPossible3 = '2020/01/03';
+        $AddRally->LodgingPossible3 = '2020/01/01';
     }
     if (!empty($_POST['LodgingPossible4'])) {
         $AddRally->LodgingPossible4 = htmlspecialchars($_POST['LodgingPossible4']);
     } else {
-        $AddRally->LodgingPossible4 = '2020/01/04';
+        $AddRally->LodgingPossible4 = '2020/01/01';
     }
     if (!empty($_POST['LodgingPossible5'])) {
         $AddRally->LodgingPossible5 = htmlspecialchars($_POST['LodgingPossible5']);
     } else {
-        $AddRally->LodgingPossible5 = '2020/01/05';
+        $AddRally->LodgingPossible5 = '2020/01/01';
     }
     if (count($formError) == 0) {
         $LastIdSportEvent = new SportsEventsModel();
