@@ -30,6 +30,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <div>
                             <label>Etes vous disponible pour participé au Rallye  :*</label><br>
                             <select class="custom-select custom-select-sm" name="Availability" id="Availability">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                 <option value="Oui "> Je suis disponible</option>
                                 <option value="NON"> Je suis indisponible</option> </select>
                             <p class="text-danger"><?= isset($formError['Availability']) ? $formError['Availability'] : '' ?></p>
@@ -37,6 +38,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <div>
                             <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate1 ?>  :*</label><br>
                             <select class="custom-select custom-select-sm" name="RequirementDate1" id="RequirementDate1">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                 <option value="Oui "> Je suis disponible</option>
                                 <option value="NON"> Je suis indisponible</option> </select>
                             <p class="text-danger"><?= isset($formError['RequirementDate1']) ? $formError['RequirementDate1'] : '' ?></p>
@@ -47,6 +49,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                                 <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate2 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate2" id="RequirementDate2">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Je suis disponible</option>
                                     <option value="NON"> Je suis indisponible</option> </select>
                                 <p class="text-danger"><?= isset($formError['RequirementDate2']) ? $formError['RequirementDate2'] : '' ?></p>
@@ -60,6 +63,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                                 <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate3 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate3" id="RequirementDate3">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Je suis disponible</option>
                                     <option value="NON"> Je suis indisponible</option> </select>
                                 <p class="text-danger"><?= isset($formError['RequirementDate3']) ? $formError['RequirementDate3'] : '' ?></p>
@@ -73,6 +77,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                                 <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate4 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate4" id="RequirementDate4">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Je suis disponible</option>
                                     <option value="NON"> Je suis indisponible</option> </select>
                                 <p class="text-danger"><?= isset($formError['RequirementDate4']) ? $formError['RequirementDate4'] : '' ?></p>
@@ -86,6 +91,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                                 <label>Etes vous disponible le  <?= $CheckDDetailRally->RequirementDate5 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate5" id="RequirementDate5">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Je suis disponible</option>
                                     <option value="NON"> Je suis indisponible</option> </select>
                                 <p class="text-danger"><?= isset($formError['RequirementDate5']) ? $formError['RequirementDate5'] : '' ?></p>
@@ -97,6 +103,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         <div>   
                             <label>Avez vous besoin d'un hébergement le  <?= $CheckDDetailRally->LodgingPossible1 ?>  :*</label><br>
                             <select class="custom-select custom-select-sm" name="LodgingPossible1" id="LodgingPossible1">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                 <option value="Oui "> Oui Il me faut un hébergement</option>
                                 <option value="NON"> Je n'ai pas besoin d'hébergement </option>
                             </select>
@@ -108,6 +115,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                                 <label>Etes vous disponible le  <?= $CheckDDetailRally->LodgingPossible2 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="LodgingPossible2" id="LodgingPossible2">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Oui Il me faut un hébergement</option>
                                     <option value="NON"> Je n'ai pas besoin d'hébergement </option>
                                 </select>
@@ -122,6 +130,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                                 <label>Etes vous disponible le  <?= $CheckDDetailRally->LodgingPossible3 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="LodgingPossible3" id="LodgingPossible3">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Oui Il me faut un hébergement</option>
                                     <option value="NON"> Je n'ai pas besoin d'hébergement </option>
                                 </select>
@@ -136,6 +145,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                                 <label>Etes vous disponible le  <?= $CheckDDetailRally->LodgingPossible4 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="LodgingPossible4" id="LodgingPossible4">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Oui Il me faut un hébergement</option>
                                     <option value="NON"> Je n'ai pas besoin d'hébergement </option>
                                 </select>
@@ -150,6 +160,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                 ?>
                                 <label>Etes vous disponible le  <?= $CheckDDetailRally->LodgingPossible2 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="LodgingPossible2" id="LodgingPossible2">
+                                <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Oui Il me faut un hébergement</option>
                                     <option value="NON"> Je n'ai pas besoin d'hébergement </option>
                                 </select>
@@ -159,9 +170,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             ?>
                         </div>
                         <div>
-                            <label for="Observation-RequestFromOfficial">Demande concernant  les poste occupé ou  l'hébergement:</label><br>
-                            <input type="text" name="Observation-RequestFromOfficial" value="<?= isset($_POST['Observation-RequestFromOfficial']) ? $_POST['Observation-RequestFromOfficial'] : '' ?>" id="Observation-RequestFromOfficial"/>
-                            <p class="text-danger" id="Error"><?= isset($formError['Observation-RequestFromOfficial']) ? $formError['Observation-RequestFromOfficial'] : '' ?></p>
+                            <label for="ObservationAccommodation">Demande concernant  les poste occupé ou  l'hébergement:</label><br>
+                            <input type="text" name="ObservationAccommodation" value="<?= isset($_POST['ObservationAccommodation']) ? $_POST['ObservationAccommodation'] : '' ?>" id="Observation-RequestFromOfficial"/>
+                            <p class="text-danger" id="Error"><?= isset($formError['ObservationAccommodation']) ? $formError['ObservationAccommodation'] : '' ?></p>
                         </div>
                         <div>
                             <label>Sélectionnez votre fonction dans la liste suivante  dans la liste suivante :*</label><br>

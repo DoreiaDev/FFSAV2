@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/laragon/www/FFSAv2/Controller/AddAsaCtrl.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/View/AddAsa.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/Include/tableINPUTselectvierge.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/Model/OfficialRegistrationCompetition.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/View/RegistrationOfOfficialsOnARally.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/Controller/RegistrationOfOfficialsOnARallyCtrl.php</file>
+        </group>
     </open-files>
 </project-private>
