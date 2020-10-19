@@ -125,6 +125,16 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p class="text-danger"><?= isset($formError['id_0108asap_asa']) ? $formError['id_0108asap_asa'] : '' ?></p>
                         </div>
                         <div>
+                            <label for="NumberOfCompetitonDays">Nombre de jours de compétitions </label>
+                            <input type="text" name="NumberOfCompetitonDays" value="<?= isset($_POST['NumberOfCompetitonDays']) ? $_POST['NumberOfCompetitonDays'] : '' ?>" id=""/>
+                            <p class="text-danger" id="ErrorNumberOfCompetitonDays"><?= isset($formError['NumberOfCompetitonDays']) ? $formError['NumberOfCompetitonDays'] : '' ?></p>
+                        </div>
+                        <div>
+                            <label for="ObservationAccommodation">Observation Hébergement</label>
+                            <input type="text" name="ObservationAccommodation" value="<?= isset($_POST['ObservationAccommodation']) ? $_POST['ObservationAccommodation'] : '' ?>" id=""/>
+                            <p class="text-danger" id="ErrorCompetitionEndDay"><?= isset($formError['ObservationAccommodation']) ? $formError['ObservationAccommodation'] : '' ?></p>
+                        </div>
+                        <div>
                             <p>Dates de besoin et d'hébergement possible</p>
                         </div>
                         <div class="row">
@@ -145,6 +155,16 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     <input type="date" name="RequirementDate3" value="<?= isset($_POST['RequirementDate3']) ? $_POST['RequirementDate3'] : '' ?>" id="RequirementDate3"/>
                                     <p class="text-danger" id="ErrorRequirementDate3"><?= isset($formError['RequirementDate3']) ? $formError['RequirementDate3'] : '' ?></p>
                                 </div>
+                                <div>
+                                    <label for="RequirementDate4">Besoin d'officiel jour 4</label>
+                                    <input type="date" name="RequirementDate4" value="<?= isset($_POST['RequirementDate4']) ? $_POST['RequirementDate4'] : '' ?>" id="RequirementDate4"/>
+                                    <p class="text-danger" id="ErrorRequirementDate4"><?= isset($formError['RequirementDate4']) ? $formError['RequirementDate4'] : '' ?></p>
+                                </div>
+                                <div>
+                                    <label for="RequirementDate5">Besoin d'officiel jour 5</label>
+                                    <input type="date" name="RequirementDate5" value="<?= isset($_POST['RequirementDate5']) ? $_POST['RequirementDate5'] : '' ?>" id="RequirementDate5"/>
+                                    <p class="text-danger" id="ErrorRequirementDate5"><?= isset($formError['RequirementDate5']) ? $formError['RequirementDate5'] : '' ?></p>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <p>Date des possibilité d'hébergement</p>
@@ -162,6 +182,16 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     <label for="LodgingPossible3">Possibilité d'avoir un hébergement le :</label>
                                     <input type="date" name="LodgingPossible3" value="<?= isset($_POST['LodgingPossible3']) ? $_POST['LodgingPossible3'] : '' ?>" id="LodgingPossible3"/>
                                     <p class="text-danger" id="ErrorLodgingPossible3"><?= isset($formError['LodgingPossible3']) ? $formError['LodgingPossible3'] : '' ?></p>
+                                </div>
+                                <div>
+                                    <label for="LodgingPossible4">Possibilité d'avoir un hébergement le :</label>
+                                    <input type="date" name="LodgingPossible4" value="<?= isset($_POST['LodgingPossible4']) ? $_POST['LodgingPossible4'] : '' ?>" id="LodgingPossible4"/>
+                                    <p class="text-danger" id="ErrorLodgingPossible4"><?= isset($formError['LodgingPossible4']) ? $formError['LodgingPossible4'] : '' ?></p>
+                                </div>
+                                <div>
+                                    <label for="LodgingPossible5">Possibilité d'avoir un hébergement le :</label>
+                                    <input type="date" name="LodgingPossible5" value="<?= isset($_POST['LodgingPossible5']) ? $_POST['LodgingPossible5'] : '' ?>" id="LodgingPossible5"/>
+                                    <p class="text-danger" id="ErrorLodgingPossible5"><?= isset($formError['LodgingPossible5']) ? $formError['LodgingPossible5'] : '' ?></p>
                                 </div>
                             </div>
                         </div>

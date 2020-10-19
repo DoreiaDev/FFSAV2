@@ -97,6 +97,28 @@ if (isset($_POST['BtnAddtheCompetition'])) {
         $formError['id_0108asap_asa'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                 . ' Merci de sélectionner le type de compétition';
     }
+    if (!empty($_POST['ObservationAccommodation'])) {
+        if (preg_match($RegexTitle, $_POST['ObservationAccommodation'])) {
+            $AddRaceOutsideRally->ObservationAccommodation = htmlspecialchars($_POST['ObservationAccommodation']);
+        } else {
+            $formError['ObservationAccommodation'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                    . 'Merci de ne mettre que des caratéres alphabétiques';
+        }
+    } else {
+        $formError['ObservationAccommodation'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                . 'Veuillez remplir le champs observattion hébergement ';
+    }
+    if (!empty($_POST['NumberOfCompetitonDays'])) {
+        if (preg_match($RegexId, $_POST['NumberOfCompetitonDays'])) {
+            $AddRaceOutsideRally->NumberOfCompetitonDays = htmlspecialchars($_POST['NumberOfCompetitonDays']);
+        } else {
+            $formError['NumberOfCompetitonDays'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                    . ' Merci de metre que des chiffres dans le champs nombre de jour de compétitions';
+        }
+    } else {
+        $formError['NumberOfCompetitonDays'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                . ' Merci de remplir le champs nombre de jour de compétitions';
+    }
     if (!empty($_POST['RequirementDate1'])) {
         $AddRaceOutsideRally->RequirementDate1 = htmlspecialchars($_POST['RequirementDate1']);
     } else {
@@ -106,27 +128,47 @@ if (isset($_POST['BtnAddtheCompetition'])) {
     if (!empty($_POST['RequirementDate2'])) {
         $AddRaceOutsideRally->RequirementDate2 = htmlspecialchars($_POST['RequirementDate2']);
     } else {
-         $AddRaceOutsideRally->RequirementDate2='2020/01/01';
+        $AddRaceOutsideRally->RequirementDate2 = '2020/01/01';
     }
     if (!empty($_POST['RequirementDate3'])) {
         $AddRaceOutsideRally->RequirementDate3 = htmlspecialchars($_POST['RequirementDate3']);
     } else {
-         $AddRaceOutsideRally->RequirementDate3='2020/01/01';
+        $AddRaceOutsideRally->RequirementDate3 = '2020/01/01';
+    }
+    if (!empty($_POST['RequirementDate4'])) {
+        $AddRaceOutsideRally->RequirementDate4 = htmlspecialchars($_POST['RequirementDate4']);
+    } else {
+        $AddRaceOutsideRally->RequirementDate4 = '2020/01/01';
+    }
+    if (!empty($_POST['RequirementDate5'])) {
+        $AddRaceOutsideRally->RequirementDate5 = htmlspecialchars($_POST['RequirementDate5']);
+    } else {
+        $AddRaceOutsideRally->RequirementDate5 = '2020/01/01';
     }
     if (!empty($_POST['LodgingPossible1'])) {
         $AddRaceOutsideRally->LodgingPossible1 = htmlspecialchars($_POST['LodgingPossible1']);
     } else {
-         $AddRaceOutsideRally->LodgingPossible1='2020/01/01';
+        $AddRaceOutsideRally->LodgingPossible1 = '2020/01/01';
     }
     if (!empty($_POST['LodgingPossible2'])) {
         $AddRaceOutsideRally->LodgingPossible2 = htmlspecialchars($_POST['LodgingPossible2']);
     } else {
-         $AddRaceOutsideRally->LodgingPossible2='2020/01/01';
+        $AddRaceOutsideRally->LodgingPossible2 = '2020/01/01';
     }
     if (!empty($_POST['LodgingPossible3'])) {
         $AddRaceOutsideRally->LodgingPossible3 = htmlspecialchars($_POST['LodgingPossible3']);
     } else {
-         $AddRaceOutsideRally->LodgingPossible3='2020/01/01';
+        $AddRaceOutsideRally->LodgingPossible3 = '2020/01/01';
+    }
+    if (!empty($_POST['LodgingPossible4'])) {
+        $AddRaceOutsideRally->LodgingPossible4 = htmlspecialchars($_POST['LodgingPossible4']);
+    } else {
+        $AddRaceOutsideRally->LodgingPossible4 = '2020/01/01';
+    }
+    if (!empty($_POST['LodgingPossible5'])) {
+        $AddRaceOutsideRally->LodgingPossible5 = htmlspecialchars($_POST['LodgingPossible5']);
+    } else {
+        $AddRaceOutsideRally->LodgingPossible5 = '2020/01/01';
     }
     if (count($formError) == 0) {
         $LastIdSportEvent = new SportsEventsModel();
@@ -139,7 +181,7 @@ if (isset($_POST['BtnAddtheCompetition'])) {
                 $CheckAddCompetition = $AddCompetition->AddOutsideCompetition();
                 $LastIDCompetition = new Competiton();
                 $CheckLastIdCompetition = $LastIDCompetition->LastInsertIdCompetition();
-                
+
                 echo 'sportevent ok';
             } else {
                 $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
@@ -149,12 +191,12 @@ if (isset($_POST['BtnAddtheCompetition'])) {
             $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                     . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckLastIdSportEvent';
         }
-        
+
         if ($CheckAddCompetition == true) {
             if ($CheckLastIdCompetition != null) {
-            $AddRaceOutsideRally->IdCompetition=$CheckLastIdCompetition;
-            $CheckAddRaceOutsideRally= $AddRaceOutsideRally->AddRaceOutsideRally();
-            echo 'Check Competition ok ';
+                $AddRaceOutsideRally->IdCompetition = $CheckLastIdCompetition;
+                $CheckAddRaceOutsideRally = $AddRaceOutsideRally->AddRaceOutsideRally();
+                echo 'Check Competition ok ';
             } else {
                 $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                         . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckAddCompetition';
@@ -163,15 +205,14 @@ if (isset($_POST['BtnAddtheCompetition'])) {
             $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                     . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckLastIdCompetition';
         }
-        if($CheckAddRaceOutsideRally== true){
-             header("Location: ChoiceOfCompetition.php");
-        }else {
+        if ($CheckAddRaceOutsideRally == true) {
+            header("Location: ChoiceOfCompetition.php");
+        } else {
             $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                     . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr avec le code erreur CheckAddRaceOutsideRally';
         }
-        
     } else {
-        $ErrorForm='<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+        $ErrorForm = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                 . 'Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
     }
 

@@ -1,10 +1,12 @@
 <?php
-$title='Inscription d\'officel à une compétition';
+
+$title = 'Inscription d\'officel à une compétition';
 $formError = array();
 $RegexTitle = '/^[A-Za-z \d\-àâéèêôùûçÀÂÉÈÔÙÛÇ]+$/';
 $RegexId = '/^\d+$/';
 $RegistrationOfAnOfficialForACompetition = new OfficialRegistrationCompetition();
-$DetailDisplyCompetition= new RaceOutsideRally();
+$DetailDisplyCompetition = new RaceOutsideRally();
+$VerifRegistredOfficial = new OfficialRegistrationCompetition();
 if (isset($_GET['IdSportEvent'])) {
     if (preg_match($RegexId, $_GET['IdSportEvent'])) {
         $IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
@@ -16,11 +18,13 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
         if (preg_match($RegexId, $_GET['IdSportEvent'])) {
             $RegistrationOfAnOfficialForACompetition->IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
             $DetailDisplyCompetition->IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
+            $VerifRegistredOfficial->IdSportEvents= htmlspecialchars($_GET['IdSportEvent']);
         }
     }
     if (!empty($_POST['IdMembers'])) {
         if (preg_match($RegexId, $_POST['IdMembers'])) {
             $RegistrationOfAnOfficialForACompetition->IdMembers = htmlspecialchars($_POST['IdMembers']);
+            $VerifRegistredOfficial->IdMembers = htmlspecialchars($_POST['IdMembers']);
         }
     }
     if (!empty($_POST['Idfunction'])) {
@@ -53,7 +57,8 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
                 . 'Veuillez choisir si vous étes disponible ou non Le premier jour de competition ';
     }
 //Second jour de participation 
-    $CheckDDetailRally = $DetailDisplyCompetition->DIsplayListeRaceOutsideRally();;
+    $CheckDDetailRally = $DetailDisplyCompetition->DIsplayListeRaceOutsideRally();
+    ;
     if ($CheckDDetailRally->RequirementDate2 != "01/01/2020") {
         if (!empty($_POST['RequirementDate2'])) {
             if (preg_match($RegexTitle, $_POST['RequirementDate2'])) {
@@ -114,7 +119,7 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
                     . 'Merci de ne mettre que des caratéres alphabétiques';
         }
     } else {
-         $RegistrationOfAnOfficialForACompetition->ObservationRequestFromOfficial='RAS';
+        $RegistrationOfAnOfficialForACompetition->ObservationRequestFromOfficial = 'RAS';
     }
 //    hebergement 1jour
     if (!empty($_POST['LodgingPossible1'])) {
@@ -135,8 +140,8 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
             $formError['LodgingPossible2'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                     . 'Veuillez choisir si vous étes disponible ou non Le premier jour de competition ';
         }
-    }else {
-        $RegistrationOfAnOfficialForACompetition->NeedAccomodation2  = 'Non concerné';
+    } else {
+        $RegistrationOfAnOfficialForACompetition->NeedAccomodation2 = 'Non concerné';
     }
 //    hebergement 3
     if ($CheckDDetailRally->LodgingPossible3 != "01/01/2020") {
@@ -148,8 +153,8 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
             $formError['LodgingPossible3'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                     . 'Veuillez choisir si vous étes disponible ou non Le premier jour de competition ';
         }
-    }else {
-        $RegistrationOfAnOfficialForACompetition->NeedAccomodation3  = 'Non concerné';
+    } else {
+        $RegistrationOfAnOfficialForACompetition->NeedAccomodation3 = 'Non concerné';
     }
 //    hebergement 4
     if ($CheckDDetailRally->LodgingPossible4 != "01/01/2020") {
@@ -161,8 +166,8 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
             $formError['LodgingPossible4'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                     . 'Veuillez choisir si vous étes disponible ou non Le premier jour de competition ';
         }
-    }else {
-        $RegistrationOfAnOfficialForACompetition->NeedAccomodation4  = 'Non concerné';
+    } else {
+        $RegistrationOfAnOfficialForACompetition->NeedAccomodation4 = 'Non concerné';
     }
 //    hebergement 5
     if ($CheckDDetailRally->LodgingPossible5 != "01/01/2020") {
@@ -174,23 +179,29 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
             $formError['LodgingPossible5'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                     . 'Veuillez choisir si vous étes disponible ou non Le premier jour de competition ';
         }
-    }else {
-        $RegistrationOfAnOfficialForACompetition->NeedAccomodation5  = 'Non concerné';
+    } else {
+        $RegistrationOfAnOfficialForACompetition->NeedAccomodation5 = 'Non concerné';
     }
-    
-     if (count($formError) == 0) {
-         $CheckRegistrationOfAnOfficialForACompetition=$RegistrationOfAnOfficialForACompetition->OfficalRegistrationForCompétition();
-         if( $CheckRegistrationOfAnOfficialForACompetition== true){
-            header("Location: ListOfOpenCompetition.php");
+
+    $CheckVerifRegistredOfficial = $VerifRegistredOfficial->CheckMemberRegistredByCompetition();
+    if ($CheckVerifRegistredOfficial == false) {
+        if (count($formError) == 0) {
+            $CheckRegistrationOfAnOfficialForACompetition = $RegistrationOfAnOfficialForACompetition->OfficalRegistrationForCompétition();
+            if ($CheckRegistrationOfAnOfficialForACompetition == true) {
+                header("Location: ListOfOpenCompetition.php");
             } else {
-          $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
-                  . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
+                $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                        . 'une erreur est survenue, conctater par mail le web master du site dev.gaetan.jonard@outlook.fr';
+            }
+        } else {
+            $ErrorForm = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                    . 'Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
         }
     } else {
-        $ErrorForm='<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
-                . 'Une erreur dans le formulaire est survenue merci de vous référez au(x) champ(s)en rouge';
-     }
+        $ErrorForm = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
+                . 'Vous étes déja inscrit sur la compétition';
+    }
 }
 $DiplayFunction = new functions();
 $DisplayListFunction = $DiplayFunction->ListOfFunction();
-$CheckDetailDisplyCompetition=$DetailDisplyCompetition->DIsplayListeRaceOutsideRally();
+$CheckDetailDisplyCompetition = $DetailDisplyCompetition->DIsplayListeRaceOutsideRally();

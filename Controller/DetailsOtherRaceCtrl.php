@@ -18,7 +18,9 @@ if (isset($_GET['TypeOfCompet'])) {
 if (isset($_GET['IdSportEvent'])) {
       if (preg_match($RegexId, $_GET['IdSportEvent'])) {
           $IdSportEvents= htmlspecialchars($_GET['IdSportEvent']);
-         $DetaiRaceOustidRally->IdSportEvents= htmlspecialchars($_GET['IdSportEvent']);
+         $DetaiRaceOustidRally->IdSportEvents=htmlspecialchars($_GET['IdSportEvent']);
+//                 
       }
 }
-$CheckDetaiRaceOustidRally= $DetaiRaceOustidRally->DIsplayListeRaceOutsideRally();
+$CheckDetaiRaceOustidRally= $DetaiRaceOustidRally->DisplayListeRaceOutsideRally();
+var_dump($DetaiRaceOustidRally);

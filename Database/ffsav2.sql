@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 19 oct. 2020 à 12:36
+-- Généré le : lun. 19 oct. 2020 à 15:46
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -110,11 +110,9 @@ CREATE TABLE `0108asap_competiton` (
 --
 
 INSERT INTO `0108asap_competiton` (`id`, `id_0108asap_categorycompetition`, `id_0108asap_sportsevents`, `id_0108asap_typeofcompetition`, `Open`, `Close`) VALUES
-(1, 1, 1, 1, '1', '0'),
+(1, 2, 1, 1, '1', '0'),
 (2, 2, 2, 2, '1', '0'),
-(3, 2, 3, 4, '1', '0'),
-(4, 1, 4, 5, '1', '0'),
-(5, 1, 5, 1, '1', '0');
+(4, 2, 4, 4, '1', '0');
 
 -- --------------------------------------------------------
 
@@ -264,8 +262,9 @@ CREATE TABLE `0108asap_officialregistrationcompetition` (
 --
 
 INSERT INTO `0108asap_officialregistrationcompetition` (`id`, `Aviable`, `AviableDate1`, `AviableDate2`, `AviableDate3`, `AviableDate4`, `AviableDate5`, `NeedAccomodation1`, `NeedAccomodation2`, `NeedAccomodation3`, `NeedAccomodation4`, `NeedAccomodation5`, `Observation-RequestFromOfficial`, `RegistrationDate`, `id_0108asap_SportEvents`, `id_0108asap_members`, `id_0108asap_function`) VALUES
-(1, 'Oui', 'Oui', 'Oui ', 'Oui ', 'Non concerné', 'Non concerné', 'Oui', 'Non concerné', 'Non concerné', 'Non concerné', 'Non concerné', 'RAS', '2020-10-19 14:26:50', 2, 1, 163),
-(2, 'Oui', 'Oui', 'Non concerné', 'Non concerné', 'Non concerné', 'Non concerné', 'Oui', 'Oui ', 'Non concerné', 'Non concerné', 'Non concerné', 'RAS', '2020-10-19 14:35:27', 4, 1, 163);
+(8, 'Oui', 'Oui', 'Non concerné', 'Non concerné', 'Non concerné', 'Non concerné', 'NON', 'Non concerné', 'Non concerné', 'Non concerné', 'Non concerné', 'RAS', '2020-10-19 15:54:15', 1, 1, 163),
+(11, 'Oui', 'Oui', 'Oui ', 'Oui ', 'Non concerné', 'Non concerné', 'Oui', 'Non concerné', 'Non concerné', 'Non concerné', 'Non concerné', 'RAS', '2020-10-19 16:05:39', 2, 1, 162),
+(12, 'Oui', 'Oui', 'Oui ', 'Oui ', 'Non concerné', 'Non concerné', 'Oui', 'Oui ', 'Non concerné', 'Non concerné', 'Non concerné', 'Hebergement seul', '2020-10-19 17:40:53', 4, 1, 163);
 
 -- --------------------------------------------------------
 
@@ -298,26 +297,26 @@ CREATE TABLE `0108asap_raceoutsiderally` (
   `id` int(11) NOT NULL,
   `ObservationAccommodation` varchar(255) DEFAULT NULL,
   `NumberOfCompetitonDays` int(11) NOT NULL,
-  `RequirementDate1` date DEFAULT NULL,
-  `RequirementDate2` date DEFAULT NULL,
-  `RequirementDate3` date DEFAULT NULL,
+  `RequirementDate1` date DEFAULT '2020-01-01',
+  `RequirementDate2` date DEFAULT '2020-01-01',
+  `RequirementDate3` date DEFAULT '2020-01-01',
   `RequirementDate4` date DEFAULT '2020-01-01',
   `RequirementDate5` date DEFAULT '2020-01-01',
-  `LodgingPossible1` date DEFAULT NULL,
-  `LodgingPossible2` date DEFAULT NULL,
-  `LodgingPossible3` date DEFAULT NULL,
+  `LodgingPossible1` date DEFAULT '2020-01-01',
+  `LodgingPossible2` date DEFAULT '2020-01-01',
+  `LodgingPossible3` date DEFAULT '2020-01-01',
   `LodgingPossible4` date DEFAULT '2020-01-01',
   `LodgingPossible5` date DEFAULT '2020-01-01',
-  `IdCompetition` int(11) NOT NULL
+  `IdCompetition` int(11) NOT NULL,
+  `idSportEvents` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `0108asap_raceoutsiderally`
 --
 
-INSERT INTO `0108asap_raceoutsiderally` (`id`, `ObservationAccommodation`, `NumberOfCompetitonDays`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `RequirementDate4`, `RequirementDate5`, `LodgingPossible1`, `LodgingPossible2`, `LodgingPossible3`, `LodgingPossible4`, `LodgingPossible5`, `IdCompetition`) VALUES
-(1, NULL, 4, '2020-10-23', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-10-23', '2020-01-01', '2020-01-01', '2020-01-01', 3),
-(2, NULL, 2, '2020-10-18', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-10-18', '2020-01-01', '2020-01-01', '2020-01-01', 4);
+INSERT INTO `0108asap_raceoutsiderally` (`id`, `ObservationAccommodation`, `NumberOfCompetitonDays`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `RequirementDate4`, `RequirementDate5`, `LodgingPossible1`, `LodgingPossible2`, `LodgingPossible3`, `LodgingPossible4`, `LodgingPossible5`, `IdCompetition`, `idSportEvents`) VALUES
+(1, 'Ras', 0, '2021-01-01', '2021-01-02', '2021-01-03', '2020-01-01', '2020-01-01', '2021-01-01', '2021-01-02', '2020-01-01', '2020-01-01', '2020-01-01', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -349,9 +348,8 @@ CREATE TABLE `0108asap_rally` (
 --
 
 INSERT INTO `0108asap_rally` (`id`, `NumberOfSteps`, `NumberOfEs`, `NumberOfCompetitonDays`, `ObservationAccommodation`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `RequirementDate4`, `RequirementDate5`, `LodgingPossible1`, `LodgingPossible2`, `LodgingPossible3`, `LodgingPossible4`, `LodgingPossible5`, `id_0108asap_competiton`) VALUES
-(1, 2, 4, 2, 'Pas d herbergement sauf pour les personnes habitant a plus de 250 km', '2020-10-24', '2020-10-25', '2020-01-01', '2020-01-01', '2020-01-01', '2020-10-24', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', 1),
-(2, 2, 12, 2, 'Hebergement le samedi soir', '2020-10-30', '2020-10-31', '2020-11-01', '2020-01-01', '2020-01-01', '2020-10-31', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', 2),
-(3, 2, 4, 1, 'Pas d herbergement sauf pour les personnes habitant a plus de 250 km', '2020-11-14', '2020-11-15', '2020-01-01', '2020-01-01', '2020-01-01', '2020-11-14', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', 5);
+(1, 2, 4, 1, 'Pas d herbergement sauf pour les personnes habitant a plus de 250 km', '2020-10-25', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-10-24', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', 1),
+(2, 2, 12, 2, 'Hebergement le samedi soir', '2020-10-30', '2020-10-31', '2020-11-01', '2020-01-01', '2020-01-01', '2020-10-31', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', 2);
 
 -- --------------------------------------------------------
 
@@ -376,11 +374,9 @@ CREATE TABLE `0108asap_sportsevents` (
 --
 
 INSERT INTO `0108asap_sportsevents` (`id`, `NameOfTheTest`, `Location_Circuit`, `Observation`, `CompetitionStarDay`, `CompetitionEndDay`, `MinimumNumberOfOfficials`, `CreationDate`, `id_0108asap_asa`) VALUES
-(1, 'Le 2 eme Rallye des centurion', 'Bray', 'rallye sur une journée', '2020-10-24', '2020-10-25', '50', '2020-10-12 10:33:04', 11),
-(2, ' Les 7 vallées d artois', 'Auchy les Hesdin', 'Competition sur 2 jours vendredi vérif', '2020-10-30', '2020-11-01', '150', '2020-10-12 10:34:42', 5),
-(3, 'Test ', 'Airaine', 'rallye sur une journée', '2020-10-31', '2020-10-31', '50', '2020-10-12 13:03:23', 3),
-(4, 'Teste gt4 ', 'sdsd', 'rallye sur une journée', '2020-10-15', '2020-10-16', '5', '2020-10-14 11:37:40', 29),
-(5, 'Le Picardie', 'Airaine', 'rallye sur une journée Verif le samedi', '2020-11-14', '2020-11-15', '50', '2020-10-14 12:46:30', 3);
+(1, ' Le 2 eme Rallye des centurion', 'Ville de bray', 'Verif le samedi compet le dimanche', '2020-10-24', '2020-10-25', '50', '2020-10-19 15:36:44', 13),
+(2, 'Les 7 Vallées d Artois', 'Auchy les Hesdin', 'Rallye sur deux jour vérif vendredi', '2020-10-30', '2020-11-01', '150', '2020-10-19 15:40:06', 11),
+(4, 'Rallye Cross d Abbeville', 'Circuit d Abbeville', 'qualif le samedi final le dimanche', '2021-01-01', '2021-01-03', '50', '2020-10-19 16:57:23', 3);
 
 -- --------------------------------------------------------
 
@@ -524,7 +520,7 @@ ALTER TABLE `0108asap_categorycompetition`
 -- AUTO_INCREMENT pour la table `0108asap_competiton`
 --
 ALTER TABLE `0108asap_competiton`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_functions`
@@ -554,7 +550,7 @@ ALTER TABLE `0108asap_membres`
 -- AUTO_INCREMENT pour la table `0108asap_officialregistrationcompetition`
 --
 ALTER TABLE `0108asap_officialregistrationcompetition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_permissiontoaccess`
@@ -566,19 +562,19 @@ ALTER TABLE `0108asap_permissiontoaccess`
 -- AUTO_INCREMENT pour la table `0108asap_raceoutsiderally`
 --
 ALTER TABLE `0108asap_raceoutsiderally`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_rally`
 --
 ALTER TABLE `0108asap_rally`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_sportsevents`
 --
 ALTER TABLE `0108asap_sportsevents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_typeofcompetition`

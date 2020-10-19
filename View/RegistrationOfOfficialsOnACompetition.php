@@ -51,7 +51,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <?php
                             if ($CheckDetailDisplyCompetition->RequirementDate2 != "01/01/2020") {
                                 ?>
-                                <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate2 ?>  :*</label><br>
+                                <label>Etes vous disponible le <?= $CheckDetailDisplyCompetition->RequirementDate2 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate2" id="RequirementDate2">
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Je suis disponible</option>

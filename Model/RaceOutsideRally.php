@@ -15,12 +15,18 @@ class RaceOutsideRally {
 
     public $pdo;
     public $id = 0;
+    public $ObservationAccommodation='';
+    public $NumberOfCompetitonDays=0;
     public $RequirementDate1 = '';
     public $RequirementDate2 = '';
     public $RequirementDate3 = '';
+    public $RequirementDate4 = '';
+    public $RequirementDate5 = '';
     public $LodgingPossible1 = '';
     public $LodgingPossible2 = '';
     public $LodgingPossible3 = '';
+    public $LodgingPossible4 = '';
+    public $LodgingPossible5 = '';
     public $IdCompetition = 0;
     public $IdSportEvents=0;
 
@@ -36,21 +42,29 @@ class RaceOutsideRally {
 
     public function AddRaceOutsideRally() {
         $query = 'INSERT INTO `0108asap_raceoutsiderally`'
-                . '( `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `LodgingPossible1`, `LodgingPossible2`, `LodgingPossible3`, `IdCompetition`)'
+                . '( `ObservationAccommodation`, `NumberOfCompetitonDays`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `RequirementDate4`, `RequirementDate5`, '
+                . '`LodgingPossible1`, `LodgingPossible2`, `LodgingPossible3`, `LodgingPossible4`, `LodgingPossible5`, `IdCompetition`)'
                 . ' VALUES '
-                . '(:RequirementDate1, :RequirementDate2, :RequirementDate3, :LodgingPossible1, :LodgingPossible2, :LodgingPossible3, :IdCompetition)';
+                . '(:ObservationAccommodation, :NumberOfCompetitonDays, :RequirementDate1, :RequirementDate2, :RequirementDate3, :RequirementDate4, :RequirementDate5, '
+                . ':LodgingPossible1, :LodgingPossible2, :LodgingPossible3, :LodgingPossible4, :LodgingPossible5, :IdCompetition)';
         $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':ObservationAccommodation', $this->ObservationAccommodation, PDO::PARAM_STR);
+        $queryResult->bindValue(':NumberOfCompetitonDays', $this->NumberOfCompetitonDays, PDO::PARAM_INT);
         $queryResult->bindValue(':RequirementDate1', $this->RequirementDate1, PDO::PARAM_STR);
         $queryResult->bindValue(':RequirementDate2', $this->RequirementDate2, PDO::PARAM_STR);
         $queryResult->bindValue(':RequirementDate3', $this->RequirementDate3, PDO::PARAM_STR);
-        $queryResult->bindValue(':LodgingPossible1', $this->LodgingPossible2, PDO::PARAM_STR);
-        $queryResult->bindValue(':LodgingPossible2', $this->RequirementDate1, PDO::PARAM_STR);
+        $queryResult->bindValue(':RequirementDate4', $this->RequirementDate4, PDO::PARAM_STR);
+        $queryResult->bindValue(':RequirementDate5', $this->RequirementDate5, PDO::PARAM_STR);
+        $queryResult->bindValue(':LodgingPossible1', $this->LodgingPossible1, PDO::PARAM_STR);
+        $queryResult->bindValue(':LodgingPossible2', $this->RequirementDate2, PDO::PARAM_STR);
         $queryResult->bindValue(':LodgingPossible3', $this->LodgingPossible3, PDO::PARAM_STR);
+        $queryResult->bindValue(':LodgingPossible4', $this->RequirementDate4, PDO::PARAM_STR);
+        $queryResult->bindValue(':LodgingPossible5', $this->LodgingPossible5, PDO::PARAM_STR);
         $queryResult->bindValue(':IdCompetition', $this->IdCompetition, PDO::PARAM_INT);
         return $queryResult->execute();
     }
 
-    public function DIsplayListeRaceOutsideRally() {
+    public function DisplayListeRaceOutsideRally() {
         $query = 'SELECT `0108asap_raceoutsiderally`.`id` AS `IdRaceOustideRally`, `0108asap_raceoutsiderally`.`ObservationAccommodation`, '
                 . '`0108asap_typeofcompetition`.`id` AS `IdTyoeCompetition`, `0108asap_asa`.`NumberAsa`, `0108asap_raceoutsiderally`.`NumberOfCompetitonDays`, '
                 . '`0108asap_typeofcompetition`.`TypeOfCompetiton`, `0108asap_categorycompetition`.`id` AS `IdCategoryCompet` ,'
@@ -83,7 +97,7 @@ class RaceOutsideRally {
                 . 'ON `0108asap_asa`.`id`= `0108asap_sportsevents`.`id_0108asap_asa`  '
                 . 'INNER JOIN `0108asap_league` '
                 . 'ON `0108asap_league`.`id`= `0108asap_asa`.`id_0108asap_League` '
-                . 'WHERE `0108asap_sportsevents`.`id`=:IdSportEvents && `0108asap_competiton`.`Open`=1';
+                . 'WHERE `0108asap_sportsevents`.`id`=:IdSportEvents ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':IdSportEvents', $this->IdSportEvents, PDO::PARAM_INT);
         $queryResult->execute();
