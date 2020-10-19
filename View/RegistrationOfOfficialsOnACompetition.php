@@ -1,9 +1,9 @@
 <?php
 include_once '../Config.php';
-include_once '../Controller/RegistrationOfOfficialsOnARallyCtrl.php';
+include_once '../Controller/RegistrationOfOfficialsOnACompetitionCtrl.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
-if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
+if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Function)) {
     ?>
     <div class="container-fluid">
         <div class="row">
@@ -11,7 +11,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
 
             </div>
             <div class="col-lg-6 ">
-                <h1>Vous souhaitez vous inscrire sur le <?= $CheckDDetailRally->TypeOfCompetiton ?> <?= $CheckDDetailRally->NameOfTheTest ?>  </h1>
+                <h1>Vous souhaitez vous inscrire sur le <?= $CheckDetailDisplyCompetition->TypeOfCompetiton ?> <?= $CheckDetailDisplyCompetition->NameOfTheTest ?>  </h1>
             </div>
             <div class="col-lg-3">
                 <div>
@@ -21,9 +21,11 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
+                <?php
+                ?>
             </div>
-            <div class="col-lg-6 centralColumm"> 
-                <div>
+            <div class="col-lg-6 centralColumm">
+  <div>
                     <p class="text-danger"><?= isset($ErrorForm) ? $ErrorForm : '' ?></p>
                     <p class="text-danger"><?= isset($formError['Technical']) ? $formError['Technical'] : '' ?></p>
                 </div>
@@ -38,7 +40,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p class="text-danger"><?= isset($formError['Availability']) ? $formError['Availability'] : '' ?></p>
                         </div>
                         <div>
-                            <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate1 ?>  :*</label><br>
+                            <label>Etes vous disponible le <?= $CheckDetailDisplyCompetition->RequirementDate1 ?>  :*</label><br>
                             <select class="custom-select custom-select-sm" name="RequirementDate1" id="RequirementDate1">
                                 <option selected="" value="0">Choissez dans la liste suivante </option>
                                 <option value="Oui "> Je suis disponible</option>
@@ -47,7 +49,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </div>
                         <div>  
                             <?php
-                            if ($CheckDDetailRally->RequirementDate2 != "01/01/2020") {
+                            if ($CheckDetailDisplyCompetition->RequirementDate2 != "01/01/2020") {
                                 ?>
                                 <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate2 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate2" id="RequirementDate2">
@@ -61,9 +63,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </div>
                         <div>  
                             <?php
-                            if ($CheckDDetailRally->RequirementDate3 != "01/01/2020") {
+                            if ($CheckDetailDisplyCompetition->RequirementDate3 != "01/01/2020") {
                                 ?>
-                                <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate3 ?>  :*</label><br>
+                                <label>Etes vous disponible le <?= $CheckDetailDisplyCompetition->RequirementDate3 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate3" id="RequirementDate3">
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Je suis disponible</option>
@@ -75,9 +77,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </div>
                         <div>   
                             <?php
-                            if ($CheckDDetailRally->RequirementDate4 != "01/01/2020") {
+                            if ($CheckDetailDisplyCompetition->RequirementDate4 != "01/01/2020") {
                                 ?>
-                                <label>Etes vous disponible le <?= $CheckDDetailRally->RequirementDate4 ?>  :*</label><br>
+                                <label>Etes vous disponible le <?= $CheckDetailDisplyCompetition->RequirementDate4 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate4" id="RequirementDate4">
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Je suis disponible</option>
@@ -89,9 +91,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </div>
                         <div> 
                             <?php
-                            if ($CheckDDetailRally->RequirementDate5 != "01/01/2020") {
+                            if ($CheckDetailDisplyCompetition->RequirementDate5 != "01/01/2020") {
                                 ?>
-                                <label>Etes vous disponible le  <?= $CheckDDetailRally->RequirementDate5 ?>  :*</label><br>
+                                <label>Etes vous disponible le  <?= $CheckDetailDisplyCompetition->RequirementDate5 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="RequirementDate5" id="RequirementDate5">
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Je suis disponible</option>
@@ -101,9 +103,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             }
                             ?>
                         </div>
-                        <div> <?= $CheckDDetailRally->ObservationAccommodation ?></div>
+                        <div> <?= $CheckDetailDisplyCompetition->ObservationAccommodation ?></div>
                         <div>   
-                            <label>Avez vous besoin d'un hébergement le  <?= $CheckDDetailRally->LodgingPossible1 ?>  :*</label><br>
+                            <label>Avez vous besoin d'un hébergement le  <?= $CheckDetailDisplyCompetition->LodgingPossible1 ?>  :*</label><br>
                             <select class="custom-select custom-select-sm" name="LodgingPossible1" id="LodgingPossible1">
                                 <option selected="" value="0">Choissez dans la liste suivante </option>
                                 <option value="Oui "> Oui Il me faut un hébergement</option>
@@ -113,9 +115,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </div>
                         <div> 
                             <?php
-                            if ($CheckDDetailRally->LodgingPossible2 != "01/01/2020") {
+                            if ($CheckDetailDisplyCompetition->LodgingPossible2 != "01/01/2020") {
                                 ?>
-                                <label>Etes vous disponible le  <?= $CheckDDetailRally->LodgingPossible2 ?>  :*</label><br>
+                                <label>Etes vous disponible le  <?= $CheckDetailDisplyCompetition->LodgingPossible2 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="LodgingPossible2" id="LodgingPossible2">
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Oui Il me faut un hébergement</option>
@@ -128,9 +130,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </div>
                         <div> 
                             <?php
-                            if ($CheckDDetailRally->LodgingPossible3 != "01/01/2020") {
+                            if ($CheckDetailDisplyCompetition->LodgingPossible3 != "01/01/2020") {
                                 ?>
-                                <label>Etes vous disponible le  <?= $CheckDDetailRally->LodgingPossible3 ?>  :*</label><br>
+                                <label>Etes vous disponible le  <?= $CheckDetailDisplyCompetition->LodgingPossible3 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="LodgingPossible3" id="LodgingPossible3">
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Oui Il me faut un hébergement</option>
@@ -143,9 +145,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </div>
                         <div> 
                             <?php
-                            if ($CheckDDetailRally->LodgingPossible4 != "01/01/2020") {
+                            if ($CheckDetailDisplyCompetition->LodgingPossible4 != "01/01/2020") {
                                 ?>
-                                <label>Etes vous disponible le  <?= $CheckDDetailRally->LodgingPossible4 ?>  :*</label><br>
+                                <label>Etes vous disponible le  <?= $CheckDetailDisplyCompetition->LodgingPossible4 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="LodgingPossible4" id="LodgingPossible4">
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Oui Il me faut un hébergement</option>
@@ -158,9 +160,9 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                         </div>
                         <div> 
                             <?php
-                            if ($CheckDDetailRally->LodgingPossible2 != "01/01/2020") {
+                            if ($CheckDetailDisplyCompetition->LodgingPossible2 != "01/01/2020") {
                                 ?>
-                                <label>Etes vous disponible le  <?= $CheckDDetailRally->LodgingPossible2 ?>  :*</label><br>
+                                <label>Etes vous disponible le  <?= $CheckDetailDisplyCompetition->LodgingPossible2 ?>  :*</label><br>
                                 <select class="custom-select custom-select-sm" name="LodgingPossible2" id="LodgingPossible2">
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <option value="Oui "> Oui Il me faut un hébergement</option>

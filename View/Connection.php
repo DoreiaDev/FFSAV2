@@ -22,14 +22,15 @@ include_once '../Include/Navbar.php';
         </div>
         <div class="col-lg-6 centralColumm">
             <div>
+                <p class="text-danger"><?= isset($UserNotRegistred) ? $UserNotRegistred : '' ?></p>
+                <p class="text-danger"><?= isset($formError['Technical']) ? $formError['Technical'] : '' ?></p>
+            </div>
+            <div>
                 <p class="text-danger"><?= isset($formError['MeessageMemberExist']) ? $formError['MeessageMemberExist'] : '' ?></p>
             </div>
             <div class="<?= $Connection ?>" id="Connection">
                 <h2>Formulaire de connexion</h2>
-                <div>
-                    <p class="text-danger"><?= isset($UserNotRegistred) ? $UserNotRegistred : '' ?></p>
-                    <p class="text-danger"><?= isset($formError['Technical']) ? $formError['Technical'] : '' ?></p>
-                </div>
+
                 <form method="post" id="ConnexionForm">
                     <div>
                         <label for="LoginMailUser" > Votre Mail :</label>
@@ -98,6 +99,11 @@ include_once '../Include/Navbar.php';
                         <input id="City" type="text" name="City" value="<?= isset($_POST['City']) ? $_POST['City'] : '' ?>" />
                         <p class="text-danger" id="ErrorCity"><?= isset($formError['City']) ? $formError['City'] : '' ?></p>
                     </div>
+                    <div>
+                        <label for="PhonNumber">Votre numéro de téléphone</label>
+                        <input type="text" name="PhonNumber" value="<?= isset($_POST['PhonNumber']) ? $_POST['PhonNumber'] : '' ?>" id="PhonNumber"/>
+                        <p class="text-danger" id="ErrorPhonNumber"><?= isset($formError['PhonNumber']) ? $formError['PhonNumber'] : '' ?></p>
+                    </div>
                     <div>  
                         <label for="PasswordUser"> Votre mot de passe :</label> 
                         <input id="PasswordUser" type="password" name="PasswordUser" />
@@ -115,7 +121,7 @@ include_once '../Include/Navbar.php';
                     </div>
                     <div>
                         <label>Sélectionnez Votre ASA dans la liste suivante dans la liste suivante :*</label><br>
-                        <select class="custom-select custom-select-sm" name="AsaName" id="TypeOfLicence">
+                        <select class="custom-select custom-select-sm" name="AsaName" id="AsaNames">
                             <option selected="">Choissez dans la liste suivante </option>
                             <?php
                             foreach ($DiplayListOfAsa as $ListOfAsa) {

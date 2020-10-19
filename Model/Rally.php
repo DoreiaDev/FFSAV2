@@ -109,7 +109,7 @@ class Rally {
                 . 'ON `0108asap_asa`.`id`= `0108asap_sportsevents`.`id_0108asap_asa` '
                 . 'INNER JOIN `0108asap_league` '
                 . 'ON `0108asap_league`.`id`= `0108asap_asa`.`id_0108asap_League`'
-                . 'WHERE `0108asap_sportsevents`.`id`=:IdSportEvents';
+                . 'WHERE `0108asap_sportsevents`.`id`=:IdSportEvents && `0108asap_competiton`.`Open`=1';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':IdSportEvents', $this->IdSportEvents, PDO::PARAM_INT);
         $queryResult->execute();

@@ -1,22 +1,21 @@
 <?php
-
-$title = 'Inscritption sur un rallye';
+$title='Inscription d\'officel à une compétition';
 $formError = array();
 $RegexTitle = '/^[A-Za-z \d\-àâéèêôùûçÀÂÉÈÔÙÛÇ]+$/';
 $RegexId = '/^\d+$/';
-$DetailDisplayRally = new Rally();
 $RegistrationOfAnOfficialForACompetition = new OfficialRegistrationCompetition();
+$DetailDisplyCompetition= new RaceOutsideRally();
 if (isset($_GET['IdSportEvent'])) {
     if (preg_match($RegexId, $_GET['IdSportEvent'])) {
         $IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
-        $DetailDisplayRally->IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
+        $DetailDisplyCompetition->IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
     }
 }
 if (isset($_POST['BtnRegistrationOfOfficial'])) {
     if (isset($_GET['IdSportEvent'])) {
         if (preg_match($RegexId, $_GET['IdSportEvent'])) {
-//            $RegistrationOfAnOfficialForACompetition->IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
-            $DetailDisplayRally->IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
+            $RegistrationOfAnOfficialForACompetition->IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
+            $DetailDisplyCompetition->IdSportEvents = htmlspecialchars($_GET['IdSportEvent']);
         }
     }
     if (!empty($_POST['IdMembers'])) {
@@ -54,7 +53,7 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
                 . 'Veuillez choisir si vous étes disponible ou non Le premier jour de competition ';
     }
 //Second jour de participation 
-$CheckDDetailRally = $DetailDisplayRally->DisplayRegistrationOfficial();
+    $CheckDDetailRally = $DetailDisplyCompetition->DIsplayListeRaceOutsideRally();;
     if ($CheckDDetailRally->RequirementDate2 != "01/01/2020") {
         if (!empty($_POST['RequirementDate2'])) {
             if (preg_match($RegexTitle, $_POST['RequirementDate2'])) {
@@ -194,4 +193,4 @@ $CheckDDetailRally = $DetailDisplayRally->DisplayRegistrationOfficial();
 }
 $DiplayFunction = new functions();
 $DisplayListFunction = $DiplayFunction->ListOfFunction();
-$CheckDDetailRally = $DetailDisplayRally->DisplayRegistrationOfficial();
+$CheckDetailDisplyCompetition=$DetailDisplyCompetition->DIsplayListeRaceOutsideRally();

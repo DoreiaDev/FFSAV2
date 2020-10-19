@@ -74,7 +74,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <?php
                                         } else {
                                             ?>
-                                            <td><a href="DetailsOtherRace.php?IdSportEvent=<?= $DisplayRally->IdSportEvents ?>&NameTest=<?= $DisplayRally->NameOfTheTest ?>&TypeOfCompet=<?= $DisplayRally->TypeOfCompetiton ?><">ICI</a></td>
+                                            <td><a href="DetailsOtherRace.php?IdSportEvent=<?= $DisplayRally->IdSportEvents ?>&NameTest=<?= $DisplayRally->NameOfTheTest ?>&TypeOfCompet=<?= $DisplayRally->TypeOfCompetiton ?>">ICI</a></td>
                                             <?php
                                         }
                                         ?>
@@ -99,7 +99,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <?php
                                         } else {
                                             ?>
-                                            <td><a href="DetailsOtherRace.php?IdSportEvent=<?= $DisplayRally->IdSportEvents ?>&NameTest=<?= $DisplayRally->NameOfTheTest ?>&TypeOfCompet=<?= $DisplayRally->TypeOfCompetiton ?><">ICI</a></td>
+                                            <td><a href="DetailsOtherRace.php?IdSportEvent=<?= $DisplayRally->IdSportEvents ?>&NameTest=<?= $DisplayRally->NameOfTheTest ?>&TypeOfCompet=<?= $DisplayRally->TypeOfCompetiton ?>">ICI</a></td>
                                             <?php
                                         }
                                         ?>
@@ -124,7 +124,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     <?php
                                 } else {
                                     ?>
-                                    <td><a href="DetailsOtherRace?IdSportEvent=<?= $DisplayRally->IdSportEvents ?>&NameTest=<?= $DisplayRally->NameOfTheTest ?>&TypeOfCompet=<?= $DisplayRally->TypeOfCompetiton ?><">ICI</a></td>
+                                    <td><a href="DetailsOtherRace?IdSportEvent=<?= $DisplayRally->IdSportEvents ?>&NameTest=<?= $DisplayRally->NameOfTheTest ?>&TypeOfCompet=<?= $DisplayRally->TypeOfCompetiton ?>">ICI</a></td>
                                     <?php
                                 }
                                 ?>
@@ -149,7 +149,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <?php
                                         } else {
                                             ?>
-                                            <td><a href="DetailsOtherRace.php?IdSportEvent=<?= $DisplayRally->IdSportEvents ?>&NameTest=<?= $DisplayRally->NameOfTheTest ?>&TypeOfCompet=<?= $DisplayRally->TypeOfCompetiton ?><">ICI</a></td>
+                                            <td><a href="DetailsOtherRace.php?IdSportEvent=<?= $DisplayRally->IdSportEvents ?>&NameTest=<?= $DisplayRally->NameOfTheTest ?>&TypeOfCompet=<?= $DisplayRally->TypeOfCompetiton ?>">ICI</a></td>
                                             <?php
                                         }
                                         ?>

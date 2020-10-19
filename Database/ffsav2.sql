@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 16 oct. 2020 à 14:26
+-- Généré le : lun. 19 oct. 2020 à 12:36
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -165,7 +165,9 @@ CREATE TABLE `0108asap_functionsummary` (
 
 INSERT INTO `0108asap_functionsummary` (`id`, `LicenceNumber`, `id_0108asap_member`, `id_0108asap_function`, `LicencePrimary`) VALUES
 (3, '249498', 1, 160, 1),
-(5, '235620', 4, 160, 1);
+(5, '235620', 4, 160, 1),
+(10, '249498', 6, 163, 1),
+(12, '0', 7, 160, 1);
 
 -- --------------------------------------------------------
 
@@ -217,16 +219,19 @@ CREATE TABLE `0108asap_membres` (
   `ZipCode` varchar(5) DEFAULT NULL,
   `City` varchar(250) DEFAULT NULL,
   `PhonNumber` varchar(15) DEFAULT NULL,
-  `id_0108asap_asa` int(11) DEFAULT NULL
+  `id_0108asap_asa` int(11) DEFAULT NULL,
+  `DateOfRegistred` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `0108asap_membres`
 --
 
-INSERT INTO `0108asap_membres` (`id`, `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `PhonNumber`, `id_0108asap_asa`) VALUES
-(1, 'Jonard', 'Gaetan', 'dev.gaetan.jonard@outlook.fr', 0x2432792431302439623773696e343770454c35744642335454475050753538673873666c6e51344e6876537a6e73696a38424e47733170472f553479, 'rRPBOFCuh1J5UNPBGk7ce8bROSkBZIS7saKAGJlK1601907390LeBAmhVUuxAD0CtTBBXHw4KQAlLAi8HNkbgzQn3Sh4JRA6JdJx', 'true', 'APT 31 26 parc des clairs Logis', '80290', 'Poix de Picardie   ', '06/14/59/37/45', 3),
-(4, 'Langry', 'Wilfried', 'wlangry@aoomuki.com', 0x24327924313024476a3433336e304b704f636748345370776c5235572e46367a7947746b736553784b3230455a4445707070653833626e572f516f47, 'kYi4avxlv4RC9hC1601890054kYi4avxlv4RC9hC', 'true', '9 rue Jean Racine', '02270', 'Couvron et Aumencourt', '', 4);
+INSERT INTO `0108asap_membres` (`id`, `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `PhonNumber`, `id_0108asap_asa`, `DateOfRegistred`) VALUES
+(1, 'Jonard', 'Gaetan', 'dev.gaetan.jonard@outlook.fr', 0x2432792431302439623773696e343770454c35744642335454475050753538673873666c6e51344e6876537a6e73696a38424e47733170472f553479, 'rRPBOFCuh1J5UNPBGk7ce8bROSkBZIS7saKAGJlK1601907390LeBAmhVUuxAD0CtTBBXHw4KQAlLAi8HNkbgzQn3Sh4JRA6JdJx', 'true', 'APT 31 26 parc des clairs Logis', '80290', 'Poix de Picardie   ', '06/14/59/37/45', 3, '2020-10-18 12:40:39'),
+(4, 'Langry', 'Wilfried', 'wlangry@aoomuki.com', 0x24327924313024476a3433336e304b704f636748345370776c5235572e46367a7947746b736553784b3230455a4445707070653833626e572f516f47, 'kYi4avxlv4RC9hC1601890054kYi4avxlv4RC9hC', 'true', '9 rue Jean Racine', '02270', 'Couvron et Aumencourt', '', 4, '2020-10-18 12:40:39'),
+(6, 'Jonard', 'Gaetan', 'gaetan.jonard@outlook.fr', 0x24327924313024364f7a643958723234445373574d6b733235494159756853364d36554f2f702e4646507846583451724945684d4737615254425532, 'Cg@FJxq84HV@n5G1603106066Cg@FJxq84HV@n5G', 'true', 'APT 31 26 parc des clairs Logis', '80290', 'Poix de Picardi', '0614593745', 3, '2020-10-19 13:14:26'),
+(7, 'testazer', 'testazer', 'test@gmail.com', 0x243279243130242e49532f5537767a66383757715a412f53635130322e2f4b306936657168513170776b485242586e77354969444233517176627543, '1PWonJCIq2mcXX316031064571PWonJCIq2mcXX3', 'true', '105 rue des blablas', '06000', 'nice', '0845621258', 3, '2020-10-19 13:20:57');
 
 -- --------------------------------------------------------
 
@@ -238,20 +243,29 @@ CREATE TABLE `0108asap_officialregistrationcompetition` (
   `id` int(11) NOT NULL,
   `Aviable` varchar(3) DEFAULT 'Oui',
   `AviableDate1` varchar(3) DEFAULT 'NON',
-  `AviableDate2` varchar(3) DEFAULT 'NON',
-  `AviableDate3` varchar(3) DEFAULT 'NON',
-  `AviableDate4` varchar(3) DEFAULT 'NON',
-  `AviableDate5` varchar(3) DEFAULT 'NON',
+  `AviableDate2` varchar(30) DEFAULT 'NON',
+  `AviableDate3` varchar(30) DEFAULT 'NON',
+  `AviableDate4` varchar(30) DEFAULT 'NON',
+  `AviableDate5` varchar(30) DEFAULT 'NON',
   `NeedAccomodation1` varchar(3) DEFAULT 'NON',
-  `NeedAccomodation2` varchar(3) DEFAULT 'NON',
-  `NeedAccomodation3` varchar(3) DEFAULT 'NON',
-  `NeedAccomodation4` varchar(3) DEFAULT 'NON',
-  `NeedAccomodation5` varchar(3) DEFAULT 'NON',
+  `NeedAccomodation2` varchar(30) DEFAULT 'NON',
+  `NeedAccomodation3` varchar(30) DEFAULT 'NON',
+  `NeedAccomodation4` varchar(30) DEFAULT 'NON',
+  `NeedAccomodation5` varchar(30) DEFAULT 'NON',
   `Observation-RequestFromOfficial` varchar(255) DEFAULT NULL,
+  `RegistrationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_0108asap_SportEvents` int(11) NOT NULL,
   `id_0108asap_members` int(11) NOT NULL,
   `id_0108asap_function` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `0108asap_officialregistrationcompetition`
+--
+
+INSERT INTO `0108asap_officialregistrationcompetition` (`id`, `Aviable`, `AviableDate1`, `AviableDate2`, `AviableDate3`, `AviableDate4`, `AviableDate5`, `NeedAccomodation1`, `NeedAccomodation2`, `NeedAccomodation3`, `NeedAccomodation4`, `NeedAccomodation5`, `Observation-RequestFromOfficial`, `RegistrationDate`, `id_0108asap_SportEvents`, `id_0108asap_members`, `id_0108asap_function`) VALUES
+(1, 'Oui', 'Oui', 'Oui ', 'Oui ', 'Non concerné', 'Non concerné', 'Oui', 'Non concerné', 'Non concerné', 'Non concerné', 'Non concerné', 'RAS', '2020-10-19 14:26:50', 2, 1, 163),
+(2, 'Oui', 'Oui', 'Non concerné', 'Non concerné', 'Non concerné', 'Non concerné', 'Oui', 'Oui ', 'Non concerné', 'Non concerné', 'Non concerné', 'RAS', '2020-10-19 14:35:27', 4, 1, 163);
 
 -- --------------------------------------------------------
 
@@ -282,12 +296,18 @@ INSERT INTO `0108asap_permissiontoaccess` (`id`, `TypeOfAcces`) VALUES
 
 CREATE TABLE `0108asap_raceoutsiderally` (
   `id` int(11) NOT NULL,
+  `ObservationAccommodation` varchar(255) DEFAULT NULL,
+  `NumberOfCompetitonDays` int(11) NOT NULL,
   `RequirementDate1` date DEFAULT NULL,
   `RequirementDate2` date DEFAULT NULL,
   `RequirementDate3` date DEFAULT NULL,
+  `RequirementDate4` date DEFAULT '2020-01-01',
+  `RequirementDate5` date DEFAULT '2020-01-01',
   `LodgingPossible1` date DEFAULT NULL,
   `LodgingPossible2` date DEFAULT NULL,
   `LodgingPossible3` date DEFAULT NULL,
+  `LodgingPossible4` date DEFAULT '2020-01-01',
+  `LodgingPossible5` date DEFAULT '2020-01-01',
   `IdCompetition` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -295,9 +315,9 @@ CREATE TABLE `0108asap_raceoutsiderally` (
 -- Déchargement des données de la table `0108asap_raceoutsiderally`
 --
 
-INSERT INTO `0108asap_raceoutsiderally` (`id`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `LodgingPossible1`, `LodgingPossible2`, `LodgingPossible3`, `IdCompetition`) VALUES
-(1, '2020-10-23', '2020-01-01', '2020-01-01', '2020-01-01', '2020-10-23', '2020-01-01', 3),
-(2, '2020-10-18', '2020-01-01', '2020-01-01', '2020-01-01', '2020-10-18', '2020-01-01', 4);
+INSERT INTO `0108asap_raceoutsiderally` (`id`, `ObservationAccommodation`, `NumberOfCompetitonDays`, `RequirementDate1`, `RequirementDate2`, `RequirementDate3`, `RequirementDate4`, `RequirementDate5`, `LodgingPossible1`, `LodgingPossible2`, `LodgingPossible3`, `LodgingPossible4`, `LodgingPossible5`, `IdCompetition`) VALUES
+(1, NULL, 4, '2020-10-23', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-10-23', '2020-01-01', '2020-01-01', '2020-01-01', 3),
+(2, NULL, 2, '2020-10-18', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-01-01', '2020-10-18', '2020-01-01', '2020-01-01', '2020-01-01', 4);
 
 -- --------------------------------------------------------
 
@@ -516,7 +536,7 @@ ALTER TABLE `0108asap_functions`
 -- AUTO_INCREMENT pour la table `0108asap_functionsummary`
 --
 ALTER TABLE `0108asap_functionsummary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_league`
@@ -528,7 +548,7 @@ ALTER TABLE `0108asap_league`
 -- AUTO_INCREMENT pour la table `0108asap_membres`
 --
 ALTER TABLE `0108asap_membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `0108asap_officialregistrationcompetition`

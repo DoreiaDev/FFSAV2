@@ -17,11 +17,9 @@ class membres {
     public $Address = '';
     public $ZipCode = '0';
     public $City = '';
-    public $AsaName = 0;
     public $Actif = false;
-    public $id_0108asap_functions = 0;
-    public $PliotID = 0;
-    public $TypeOfLicence = '';
+    public $id_0108asap_asa = 0;
+    public $PhonNumber = '';
 
     public function __construct() {
 //fonction de connexion a ma base de donnéer 
@@ -38,8 +36,8 @@ class membres {
     }
 
     public function newMember() {
-        $query = 'INSERT INTO `0108asap_membres`( `Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `id_0108asap_asa `) '
-                . 'VALUES (:Name, :Firstname, :Email, :Password, :Cle, :Actif, :Address, :ZipCode, :City, :id_0108asap_asa )';
+        $query = 'INSERT INTO `0108asap_membres`(`Name`, `Firstname`, `Email`, `Password`, `Cle`, `Actif`, `Address`, `ZipCode`, `City`, `PhonNumber`, `id_0108asap_asa`) '
+                . 'VALUES (:Name, :Firstname, :Email, :Password, :Cle, :Actif, :Address, :ZipCode, :City, :PhonNumber, :id_0108asap_asa )';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':Name', $this->Name, PDO::PARAM_STR);
         $queryResult->bindValue(':Firstname', $this->Firstname, PDO::PARAM_STR);
@@ -50,11 +48,12 @@ class membres {
         $queryResult->bindValue(':Address', $this->Address, PDO::PARAM_STR);
         $queryResult->bindValue(':ZipCode', $this->ZipCode, PDO::PARAM_STR);
         $queryResult->bindValue(':City', $this->City, PDO::PARAM_STR);
-        $queryResult->bindValue(':id_0108asap_asa ', $this->id_0108asap_asa , PDO::PARAM_INT);
-        //  //permet d'afficher la reguette excuter
+        $queryResult->bindValue(':PhonNumber', $this->PhonNumber, PDO::PARAM_STR);
+        $queryResult->bindValue(':id_0108asap_asa', $this->id_0108asap_asa, PDO::PARAM_INT);
+        //permet d'afficher la reguette excuter
 //          $queryResult->debugDumpParams();
 //    die();
-        //execution de la requette préparer:
+////        execution de la requette préparer:
         return $queryResult->execute();
     }
 
