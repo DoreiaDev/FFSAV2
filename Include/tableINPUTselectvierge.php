@@ -47,6 +47,10 @@
                                 <option value="NON"> Je suis indisponible</option> </select>
                             <p class="text-danger"><?= isset($formError['Availability']) ? $formError['Availability'] : '' ?></p>
                         </div>
+<div>
+                    <p class="text-danger"><?= isset($ErrorForm) ? $ErrorForm : '' ?></p>
+                    <p class="text-danger"><?= isset($formError['Technical']) ? $formError['Technical'] : '' ?></p>
+                </div>
 <!--------------------------------------------------------->
 <?php
 // controler avec message d'erreur vide ac regexText et icone

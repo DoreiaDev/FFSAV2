@@ -15,7 +15,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="MyProfiles.php">Mon profil</a>
-                        <!--<a class="dropdown-item" href="AddLicense.php">License complémentaire</a>-->
+                        <a class="dropdown-item" href="AddALicence.php">License complémentaire</a>
                         <!--<a class="dropdown-item" href="#">Something else here</a>-->
                     </div>
                 </li>

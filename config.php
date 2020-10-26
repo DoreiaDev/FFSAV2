@@ -20,9 +20,9 @@ $Function=array( 55,259,356,405);
 $Responsible=array(259,356,405);
 $Admin=array(259);
 $PresidentOfAsa=array(259,405);
-$Official=array(55);
-$OfficialOfManager=array(356);
-$President=array(259);
+$Official=array(55, 259);
+$OfficialOfManager=array(356, 259);
+$President=array(405, 259);
 
 
 
