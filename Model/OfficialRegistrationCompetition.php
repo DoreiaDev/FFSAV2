@@ -72,11 +72,12 @@ class OfficialRegistrationCompetition {
 //        die();
         return $queryResult->execute();
     }
-public function CheckMemberRegistredByCompetition(){
-    $query='SELECT `0108asap_officialregistrationcompetition`.`id`, '
-            . '`0108asap_officialregistrationcompetition`.`id_0108asap_members` '
-            . 'FROM `0108asap_officialregistrationcompetition` '
-            . 'WHERE `id_0108asap_members`=:IdMembers && `id_0108asap_SportEvents`=:IdSportEvents ';
+
+    public function CheckMemberRegistredByCompetition() {
+        $query = 'SELECT `0108asap_officialregistrationcompetition`.`id`, '
+                . '`0108asap_officialregistrationcompetition`.`id_0108asap_members` '
+                . 'FROM `0108asap_officialregistrationcompetition` '
+                . 'WHERE `id_0108asap_members`=:IdMembers && `id_0108asap_SportEvents`=:IdSportEvents ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':IdMembers', $this->IdMembers, PDO::PARAM_INT);
         $queryResult->bindValue(':IdSportEvents', $this->IdSportEvents, PDO::PARAM_INT);
@@ -88,5 +89,61 @@ public function CheckMemberRegistredByCompetition(){
         } else {
             return false;
         }
-}
+    }
+
+    public function ListOfCompetitionByOfficials() {
+        $query = ''
+                . 'WHERE `id_0108asap_members`=IdMembers';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':IdMembers', $this->IdMembers, PDO::PARAM_INT);
+        return $queryResult->execute();
+    }
+
+    public function ListCompetitionByOfficial() {
+        $query = 'SELECT `0108asap_officialregistrationcompetition`.`id` AS `idOfficialRegistrationCompetition`,'
+                . '`0108asap_officialregistrationcompetition`.`Observation-RequestFromOfficial`, `RegistrationDate`, '
+                . '`0108asap_officialregistrationcompetition`.`id_0108asap_SportEvents`,   `0108asap_sportsevents`.`NameOfTheTest`, '
+                . '`0108asap_sportsevents`.`Location_Circuit`, `0108asap_sportsevents`.`Observation`, `0108asap_sportsevents`.`CompetitionStarDay`, '
+                . '`0108asap_sportsevents`.`CompetitionEndDay`, `0108asap_sportsevents`.`MinimumNumberOfOfficials`, '
+                . '`0108asap_officialregistrationcompetition`.`id_0108asap_members` AS `IdMemberCompetition`, '
+                . '`0108asap_typeofcompetition`.`TypeOfCompetiton`, '
+                . '`0108asap_officialregistrationcompetition`.`Aviable` '
+                . 'FROM `0108asap_officialregistrationcompetition` '
+                . 'INNER JOIN `0108asap_sportsevents`'
+                . ' ON `0108asap_sportsevents`.`id`=`0108asap_officialregistrationcompetition`.`id_0108asap_SportEvents` '
+                . 'INNER JOIN `0108asap_competiton`'
+                . ' ON `0108asap_competiton`.`id_0108asap_sportsevents` = `0108asap_sportsevents`.`id`'
+                . ' INNER  JOIN `0108asap_raceoutsiderally` '
+                . 'ON `0108asap_raceoutsiderally`.`IdCompetition`=`0108asap_competiton`.`id`'
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition`'
+                . '';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function ListRalyByOfficial() {
+        $query = 'SELECT `0108asap_officialregistrationcompetition`.`id` AS `idOfficialRegistrationCompetition`, '
+                . '`0108asap_officialregistrationcompetition`.`Observation-RequestFromOfficial`, '
+                . '`RegistrationDate`, `0108asap_officialregistrationcompetition`.`id_0108asap_SportEvents`, '
+                . '`0108asap_sportsevents`.`NameOfTheTest`, `0108asap_sportsevents`.`Location_Circuit`, `0108asap_sportsevents`.`Observation`, '
+                . '`0108asap_sportsevents`.`CompetitionStarDay`, `0108asap_sportsevents`.`CompetitionEndDay`, `0108asap_sportsevents`.`MinimumNumberOfOfficials`, '
+                . '`0108asap_officialregistrationcompetition`.`Aviable`, '
+                . '`0108asap_typeofcompetition`.`TypeOfCompetiton`, '
+                . '`0108asap_officialregistrationcompetition`.`id_0108asap_members` AS `IdMemberRally`'
+                . 'FROM `0108asap_officialregistrationcompetition` '
+                . 'INNER JOIN `0108asap_sportsevents` '
+                . 'ON `0108asap_sportsevents`.`id`=`0108asap_officialregistrationcompetition`.`id_0108asap_SportEvents` '
+                . 'INNER JOIN `0108asap_competiton` '
+                . 'ON `0108asap_competiton`.`id_0108asap_sportsevents` = `0108asap_sportsevents`.`id` '
+                . 'INNER  JOIN `0108asap_rally` '
+                . 'ON `0108asap_rally`.`id_0108asap_competiton`=`0108asap_competiton`.`id`'
+                . 'INNER JOIN `0108asap_typeofcompetition` '
+                . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition`';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

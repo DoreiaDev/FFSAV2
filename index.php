@@ -75,13 +75,6 @@ include_once 'Controller/IndexCtrl.php';
         </div>
         <div class="row">
             <div class="col-lg-3 leftColumm">
-                 <?php if (isset($_SESSION['connect'])) { ?>
-                <p>Les prochaines épreuves <a href="view/ListOfOpenCompetitons.php">Par ici</a></p>
-                <p>Liste des épreuves où vous êtes <a href="view/ParticipationAgreement.php">inscrits</a></p>
-                 <?php } else {?>
-                
-                     <?php }
-            ?>
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>

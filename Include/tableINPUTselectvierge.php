@@ -86,4 +86,46 @@ if (!empty($_POST[''])) {
         $formError['RequirementDate1'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
                 . 'Veuillez remplir le champs Date Des besoins officiel 1';
     }
+    
+//    SELECT `0108asap_officialregistrationcompetition`.`id`
+//     AS `OfficialRegistrationCompetition`, `0108asap_officialregistrationcompetition`.`Aviable`, `0108asap_officialregistrationcompetition`.`AviableDate1`, 
+//     `0108asap_officialregistrationcompetition`.`AviableDate2`, `0108asap_officialregistrationcompetition`.`AviableDate3`, `0108asap_officialregistrationcompetition`.`AviableDate4`, 
+//     `0108asap_officialregistrationcompetition`.`AviableDate5`, `0108asap_officialregistrationcompetition`.`NeedAccomodation1`, 
+//     `0108asap_officialregistrationcompetition`.`NeedAccomodation2`, `0108asap_officialregistrationcompetition`.`NeedAccomodation3`, 
+//     `0108asap_officialregistrationcompetition`.`NeedAccomodation4`, `NeedAccomodation5`, `0108asap_officialregistrationcompetition`.`Observation-RequestFromOfficial`, 
+//     `RegistrationDate`, `0108asap_officialregistrationcompetition`.`id_0108asap_SportEvents`, `0108asap_raceoutsiderally`.`ObservationAccommodation`, 
+//     `0108asap_raceoutsiderally`.`NumberOfCompetitonDays`, `0108asap_raceoutsiderally`.`RequirementDate1`, `0108asap_raceoutsiderally`.`RequirementDate2`, 
+//     `0108asap_raceoutsiderally`.`RequirementDate3`, `0108asap_raceoutsiderally`.`RequirementDate4`, `0108asap_raceoutsiderally`.`RequirementDate5`, 
+//     `0108asap_raceoutsiderally`.`LodgingPossible1`, `0108asap_raceoutsiderally`.`LodgingPossible2`, `0108asap_raceoutsiderally`.`LodgingPossible3`, 
+//     `0108asap_raceoutsiderally`.`LodgingPossible4`, `0108asap_raceoutsiderally`.`LodgingPossible5` FROM `0108asap_officialregistrationcompetition` 
+//     INNER JOIN `0108asap_sportsevents` ON `0108asap_sportsevents`.`id`=`0108asap_officialregistrationcompetition`.`id_0108asap_SportEvents` 
+//     INNER JOIN `0108asap_competiton` ON `0108asap_competiton`.`id_0108asap_sportsevents` = `0108asap_sportsevents`.`id` INNER  JOIN `0108asap_raceoutsiderally` 
+//     ON `0108asap_raceoutsiderally`.`IdCompetition`=`0108asap_competiton`.`id`
+    
+    
+//    SELECT `0108asap_officialregistrationcompetition`.`id` AS `OfficialRegistrationCompetition`, `0108asap_officialregistrationcompetition`.`Aviable`, 
+//    `0108asap_officialregistrationcompetition`.`AviableDate1`, `0108asap_officialregistrationcompetition`.`AviableDate2`, 
+//    `0108asap_officialregistrationcompetition`.`AviableDate3`, `0108asap_officialregistrationcompetition`.`AviableDate4`, 
+//    `0108asap_officialregistrationcompetition`.`AviableDate5`, `0108asap_officialregistrationcompetition`.`NeedAccomodation1`, 
+//    `0108asap_officialregistrationcompetition`.`NeedAccomodation2`, `0108asap_officialregistrationcompetition`.`NeedAccomodation3`,
+//     `0108asap_officialregistrationcompetition`.`NeedAccomodation4`, `NeedAccomodation5`, 
+//     `0108asap_officialregistrationcompetition`.`Observation-RequestFromOfficial`, `RegistrationDate`, 
+//     `0108asap_officialregistrationcompetition`.`id_0108asap_SportEvents`, `0108asap_raceoutsiderally`.`ObservationAccommodation`, 
+//     `0108asap_raceoutsiderally`.`NumberOfCompetitonDays`, `0108asap_raceoutsiderally`.`RequirementDate1`, 
+//     `0108asap_raceoutsiderally`.`RequirementDate2`, `0108asap_raceoutsiderally`.`RequirementDate3`, 
+//     `0108asap_raceoutsiderally`.`RequirementDate4`, `0108asap_raceoutsiderally`.`RequirementDate5`, `0108asap_raceoutsiderally`.`LodgingPossible1`,
+//      `0108asap_raceoutsiderally`.`LodgingPossible2`, `0108asap_raceoutsiderally`.`LodgingPossible3`, `0108asap_raceoutsiderally`.`LodgingPossible4`, 
+//      `0108asap_raceoutsiderally`.`LodgingPossible5`, `0108asap_sportsevents`.`NameOfTheTest`, `0108asap_sportsevents`.`Location_Circuit`, 
+//      `0108asap_sportsevents`.`Observation`,`0108asap_sportsevents`.`CompetitionStarDay`, `0108asap_sportsevents`.`CompetitionEndDay`, 
+//      `0108asap_sportsevents`.`MinimumNumberOfOfficials` 
+//      FROM `0108asap_officialregistrationcompetition` 
+//      INNER JOIN `0108asap_sportsevents` 
+//      ON `0108asap_sportsevents`.`id`=`0108asap_officialregistrationcompetition`.`id_0108asap_SportEvents` 
+//      INNER JOIN `0108asap_competiton` 
+//      ON `0108asap_competiton`.`id_0108asap_sportsevents` = `0108asap_sportsevents`.`id` 
+//      INNER  JOIN `0108asap_raceoutsiderally` 
+//      ON `0108asap_raceoutsiderally`.`IdCompetition`=`0108asap_competiton`.`id`
+    
+    
+    
 ?>
