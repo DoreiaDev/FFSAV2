@@ -77,7 +77,7 @@ class SportsEventsModel {
                 . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
                 . 'INNER JOIN `0108asap_categorycompetition` '
                 . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
-                . 'WHERE `0108asap_typeofcompetition`.`id`= :IdTypeCompetition && `0108asap_league`.`id`= :IdLeague'
+                . 'WHERE `0108asap_typeofcompetition`.`id`= :IdTypeCompetition && `0108asap_league`.`id`= :IdLeague && `CompetitionStarDay`>=CURRENT_DATE'
                 . '';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':IdTypeCompetition', $this->IdTypeCompetition, PDO::PARAM_INT);
@@ -104,7 +104,7 @@ class SportsEventsModel {
                 . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
                 . 'INNER JOIN `0108asap_categorycompetition` '
                 . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
-                . 'WHERE `0108asap_league`.`id`= :IdLeague';
+                . 'WHERE `0108asap_league`.`id`= :IdLeague && `CompetitionStarDay`>=CURRENT_DATE';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':IdLeague', $this->IdLeague, PDO::PARAM_INT);
         $queryResult->execute();
@@ -129,7 +129,7 @@ class SportsEventsModel {
                 . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
                 . 'INNER JOIN `0108asap_categorycompetition` '
                 . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
-                . 'WHERE `0108asap_typeofcompetition`.`id`= :IdTypeCompetition ';
+                . 'WHERE `0108asap_typeofcompetition`.`id`= :IdTypeCompetition && `CompetitionStarDay`>=CURRENT_DATE';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->bindValue(':IdTypeCompetition', $this->IdTypeCompetition, PDO::PARAM_INT);
         $queryResult->execute();
@@ -153,7 +153,7 @@ class SportsEventsModel {
                 . 'INNER JOIN `0108asap_typeofcompetition` '
                 . 'ON `0108asap_typeofcompetition`.`id`= `0108asap_competiton`.`id_0108asap_typeofcompetition` '
                 . 'INNER JOIN `0108asap_categorycompetition` '
-                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition`'
+                . 'ON `0108asap_categorycompetition`.`id`=`0108asap_competiton`.`id_0108asap_categorycompetition` && `CompetitionStarDay`>=CURRENT_DATE'
                 . ' ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();

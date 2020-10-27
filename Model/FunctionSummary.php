@@ -18,7 +18,6 @@ class FunctionSummary {
     public $id_0108asap_member = 0;
     public $id_0108asap_function = 0;
     public $LicencePrimary = 0;
-    public $id0108asap_member = 0;
     public $pdo;
 
     public function __construct() {
@@ -141,6 +140,19 @@ class FunctionSummary {
         $queryResult->bindValue(':id', $this->id, PDO::PARAM_INT);
         $queryResult->bindValue(':id_0108asap_function', $this->id_0108asap_function, PDO::PARAM_INT);
         return $queryResult->execute();
+    }
+    
+    public function ListFunctionByIdMembers() {
+    $query='SELECT  `0108asap_functionsummary`.`LicenceNumber`, `0108asap_functionsummary`.`id_0108asap_member`, `0108asap_functionsummary`.`id_0108asap_function`, '
+            . ' `0108asap_functions`.`id`, '
+            . ' `0108asap_functions`.`TypeOfLicence`, `0108asap_functions`.`PermissionToAccess`  FROM `0108asap_functionsummary` '
+            . 'INNER JOIN `0108asap_functions` '
+            . 'ON `0108asap_functions`.`id`=`0108asap_functionsummary`.`id_0108asap_function` '
+            . 'WHERE `0108asap_functionsummary`.`id_0108asap_member`=:id_0108asap_member && `0108asap_functionsummary`.`id_0108asap_function`!=259 ';   
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id_0108asap_member', $this->id_0108asap_member, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
 
 }

@@ -202,6 +202,11 @@ if (isset($_POST['BtnRegistrationOfOfficial'])) {
                 . 'Vous étes déja inscrit sur la compétition';
     }
 }
+$FunctionByMember= new FunctionSummary();
+if(!empty( $_SESSION['idUser'])){
+   $FunctionByMember->id_0108asap_member= htmlspecialchars($_SESSION['idUser']) ;
+}
+$CheckFunctionByMember= $FunctionByMember->ListFunctionByIdMembers();
 $DiplayFunction = new functions();
 $DisplayListFunction = $DiplayFunction->ListOfFunction();
 $CheckDetailDisplyCompetition = $DetailDisplyCompetition->DIsplayListeRaceOutsideRally();

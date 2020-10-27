@@ -1,6 +1,6 @@
 <?php
 include_once '../Config.php';
-include_once '../Controller/CompétitionWhereIAmRegistredCtrl.php';
+include_once '../Controller/CompetitionWehereIAmRegistredCtrl.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
 if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Function)) {
@@ -33,7 +33,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     <th scope="col">Nom de l'épreuves </th>
                                     <th scope="col">Type de compétition </th>
                                     <th scope="col">Circuit ou ville départ </th>
-                                    <th scope="col">Observation liér a la compétition </th>
+                                    <th scope="col">Poste </th>
                                     <th scope="col">Disponible </th>
                                     <th scope="col">Détaille</th>
                                 </tr>
@@ -47,7 +47,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <th scope="row"><?= $CompetitionbyMembers->NameOfTheTest ?></th>
                                             <td><?= $CompetitionbyMembers->TypeOfCompetiton ?></td>
                                             <td><?= $CompetitionbyMembers->Location_Circuit ?></td>
-                                            <td><?= $CompetitionbyMembers->Observation ?></td>
+                                            <td><?= $CompetitionbyMembers->TypeOfLicence ?></td>
                                             <?php
                                             if ($CompetitionbyMembers->Aviable == 'Oui') {
                                                 ?>
@@ -94,7 +94,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                             <th scope="row"><?= $RallybyMembers->NameOfTheTest ?></th>
                                             <td><?= $RallybyMembers->TypeOfCompetiton ?></td>
                                             <td><?= $RallybyMembers->Location_Circuit ?></td>
-                                            <td><?= $RallybyMembers->Observation ?></td>
+                                            <td><?= $RallybyMembers->TypeOfLicence ?></td>
                                             <?php
                                             if ($RallybyMembers->Aviable == 'Oui') {
                                                 ?>

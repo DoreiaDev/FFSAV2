@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/laragon/www/FFSAv2/Include/blackPages.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/Model/Rally.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/View/RegistrationOfOfficialsOnARally.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/Model/FunctionSummary.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/View/RegistrationOfOfficialsOnACompetition.php</file>
+            <file>file:/D:/laragon/www/FFSAv2/Controller/RegistrationOfOfficialsOnARallyCtrl.php</file>
         </group>
     </open-files>
 </project-private>

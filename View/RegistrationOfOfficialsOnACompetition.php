@@ -183,12 +183,10 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <select class="custom-select custom-select-sm" name="Idfunction" id="Idfunction">
                                 <option selected="">Choissez dans la liste suivante </option>
                                 <?php
-                                foreach ($DisplayListFunction as $Function) {
-                                    if ($Function->PermissionToAccess != 259) {
+                                    foreach ($CheckFunctionByMember as $Function) {
                                         ?>
                                         <option value="<?= $Function->id ?>"> <?= $Function->TypeOfLicence ?></option>
                                         <?php
-                                    }
                                 }
                                 ?>
                             </select>

@@ -67,7 +67,6 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                                     <option selected="" value="0">Choissez dans la liste suivante </option>
                                     <?php
                                     foreach ($listerFunctions as $FunctionList) {
-
                                         if ($FunctionList->PermissionToAccess != 259 && $FunctionList->PermissionToAccess != 405) {
                                             ?>
                                             <option value="<?= $FunctionList->id ?>"> <?= $FunctionList->TypeOfLicence ?></option>

@@ -3,7 +3,7 @@ include_once '../Config.php';
 include_once '../Controller/RegistrationOfOfficialsOnARallyCtrl.php';
 include_once '../Include/Header.php';
 include_once '../Include/Navbar.php';
-if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
+if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Function)) {
     ?>
     <div class="container-fluid">
         <div class="row">
@@ -177,21 +177,20 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p class="text-danger" id="Error"><?= isset($formError['ObservationAccommodation']) ? $formError['ObservationAccommodation'] : '' ?></p>
                         </div>
                         <div>
-                            <label>Sélectionnez votre fonction dans la liste suivante  dans la liste suivante :*</label><br>
-                            <select class="custom-select custom-select-sm" name="Idfunction" id="Idfunction">
-                                <option selected="">Choissez dans la liste suivante </option>
-                                <?php
-                                foreach ($DisplayListFunction as $Function) {
-                                    if ($Function->PermissionToAccess != 259) {
+                                <label>Sélectionnez votre fonction dans la liste suivante  dans la liste suivante :*</label><br>
+                                <select class="custom-select custom-select-sm" name="Idfunction" id="Idfunction">
+                                    <option selected="">Choissez dans la liste suivante </option>
+                                    <?php
+                                    foreach ($CheckFunctionByMember as $Function) {
                                         ?>
                                         <option value="<?= $Function->id ?>"> <?= $Function->TypeOfLicence ?></option>
                                         <?php
                                     }
-                                }
-                                ?>
-                            </select>
-                            <p class="text-danger"><?= isset($formError['Idfunction']) ? $formError['Idfunction'] : '' ?></p>
+                                    ?>
+                                </select>
+                                <p class="text-danger"><?= isset($formError['Idfunction']) ? $formError['Idfunction'] : '' ?></p>
                         </div>
+                       
                         <div>
                             <label for="IdMembers"></label>
                             <input type="hidden" name="IdMembers" value="<?= $_SESSION['idUser'] ?>" id="IdMembers"/>
