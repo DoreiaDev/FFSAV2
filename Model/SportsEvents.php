@@ -159,7 +159,12 @@ class SportsEventsModel {
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
     }
-  
-    
-    
+    public function DisplaySportEvent(){
+        $query='SELECT `id`, `NameOfTheTest`, `Location_Circuit`, `CompetitionStarDay`, '
+                . ' DATE_FORMAT(CompetitionStarDay,\'%d/%m/%Y\') AS `Début` '
+                . ' FROM `0108asap_sportsevents` ';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->execute();
+        return $queryResult->fetchAll(PDO::FETCH_OBJ);
+    }
 }

@@ -108,7 +108,7 @@ class OfficialRegistrationCompetition {
                 . '`0108asap_officialregistrationcompetition`.`id_0108asap_members` AS `IdMemberCompetition`, '
                 . '`0108asap_typeofcompetition`.`TypeOfCompetiton`, '
                 . '`0108asap_functions`.`TypeOfLicence`, '
-                . '`0108asap_officialregistrationcompetition`.`Aviable` '
+                . '`0108asap_officialregistrationcompetition`.`Aviable`, `0108asap_membres`.`Name`,  `0108asap_membres`.`Firstname` '
                 . 'FROM `0108asap_officialregistrationcompetition` '
                 . 'INNER JOIN `0108asap_functions` '
                 . 'ON `0108asap_functions`.`id`=`0108asap_officialregistrationcompetition`.`id_0108asap_function`'
@@ -120,7 +120,8 @@ class OfficialRegistrationCompetition {
                 . 'ON `0108asap_raceoutsiderally`.`IdCompetition`=`0108asap_competiton`.`id`'
                 . 'INNER JOIN `0108asap_typeofcompetition` '
                 . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition`'
-                . '';
+                . 'INNER JOIN `0108asap_membres` '
+                . 'ON `0108asap_membres`.`id`=`0108asap_officialregistrationcompetition`.`id_0108asap_members` ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
@@ -135,7 +136,7 @@ class OfficialRegistrationCompetition {
                 . '`0108asap_officialregistrationcompetition`.`Aviable`, '
                 . '`0108asap_typeofcompetition`.`TypeOfCompetiton`, '
                 . '`0108asap_functions`.`TypeOfLicence`, '
-                . '`0108asap_officialregistrationcompetition`.`id_0108asap_members` AS `IdMemberRally`'
+                . '`0108asap_officialregistrationcompetition`.`id_0108asap_members` AS `IdMemberRally`, `0108asap_membres`.`Name`,  `0108asap_membres`.`Firstname` '
                 . 'FROM `0108asap_officialregistrationcompetition` '
                 . 'INNER JOIN `0108asap_functions` '
                 . 'ON `0108asap_functions`.`id`=`0108asap_officialregistrationcompetition`.`id_0108asap_function`'
@@ -146,7 +147,9 @@ class OfficialRegistrationCompetition {
                 . 'INNER  JOIN `0108asap_rally` '
                 . 'ON `0108asap_rally`.`id_0108asap_competiton`=`0108asap_competiton`.`id`'
                 . 'INNER JOIN `0108asap_typeofcompetition` '
-                . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition`';
+                . 'ON `0108asap_typeofcompetition`.`id`=`0108asap_competiton`.`id_0108asap_typeofcompetition`'
+                . 'INNER JOIN `0108asap_membres` '
+                . 'ON `0108asap_membres`.`id`=`0108asap_officialregistrationcompetition`.`id_0108asap_members` ';
         $queryResult = $this->pdo->db->prepare($query);
         $queryResult->execute();
         return $queryResult->fetchAll(PDO::FETCH_OBJ);
