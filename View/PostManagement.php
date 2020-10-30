@@ -24,7 +24,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <a href="PositionManagement.php"><button>affecter les postes aux officiel inscrit</button></a>
+                    <a href="PositionManagement.php?idSportevents=<?=$IdSportEvent?>"><button>affecter les postes aux officiel inscrit</button></a>
                     <a href="SpecialEventsAwarded.php"><button>Ajout des Es </button></a>
                 </div>
             </div>

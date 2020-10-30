@@ -8,7 +8,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-1">
-              
+
             </div>
             <div class="col-lg-10 ">
                 <h1>Choississez la compétition</h1>
@@ -22,23 +22,22 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         <div class="row">
             <div class="col-lg-3 leftColumm">
                 <?php
-               
                 ?>
             </div>
             <div class="col-lg-6 centralColumm">
                 <div>
-                    <?php 
-                        foreach ($ListCompetition AS $DisplayListSportEvents){
-                    ?>
-                    <a href=""><button><?= $DisplayListSportEvents ->NameOfTheTest?> , <?= $DisplayListSportEvents ->Location_Circuit?>, <?= $DisplayListSportEvents ->Début?></button></a>
                     <?php
-                        }
+                    foreach ($ListCompetition AS $DisplayListSportEvents) {
+                        ?>
+                    <a href="PostManagement.php?IDsportEvent=<?=$DisplayListSportEvents->id ?>"><button><?= $DisplayListSportEvents->NameOfTheTest ?> , <?= $DisplayListSportEvents->Location_Circuit ?>,
+                                <?= $DisplayListSportEvents->Début ?></button></a>
+                                <?php
+                    }
                     ?>
                 </div>
             </div>
             <div class="col-lg-3 rigthColumm">
                 <?php
-                
                 ?>
             </div>
         </div>

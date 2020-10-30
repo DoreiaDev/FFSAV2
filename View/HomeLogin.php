@@ -21,27 +21,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
         <div class="row">
             <div class="col-lg-3 leftColumm">
                 <div>
-                    <?php
-                    if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Responsible)) {
-                        ?>
-                    <h3>Accès responsable</h3>
-                        <a class="dropdown-item" href="ListOfAsa.php">Gestion des ASA/ASK</a>
-                        <a class="dropdown-item" href="ChoiceOfCompetition.php">Choisir le type de compétition à ouvrir</a>
-                        <a class="dropdown-item" href="CompetitionOfSelection.php">Gestion des postes sur la compétition</a>
-                        <?php
-                    }
-                    ?>
-                </div>
-                <div>
-                    <?php
-                    if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $PresidentOfAsa)) {
-                        ?>
-                    <h3>Accès président </h3>
-                        <a class="dropdown-item"  href="ListOfLeague.php">Gestion des Ligues </a>
-                        <a class="dropdown-item" href="ListOfFunction.php">Gestion des licences (fonction)</a>
-                        <?php
-                    }
-                    ?>
+
                 </div>
             </div>
             <div class="col-lg-6 centralColumm">
@@ -62,10 +42,7 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                             <p>et vos autre licences</p>
                             <p><?= $MemberDetail->TypeOfLicence ?> Avec le Numéro <?= $MemberDetail->SecondaryLicense ?></p>
 
-                        <?php } else {
-                            ?>
-                            <p>Vous n'avez pas d'autres licences pour le moment </p>
-                            <?php
+                        <?php
                         }
                     }
                     ?>
@@ -76,15 +53,6 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
             </div>
             <div class="col-lg-3 rigthColumm">
                 <div>
-                    <?php
-                    if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SESSION['access'], $Function)) {
-                        ?>
-                    <h3>Partie Officiel</h3>
-                    <a class="dropdown-item" href="ListOfOpenCompetition.php">Liste des compétitions </a>
-                    <a class="dropdown-item" href="CompetitionWehereIAmRegistred.php">Competition Ou je suis inscrit</a>
-                          <?php
-                    }
-                    ?>
                 </div>
             </div>
         </div>

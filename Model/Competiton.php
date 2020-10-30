@@ -30,10 +30,12 @@ class Competiton {
         // Sinon on affiche un message d'erreur
         //il les faut pour faire les transaction (3 prochaine methode)
     }
+
 //fonction pour obtenir le dernier id inserer dans la BD
     public function LastInsertIdCompetition() {
         return $this->pdo->db->lastInsertId();
     }
+
     //AJout d'une competition
     public function AddOutsideCompetition() {
         $query = 'INSERT INTO `0108asap_competiton`'
@@ -47,6 +49,15 @@ class Competiton {
         $queryResult->bindValue(':Open', $this->Open, PDO::PARAM_STR);
         $queryResult->bindValue(':Close', $this->Close, PDO::PARAM_STR);
         return $queryResult->execute();
+    }
+
+    public function ListCompetitionByIdSportEvent() {
+        $query = 'SELECT `id`, `id_0108asap_categorycompetition`, `id_0108asap_sportsevents`, `id_0108asap_typeofcompetition`'
+                . ' FROM `0108asap_competiton` WHERE `id_0108asap_sportsevents`=:id_0108asap_sportsevents';
+        $queryResult = $this->pdo->db->prepare($query);
+        $queryResult->bindValue(':id_0108asap_sportsevents', $this->id_0108asap_sportsevents, PDO::PARAM_INT);
+        $queryResult->execute();
+        return $queryResult->fetch(PDO::FETCH_OBJ);
     }
 
 }

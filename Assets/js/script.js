@@ -1,3 +1,7 @@
+  $('.Management').mouseover(function() {
+    $(this).dropdown('toggle')
+  })
+
 $('.Inscription').hide();
 $('.btnInscription').click(function () {
     $('.Inscription').show();

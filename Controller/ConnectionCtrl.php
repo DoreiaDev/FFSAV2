@@ -160,7 +160,7 @@ if (isset($_POST['validate'])) {
                     $License->LicencePrimary = 1;
                     $License->id_0108asap_member = $LastId->lastInsertId();
                     $CheckLicences = $License->AddPrimaryLicense();
-                    var_dump($ChekMembre);
+                    var_dump($Member);
                     if ($ChekMembre == true) {
                         $_SESSION['TemporyloginMail'] = $TemporaryEmail;
                         $_SESSION['TemporyName'] = $TemporaryName;
@@ -173,7 +173,8 @@ if (isset($_POST['validate'])) {
 //            header("Location: Connection.php");
                     } else {
                         $formError['Technical'] = '<img src="../Assets/img/Icone/WarningRond.png" style="width: 50px;" class="images_petit" />'
-                                . 'une erreur est survenue';
+                                . 'une erreur technique est survenue contacter le webmaster'
+                                . ' ';
                         $Inscription = 'Connection';
                         $Connection = 'Inscription';
                     }

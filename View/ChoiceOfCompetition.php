@@ -29,12 +29,12 @@ if (isset($_SESSION['connect']) && $_SESSION['connect'] == 'OK' && in_array($_SE
                     $IdListCompetitionType = $DiplayyOfCompetitionType->id;
                     if ($IdListCompetitionType != 1 && $IdListCompetitionType != 2) {
                         ?>
-                        <p>Compétition <a href="AddingACompetition.php"><?= $DiplayyOfCompetitionType->TypeOfCompetiton ?> </a> </p>
+                        <p> <a href="AddingACompetition.php"><?= $DiplayyOfCompetitionType->TypeOfCompetiton ?> </a> </p>
                     <?php
                     }
                     if ($IdListCompetitionType == 1 || $IdListCompetitionType == 2) {
                         ?>
-                        <p>Compétition <a href="AddingARally.php"><?= $DiplayyOfCompetitionType->TypeOfCompetiton ?> </a></p>
+                        <p> <a href="AddingARally.php"><?= $DiplayyOfCompetitionType->TypeOfCompetiton ?> </a></p>
                         <?php
                     }
                 }
